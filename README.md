@@ -1,1 +1,1 @@
-# algorithm-problem-ai
+# stuoj-ai
