@@ -19,7 +19,7 @@ func Draft(pi model.ProblemInstruction) (model.Problem, error) {
 	if err != nil {
 		return model.Problem{}, err
 	}
-	log.Println("生成题目：" + instruction)
+	log.Println("请求生成题目：" + instruction)
 
 	// 组合Prompt
 	sysMsg := model.NewSysMsg(prompt.ProblemJsonInput +
@@ -32,9 +32,14 @@ func Draft(pi model.ProblemInstruction) (model.Problem, error) {
 	if err != nil {
 		return model.Problem{}, errors.New("请求模型失败！")
 	}
+	log.Println("生成结果：" + resp.Content)
 
 	// 解析结果
 	err = json.Unmarshal([]byte(resp.Content), &p)
+	if err != nil {
+		log.Println(err)
+		return model.Problem{}, errors.New("解析结果失败，请重试！")
+	}
 
-	return p, err
+	return p, nil
 }
