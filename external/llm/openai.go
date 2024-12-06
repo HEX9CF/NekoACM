@@ -7,7 +7,7 @@ import (
 )
 
 var (
-	Client *openai.Client
+	client *openai.Client
 	config conf.OpenaiConf
 )
 
@@ -18,7 +18,7 @@ func InitLlm() error {
 	openaiConfig.BaseURL = config.BaseUrl
 	log.Println("Connecting to AI LLM service: " + config.BaseUrl)
 
-	Client = openai.NewClientWithConfig(openaiConfig)
+	client = openai.NewClientWithConfig(openaiConfig)
 	log.Println("AI LLM service connected.")
 
 	return nil
