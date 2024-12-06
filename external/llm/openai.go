@@ -7,7 +7,11 @@ import (
 	"stuoj-ai/internal/conf"
 )
 
-func Test() {
+var (
+	Client *openai.Client
+)
+
+func InitLlm() error {
 	config := conf.Conf.Ai
 
 	openaiConfig := openai.DefaultConfig(config.Key)
@@ -17,8 +21,13 @@ func Test() {
 		openaiConfig.BaseURL = config.Host + ":" + config.Port
 	}
 
-	client := openai.NewClientWithConfig(openaiConfig)
-	resp, err := client.CreateChatCompletion(
+	Client = openai.NewClientWithConfig(openaiConfig)
+
+	return nil
+}
+
+func Test() {
+	resp, err := Client.CreateChatCompletion(
 		context.Background(),
 		openai.ChatCompletionRequest{
 			Model: openai.GPT3Dot5Turbo,

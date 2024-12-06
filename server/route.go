@@ -13,7 +13,7 @@ func InitRoute() error {
 
 	// index
 	ginServer.GET("/", func(c *gin.Context) {
-		c.JSON(http.StatusOK, model.RespOk("启动成功！", nil))
+		c.JSON(http.StatusOK, model.RespOk("STUOJ AI出题模块启动成功！", nil))
 	})
 
 	// 404
