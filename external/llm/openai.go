@@ -9,17 +9,14 @@ import (
 
 var (
 	Client *openai.Client
+	config conf.OpenaiConf
 )
 
 func InitLlm() error {
-	config := conf.Conf.Ai
+	config = conf.Conf.Openai
 
-	openaiConfig := openai.DefaultConfig(config.Key)
-	if config.Port == "" {
-		openaiConfig.BaseURL = config.Host
-	} else {
-		openaiConfig.BaseURL = config.Host + ":" + config.Port
-	}
+	openaiConfig := openai.DefaultConfig(config.ApiKey)
+	openaiConfig.BaseURL = config.BaseUrl
 
 	Client = openai.NewClientWithConfig(openaiConfig)
 
@@ -30,7 +27,7 @@ func Test() {
 	resp, err := Client.CreateChatCompletion(
 		context.Background(),
 		openai.ChatCompletionRequest{
-			Model: openai.GPT3Dot5Turbo,
+			Model: config.Model,
 			Messages: []openai.ChatCompletionMessage{
 				{
 					Role:    openai.ChatMessageRoleUser,

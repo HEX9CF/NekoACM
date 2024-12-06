@@ -9,10 +9,8 @@ database:
   password: 12345678
   max_open_conns: 10
   max_idle_conns: 5
-ai:
-  provider: openai
+openai:
+  base_url: https://api.openai.com
+  api_key: sk-12345678
   model: gpt-3.5-turbo
-  host:
-  port:
-  key:
 
