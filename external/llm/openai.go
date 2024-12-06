@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	openai "github.com/sashabaranov/go-openai"
+	"log"
 	"stuoj-ai/internal/conf"
 )
 
@@ -17,8 +18,10 @@ func InitLlm() error {
 
 	openaiConfig := openai.DefaultConfig(config.ApiKey)
 	openaiConfig.BaseURL = config.BaseUrl
+	log.Println("Connecting to AI LLM service: " + config.BaseUrl)
 
 	Client = openai.NewClientWithConfig(openaiConfig)
+	log.Println("AI LLM service connected.")
 
 	return nil
 }

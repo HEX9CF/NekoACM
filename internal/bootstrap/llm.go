@@ -13,4 +13,6 @@ func initLlm() {
 	}
 
 	log.Println("Init LLM success.")
+
+	llm.Test()
 }
