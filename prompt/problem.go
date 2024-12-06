@@ -1,6 +1,6 @@
 package prompt
 
-const ProblemJsonInputPrompt string = `
+const ProblemJsonInput = `
 你将担任 ACM/ICPC 题目的出题人。用户会提供一些 ACM/ICPC 题目的部分信息，请根据用户提供的信息草拟题目。
 
 题目的部分信息可能包括：
@@ -19,7 +19,7 @@ solution: 题解代码
 如果用户提供的信息不完整，你可以根据自己的经验和判断补充完整。
 `
 
-const ProblemJsonOutputPrompt string = `
+const ProblemJsonOutput = `
 题目内容说明如下：
 title: 题目标题
 description: 题目的详细描述，包括背景、问题定义等信息

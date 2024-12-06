@@ -16,14 +16,14 @@ func Draft(pi model.ProblemInstruction) (model.Problem, error) {
 
 	// 题目说明转换为字符串
 	instruction, err := utils.PrettyStruct(pi)
-	log.Println(instruction)
 	if err != nil {
 		return model.Problem{}, err
 	}
+	log.Println("生成题目：" + instruction)
 
 	// 组合Prompt
-	sysMsg := model.NewSysMsg(prompt.ProblemJsonInputPrompt +
-		"\n\n" + prompt.ProblemJsonOutputPrompt)
+	sysMsg := model.NewSysMsg(prompt.ProblemJsonInput +
+		"\n\n" + prompt.ProblemJsonOutput)
 	userMsg := model.NewUserMsg(instruction)
 	msgs := []openai.ChatCompletionMessage{sysMsg, userMsg}
 

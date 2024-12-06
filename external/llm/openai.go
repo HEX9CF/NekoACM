@@ -19,7 +19,7 @@ func InitLlm() error {
 	log.Println("Connecting to AI LLM service: " + config.BaseUrl)
 
 	client = openai.NewClientWithConfig(openaiConfig)
-	log.Println("AI LLM service connected.")
 
+	log.Println("AI LLM service connected.")
 	return nil
 }

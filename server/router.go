@@ -5,11 +5,12 @@ import (
 	"net/http"
 	"stuoj-ai/internal/conf"
 	"stuoj-ai/internal/model"
+	"stuoj-ai/server/handler"
 	"stuoj-ai/server/middlewares"
 )
 
 func InitRoute() error {
-	conf := conf.Conf.Server
+	config := conf.Conf.Server
 
 	// index
 	ginServer.GET("/", func(c *gin.Context) {
@@ -25,12 +26,12 @@ func InitRoute() error {
 	ginServer.Use(middlewares.TokenAuth())
 
 	// 初始化路由
+	ginServer.POST("/problem", handler.ProblemDraft)
 
 	// 启动服务
-	err := ginServer.Run(conf.Port)
+	err := ginServer.Run(":" + config.Port)
 	if err != nil {
 		return err
 	}
-
 	return nil
 }
