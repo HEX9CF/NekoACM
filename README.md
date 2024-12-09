@@ -6,17 +6,23 @@
 
 A large model-based ACM-ICPC algorithm problem automatic generation system that can automatically generate algorithm problems, testcases, and problem solutions. The system can run as a standalone service or be integrated as a module into an OJ system.
 
-## 功能简介
+## 功能介绍
+
+- **题目生成**：根据用户提供的题目信息或题解生成算法题目
+- **测试数据生成**：根据用户提供的题目信息或题解生成测试用例
+- **题解生成**：根据用户提供的题目信息生成指定编程语言的题解代码，支持任何编程语言
+
+## 操作模式
 
 ### 终端启动模式
 
 直接通过终端启动程序并通过命令行参数选择功能。
 
 - `neko`: 以命令行模式启动
-- `neko server`: 以服务器模式启动
-- `neko problem`: 根据用户提供的题目信息或题解出题
-- `neko testcase`: 根据用户提供的题目信息或题解生成测试数据
-- `neko solution`: 根据用户提供的题目信息生成指定编程语言的题解
+- `neko server`: 直接以服务器模式启动
+- `neko problem`: 功能同命令行模式的 `problem` 命令
+- `neko testcase`: 功能同命令行模式的 `testcase` 命令
+- `neko solution`: 功能同命令行模式的 `solution` 命令
 
 ### 命令行模式
 
@@ -24,9 +30,9 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
 
 #### 命令
 
-- `problem`: 根据用户提供的题目信息或题解出题
-- `testcase`: 根据用户提供的题目信息或题解生成测试数据
-- `solution`: 根据用户提供的题目信息生成指定编程语言的题解
+- `problem`: 根据用户提供的题目信息或题解出题，可以以 JSON 格式保存到文件
+- `testcase`: 根据用户提供的题目信息或题解生成测试数据，可以以 JSON 格式保存到文件
+- `solution`: 根据用户提供的题目信息生成指定编程语言的题解，可以以 JSON 格式保存到文件
 - `server`: 启动服务器模式
 - `exit`: 退出程序
 
