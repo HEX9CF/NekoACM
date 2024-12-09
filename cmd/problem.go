@@ -56,7 +56,7 @@ var ProblemCmd = &cobra.Command{
 
 		if save == "y" {
 			timestamp := time.Now().Unix()
-			path := "output/problem/" + strconv.FormatInt(timestamp, 10) + ".json"
+			path := "output/problem/" + problem.Title + "_" + strconv.FormatInt(timestamp, 10) + ".json"
 			err := utils.WriteJson(problem, path)
 			if err != nil {
 				fmt.Println("保存失败！")

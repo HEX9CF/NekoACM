@@ -23,9 +23,13 @@ var rootCmd = &cobra.Command{
 			case "exit":
 				os.Exit(0)
 			case "server":
-				return ServerCmd.RunE(nil, nil)
+				if err := ServerCmd.RunE(nil, nil); err != nil {
+					return err
+				}
 			case "problem":
-				return ProblemCmd.RunE(nil, nil)
+				if err := ProblemCmd.RunE(nil, nil); err != nil {
+					return err
+				}
 			default:
 				fmt.Println("未知命令！")
 			}
