@@ -2,9 +2,9 @@
 
 ## 简介
 
-基于大模型的 ACM-ICPC 算法题目自动出题系统，内置一个人工智能 ACMer 猫娘，可以自动生成算法题目、测试数据和题解。
+基于大模型的 ACM-ICPC 算法题目自动出题系统，内置一个人工智能 ACMer 猫娘🐱🐾，可以自动生成算法题目、测试数据和题解。系统可以作为一个单独的服务运行，也可以作为一个库集成到 OJ 系统中。
 
-A large model-based ACM-ICPC algorithm problem automatic generation system that can automatically generate algorithm problems, testcases, and problem solutions.
+A large model-based ACM-ICPC algorithm problem automatic generation system that can automatically generate algorithm problems, testcases, and problem solutions. The system can run as a standalone service or be integrated as a library into an OJ system.
 
 ## 样例
 
