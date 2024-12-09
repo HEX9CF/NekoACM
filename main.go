@@ -1,9 +1,9 @@
 package main
 
 import (
-	"neko-acm-ai/internal/bootstrap"
+	"neko-acm-ai/cmd"
 )
 
 func main() {
-	bootstrap.Init()
+	cmd.Execute()
 }

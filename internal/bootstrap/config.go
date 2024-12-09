@@ -5,11 +5,12 @@ import (
 	"neko-acm-ai/internal/conf"
 )
 
-func initConfig() {
+func initConfig() error {
 	err := conf.InitConfig()
 	if err != nil {
 		log.Println("Init config failed!")
-		panic(err)
+		return err
 	}
 	log.Println("Init config success.")
+	return nil
 }

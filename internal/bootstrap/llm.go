@@ -5,12 +5,13 @@ import (
 	"neko-acm-ai/external/llm"
 )
 
-func initLlm() {
+func initLlm() error {
 	err := llm.InitLlm()
 	if err != nil {
 		log.Println("Init LLM failed!")
-		return
+		return err
 	}
 
 	log.Println("Init LLM success.")
+	return nil
 }

@@ -5,12 +5,13 @@ import (
 	"neko-acm-ai/server"
 )
 
-func initServer() {
+func initServer() error {
 	err := server.InitServer()
 	if err != nil {
 		log.Println("Init server failed!")
-		panic(err)
+		return err
 	}
 
 	log.Println("Init server success.")
+	return nil
 }
