@@ -1,4 +1,4 @@
-# Neko ACM AI 
+# NekoACM 
 
 ## 简介
 
