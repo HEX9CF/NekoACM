@@ -20,6 +20,12 @@ func InitLlm() error {
 
 	client = openai.NewClientWithConfig(openaiConfig)
 
+	err := Test()
+	if err != nil {
+		log.Println("AI LLM service connection failed.")
+		return err
+	}
+
 	log.Println("AI LLM service connected.")
 	return nil
 }

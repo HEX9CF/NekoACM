@@ -8,7 +8,7 @@ import (
 	"neko-acm-ai/prompt"
 )
 
-func Test() {
+func Test() error {
 	resp, err := client.CreateChatCompletion(
 		context.Background(),
 		openai.ChatCompletionRequest{
@@ -23,11 +23,12 @@ func Test() {
 	)
 
 	if err != nil {
-		fmt.Printf("ChatCompletion error: %v\n", err)
-		return
+		//fmt.Printf("ChatCompletion error: %v\n", err)
+		return err
 	}
 
 	fmt.Println(resp.Choices[0].Message.Content)
+	return nil
 }
 
 func Info() (string, error) {
