@@ -6,11 +6,39 @@
 
 A large model-based ACM-ICPC algorithm problem automatic generation system that can automatically generate algorithm problems, testcases, and problem solutions. The system can run as a standalone service or be integrated as a module into an OJ system.
 
-## API 文档
+## 功能简介
+
+### 终端启动模式
+
+直接通过终端输入命令行参数操作。
+
+- `neko`: 以命令行模式启动
+- `neko server`: 以服务器模式启动
+- `neko problem`: 根据用户提供的题目信息或题解出题
+- `neko testcase`: 根据用户提供的题目信息或题解生成测试数据
+- `neko solution`: 根据用户提供的题目信息生成指定编程语言的题解
+
+### 命令行模式
+
+在终端不带参数启动，进入命令行模式后，通过程序内置的命令进行操作。
+
+#### 命令
+
+- `problem`: 根据用户提供的题目信息或题解出题
+- `testcase`: 根据用户提供的题目信息或题解生成测试数据
+- `solution`: 根据用户提供的题目信息生成指定编程语言的题解
+- `server`: 启动服务器模式
+- `exit`: 退出程序
+
+### 服务器模式
+
+进入服务器模式后，通过 HTTP 请求调用 API 接口。
+
+#### API 文档
 
 - Apifox: [https://neko-acm.apifox.cn](https://neko-acm.apifox.cn)
 
-## 系统功能
+#### API 接口
 
 | 功能名称   | 请求方法 | 路由路径      | 操作者 | 功能简述                   |
 |--------|------|-----------|-----|------------------------|
@@ -52,37 +80,6 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
     "tags": [
       "DFS",
       "Kruskal"
-    ]
-  }
-}
-```
-
-#### 请求2
-
-```json
-{
-  "title": "小明的课程表",
-  "description": "小明是汕头大学的一名学生。他说：“这大学我有四不上：1、大一我不上。2、大二我不上。3、大三我不上。4、大四我不上。”但是不上学是不对的，请帮小明安排课程表。"
-}
-```
-
-#### 响应2
-
-```json
-{
-  "code": 1,
-  "msg": "OK",
-  "data": {
-    "title": "小明的课程表",
-    "description": "小明是汕头大学的一名学生。他说：“这大学我有四不上：1、大一我不上。2、大二我不上。3、大三我不上。4、大四我不上。”但是不上学是不对的，请帮小明安排课程表。为了帮助小明合理规划他的大学生活，我们需要为他设计一个课程表，确保他在每个学期都能学到必要的课程，并且能够顺利毕业。",
-    "input": "输入包含多个测试用例。每个测试用例的第一行是一个整数 $N$（$1 \\le N \\le 10$），表示小明需要学习的课程总数。接下来的 $N$ 行，每行包含一个课程名称（不超过 20 个字符）和三个整数 $T_1, T_2, T_3$（$1 \\le T_1, T_2, T_3 \\le 4$），分别表示该课程可以在大一、大二、大三、大四的哪个学期学习。每个测试用例之间以一个空行隔开。",
-    "output": "对于每个测试用例，输出小明每个学期的课程安排。每个学期的课程按字典序排列，用空格隔开。如果某个学期没有课程，输出“Free”。每个测试用例的输出占一行。",
-    "sample_input": "3\nMath 1 2 3\nPhysics 2 3 4\nEnglish 1 4\n\n2\nCS 2 3\nHistory 1 4",
-    "sample_output": "English Math Free Physics\nHistory Free CS Free",
-    "hint": "可以考虑使用贪心算法来安排课程，优先安排可选学期最少的课程。",
-    "tags": [
-      "贪心算法",
-      "模拟"
     ]
   }
 }
