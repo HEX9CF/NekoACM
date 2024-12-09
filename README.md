@@ -180,3 +180,7 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
   }
 }
 ```
+
+![image](https://github.com/user-attachments/assets/6b533fc9-988a-41c5-b06f-9e3e3a2755d9)
+
+
