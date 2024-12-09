@@ -8,7 +8,7 @@ import (
 
 var ServerCmd = &cobra.Command{
 	Use:   "server",
-	Short: "Run the server.",
+	Short: "Run the server",
 	Long:  "Run the server.",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		fmt.Println("正在启动服务...")

@@ -5,8 +5,6 @@ import (
 	"os"
 )
 
-var letters = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
-
 func PrettyStruct(data interface{}) (string, error) {
 	val, err := json.MarshalIndent(data, "", " ")
 	if err != nil {

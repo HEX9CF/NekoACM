@@ -10,7 +10,7 @@ import (
 
 var rootCmd = &cobra.Command{
 	Use:   "neko",
-	Short: "A large model-based ACM-ICPC algorithm problem automatic generation system. ",
+	Short: "A large model-based ACM-ICPC algorithm problem automatic generation system",
 	Long:  "A large model-based ACM-ICPC algorithm problem automatic generation system that can automatically generate algorithm problems, testcases, and problem solutions. ",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		reader := bufio.NewReader(os.Stdin)

@@ -6,14 +6,17 @@ import (
 	"github.com/spf13/cobra"
 	"neko-acm/internal/model"
 	"neko-acm/internal/service/problem"
+	"neko-acm/utils"
 	"os"
+	"strconv"
 	"strings"
+	"time"
 )
 
 var ProblemCmd = &cobra.Command{
 	Use:   "problem",
-	Short: "Run the server.",
-	Long:  "Run the server.",
+	Short: "Generate a problem",
+	Long:  "Generate a problem.",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		reader := bufio.NewReader(os.Stdin)
 		pi := model.ProblemInstruction{}
@@ -40,11 +43,28 @@ var ProblemCmd = &cobra.Command{
 		pi.Solution, _ = reader.ReadString('\n')
 
 		fmt.Println("正在生成题目...")
-		_, err := problem.Draft(pi)
+		problem, err := problem.Draft(pi)
 		if err != nil {
 			return err
 		}
 		fmt.Println("题目生成成功！")
+
+		fmt.Print("是否保存到文件(Y/N)?")
+		save, _ := reader.ReadString('\n')
+		save = strings.TrimSpace(save)
+		save = strings.ToLower(save)
+
+		if save == "y" {
+			timestamp := time.Now().Unix()
+			path := "output/problem/" + strconv.FormatInt(timestamp, 10) + ".json"
+			err := utils.WriteJson(problem, path)
+			if err != nil {
+				fmt.Println("保存失败！")
+				return err
+			} else {
+				fmt.Println("保存成功，文件路径：" + path)
+			}
+		}
 		return nil
 	},
 }
