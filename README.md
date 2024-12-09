@@ -6,6 +6,10 @@
 
 A large model-based ACM-ICPC algorithm problem automatic generation system that can automatically generate algorithm problems, testcases, and problem solutions. The system can run as a standalone service or be integrated as a module into an OJ system.
 
+## API 文档
+
+- Apifox: [https://neko-acm.apifox.cn](https://neko-acm.apifox.cn)
+
 ## 系统功能
 
 | 功能名称   | 请求方法 | 路由路径      | 操作者 | 功能简述                   |
