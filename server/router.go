@@ -2,10 +2,10 @@ package server
 
 import (
 	"github.com/gin-gonic/gin"
-	"neko-acm-ai/internal/conf"
-	"neko-acm-ai/internal/model"
-	"neko-acm-ai/server/handler"
-	"neko-acm-ai/server/middlewares"
+	"neko-acm/internal/conf"
+	"neko-acm/internal/model"
+	"neko-acm/server/handler"
+	"neko-acm/server/middlewares"
 	"net/http"
 )
 

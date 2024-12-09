@@ -2,7 +2,7 @@ package bootstrap
 
 import (
 	"log"
-	"neko-acm-ai/internal/conf"
+	"neko-acm/internal/conf"
 )
 
 func initConfig() error {

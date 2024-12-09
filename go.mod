@@ -1,4 +1,4 @@
-module neko-acm-ai
+module neko-acm
 
 go 1.23.1
 

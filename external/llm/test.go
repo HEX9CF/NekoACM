@@ -5,7 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/sashabaranov/go-openai"
-	"neko-acm-ai/prompt"
+	"neko-acm/prompt"
 )
 
 func Test() error {

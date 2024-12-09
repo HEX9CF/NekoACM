@@ -3,8 +3,8 @@ package handler
 import (
 	"github.com/gin-gonic/gin"
 	"log"
-	"neko-acm-ai/internal/model"
-	"neko-acm-ai/internal/service/problem"
+	"neko-acm/internal/model"
+	"neko-acm/internal/service/problem"
 	"net/http"
 )
 

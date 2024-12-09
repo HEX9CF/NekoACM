@@ -1,18 +1,41 @@
 package cmd
 
 import (
+	"bufio"
 	"fmt"
 	"github.com/spf13/cobra"
 	"os"
+	"strings"
 )
 
 var rootCmd = &cobra.Command{
 	Use:   "neko",
 	Short: "A large model-based ACM-ICPC algorithm problem automatic generation system. ",
 	Long:  "A large model-based ACM-ICPC algorithm problem automatic generation system that can automatically generate algorithm problems, testcases, and problem solutions. ",
-	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("run neko-acm-ai")
+	RunE: func(cmd *cobra.Command, args []string) error {
+		reader := bufio.NewReader(os.Stdin)
+		for {
+			fmt.Print("> ")
+			input, _ := reader.ReadString('\n')
+			input = strings.TrimSpace(input)
+			//fmt.Println(input)
+			switch input {
+			case "exit":
+				os.Exit(0)
+			case "server":
+				return ServerCmd.RunE(nil, nil)
+			case "problem":
+				return ProblemCmd.RunE(nil, nil)
+			default:
+				fmt.Println("未知命令！")
+			}
+		}
 	},
+}
+
+func init() {
+	rootCmd.AddCommand(ServerCmd)
+	rootCmd.AddCommand(ProblemCmd)
 }
 
 func Execute() {

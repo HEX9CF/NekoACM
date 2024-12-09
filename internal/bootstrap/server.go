@@ -2,7 +2,7 @@ package bootstrap
 
 import (
 	"log"
-	"neko-acm-ai/server"
+	"neko-acm/server"
 )
 
 func initServer() error {

@@ -1,19 +1,17 @@
 package cmd
 
 import (
+	"fmt"
 	"github.com/spf13/cobra"
-	"neko-acm-ai/internal/bootstrap"
+	"neko-acm/server"
 )
 
 var ServerCmd = &cobra.Command{
 	Use:   "server",
-	Short: "Run the server",
-	Long:  "Run the server",
+	Short: "Run the server.",
+	Long:  "Run the server.",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		return bootstrap.Init()
+		fmt.Println("正在启动服务...")
+		return server.InitServer()
 	},
-}
-
-func init() {
-	rootCmd.AddCommand(ServerCmd)
 }

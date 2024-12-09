@@ -2,8 +2,8 @@ package middlewares
 
 import (
 	"github.com/gin-gonic/gin"
-	"neko-acm-ai/internal/conf"
-	"neko-acm-ai/internal/model"
+	"neko-acm/internal/conf"
+	"neko-acm/internal/model"
 	"net/http"
 )
 

@@ -2,7 +2,7 @@ package bootstrap
 
 import (
 	"log"
-	"neko-acm-ai/external/llm"
+	"neko-acm/external/llm"
 )
 
 func initLlm() error {

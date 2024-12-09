@@ -3,7 +3,7 @@ package llm
 import (
 	openai "github.com/sashabaranov/go-openai"
 	"log"
-	"neko-acm-ai/internal/conf"
+	"neko-acm/internal/conf"
 )
 
 var (
