@@ -19,7 +19,7 @@ func IsFileExists(filePath string) (bool, error) {
 	_, err := os.Stat(filePath)
 	if err != nil {
 		if os.IsNotExist(err) {
-			return false, err
+			return false, nil
 		}
 		return false, err
 	}
