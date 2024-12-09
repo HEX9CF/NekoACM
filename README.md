@@ -2,9 +2,17 @@
 
 ## 简介
 
-基于大模型的 ACM-ICPC 算法题目自动出题系统，内置一个人工智能 ACMer 猫娘🐱🐾，可以自动生成算法题目、测试数据和题解。系统可以作为一个单独的服务运行，也可以作为一个库集成到 OJ 系统中。
+基于大模型的 ACM-ICPC 算法题目自动出题系统，内置一个人工智能 ACMer 猫娘🐱🐾，可以自动生成算法题目、测试用例和题解代码。系统可以作为一个单独的服务运行，也可以作为一个库集成到 OJ 系统中。
 
 A large model-based ACM-ICPC algorithm problem automatic generation system that can automatically generate algorithm problems, testcases, and problem solutions. The system can run as a standalone service or be integrated as a library into an OJ system.
+
+## 系统功能
+
+| 功能名称   | 请求方法 | 路由路径      | 操作者 | 功能简述                   |
+|--------|------|-----------|-----|------------------------|
+| 生成题目   | POST | /problem  | 用户  | 根据用户提供的题目信息或题解出题       |
+| 生成测试用例 | POST | /testcase | 用户  | 根据用户提供的题目信息或题解生成测试数据   |
+| 生成题解代码 | POST | /solution | 用户  | 根据用户提供的题目信息生成指定编程语言的题解 |
 
 ## 样例
 
@@ -73,6 +81,70 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
       "模拟"
     ]
   }
+}
+```
+
+### 测试数据生成
+
+#### 请求1
+
+```json
+{
+  "title": "采药",
+  "description": "辰辰是个天资聪颖的孩子，他的梦想是成为世界上最伟大的医师。为此，他想拜附近最有威望的医师为师。医师为了判断他的资质，给他出了一个难题。医师把他带到一个到处都是草药的山洞里对他说：“孩子，这个山洞里有一些不同的草药，采每一株都需要一些时间，每一株也有它自身的价值。我会给你一段时间，在这段时间里，你可以采到一些草药。如果你是一个聪明的孩子，你应该可以让采到的草药的总价值最大。”\n如果你是辰辰，你能完成这个任务吗？",
+  "input": "第一行有 $2$ 个整数 $T$（$1 \\le T \\le 1000$）和 $M$（$1 \\le  M \\le 100$），用一个空格隔开，$T$ 代表总共能够用来采药的时间，$M$ 代表山洞里的草药的数目。\n接下来的 $M$ 行每行包括两个在 $1$ 到 $100$ 之间（包括 $1$ 和 $100$）的整数，分别表示采摘某株草药的时间和这株草药的价值。",
+  "output": "输出在规定的时间内可以采到的草药的最大总价值。",
+  "sample_input": "70 3\n71 100\n69 1\n1 2",
+  "sample_output": "3",
+  "hint": "- 对于 $30\\%$ 的数据，$M \\le 10$；\n- 对于全部的数据，$M \\le 100$。",
+  "tags": ["动态规划", "背包"]
+}
+```
+
+#### 响应1
+
+```json
+{
+  "code": 1,
+  "msg": "OK",
+  "data": {
+    "test_input": "100 5\n20 50\n30 60\n40 70\n50 80\n60 90",
+    "test_output": "230",
+    "input_explanation": "第一行输入 100 5，表示总共有 100 个单位时间可以用来采药，山洞里有 5 株草药。接下来的 5 行分别表示每株草药的采摘时间和价值：第一株草药需要 20 个单位时间，价值 50；第二株草药需要 30 个单位时间，价值 60；第三株草药需要 40 个单位时间，价值 70；第四株草药需要 50 个单位时间，价值 80；第五株草药需要 60 个单位时间，价值 90。",
+    "output_explanation": "输出 230，表示在 100 个单位时间内可以采到的草药的最大总价值是 230，通过选择第一株、第二株和第三株草药（20+30+40=90 个单位时间，总价值 50+60+70=180），再加上第五株草药（剩余 10 个单位时间不足以采摘第四株，但可以采摘第五株，总价值增加 90，达到 230）。"
+  }
+}
+```
+
+### 题解生成
+
+#### 请求1
+
+```json
+{
+  "title": "采药",
+  "description": "辰辰是个天资聪颖的孩子，他的梦想是成为世界上最伟大的医师。为此，他想拜附近最有威望的医师为师。医师为了判断他的资质，给他出了一个难题。医师把他带到一个到处都是草药的山洞里对他说：“孩子，这个山洞里有一些不同的草药，采每一株都需要一些时间，每一株也有它自身的价值。我会给你一段时间，在这段时间里，你可以采到一些草药。如果你是一个聪明的孩子，你应该可以让采到的草药的总价值最大。”\n如果你是辰辰，你能完成这个任务吗？",
+  "input": "第一行有 $2$ 个整数 $T$（$1 \\le T \\le 1000$）和 $M$（$1 \\le  M \\le 100$），用一个空格隔开，$T$ 代表总共能够用来采药的时间，$M$ 代表山洞里的草药的数目。\n接下来的 $M$ 行每行包括两个在 $1$ 到 $100$ 之间（包括 $1$ 和 $100$）的整数，分别表示采摘某株草药的时间和这株草药的价值。",
+  "output": "输出在规定的时间内可以采到的草药的最大总价值。",
+  "sample_input": "70 3\n71 100\n69 1\n1 2",
+  "sample_output": "3",
+  "hint": "- 对于 $30\\%$ 的数据，$M \\le 10$；\n- 对于全部的数据，$M \\le 100$。",
+  "tags": ["动态规划", "背包"],
+  "language": "Java"
+}
+```
+
+#### 响应1
+
+```json
+{
+    "code": 1,
+    "msg": "OK",
+    "data": {
+        "language": "Java",
+        "source_code": "import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int T = scanner.nextInt(); // 总共能够用来采药的时间\n        int M = scanner.nextInt(); // 山洞里的草药的数目\n\n        int[] time = new int[M];\n        int[] value = new int[M];\n\n        for (int i = 0; i < M; i++) {\n            time[i] = scanner.nextInt();\n            value[i] = scanner.nextInt();\n        }\n\n        int[] dp = new int[T + 1];\n        for (int i = 0; i < M; i++) {\n            for (int j = T; j >= time[i]; j--) {\n                dp[j] = Math.max(dp[j], dp[j - time[i]] + value[i]);\n            }\n        }\n\n        System.out.println(dp[T]);\n    }\n}",
+        "explanation": "这道题是一个典型的01背包问题，使用动态规划解决。定义dp数组，dp[j]表示在时间j内能获得的最大价值。遍历每种草药，更新dp数组。对于每种草药，从后向前遍历时间，确保每种草药只被选择一次。最终dp[T]即为在总时间T内能获得的最大价值。\n\n主要思路是动态规划，时间复杂度为O(M*T)，空间复杂度为O(T)。这里M是草药数目，T是总时间。通过逐个考虑每种草药，并在有限的时间内选择最优解，最终得到最大价值。"
+    }
 }
 ```
 
