@@ -36,5 +36,6 @@ type SolutionInstruction struct {
 	SampleOutput string   `json:"sample_output,omitempty" binding:"omitempty"`
 	Hint         string   `json:"hint,omitempty" binding:"omitempty"`
 	Tags         []string `json:"tags,omitempty" binding:"omitempty"`
-	Language     uint64   `json:"language,omitempty" binding:"omitempty"`
+	Solution     string   `json:"solution,omitempty" binding:"omitempty"`
+	Language     string   `json:"language,omitempty" binding:"omitempty"`
 }
