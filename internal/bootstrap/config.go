@@ -2,7 +2,7 @@ package bootstrap
 
 import (
 	"log"
-	"stuoj-ai/internal/conf"
+	"neko-acm-ai/internal/conf"
 )
 
 func initConfig() {

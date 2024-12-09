@@ -1,7 +1,7 @@
 package conf
 
 import (
-	"stuoj-ai/utils"
+	"neko-acm-ai/utils"
 )
 
 type Config struct {

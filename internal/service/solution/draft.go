@@ -5,10 +5,10 @@ import (
 	"errors"
 	"github.com/sashabaranov/go-openai"
 	"log"
-	"stuoj-ai/external/llm"
-	"stuoj-ai/internal/model"
-	"stuoj-ai/prompt"
-	"stuoj-ai/utils"
+	"neko-acm-ai/external/llm"
+	"neko-acm-ai/internal/model"
+	"neko-acm-ai/prompt"
+	"neko-acm-ai/utils"
 )
 
 func Draft(pi model.SolutionInstruction) (model.Solution, error) {

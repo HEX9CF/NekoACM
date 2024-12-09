@@ -1,8 +1,10 @@
-# STUOJ AI 
+# Neko ACM AI 
 
 ## 简介
 
 基于大模型的 ACM-ICPC 算法题目自动出题系统，内置一个人工智能 ACMer 猫娘，可以自动生成算法题目、测试数据和题解。
+
+A large model-based ACM-ICPC algorithm problem automatic generation system that can automatically generate algorithm problems, testcases, and problem solutions.
 
 ## 样例
 

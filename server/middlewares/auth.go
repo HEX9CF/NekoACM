@@ -2,9 +2,9 @@ package middlewares
 
 import (
 	"github.com/gin-gonic/gin"
+	"neko-acm-ai/internal/conf"
+	"neko-acm-ai/internal/model"
 	"net/http"
-	"stuoj-ai/internal/conf"
-	"stuoj-ai/internal/model"
 )
 
 func TokenAuth() gin.HandlerFunc {

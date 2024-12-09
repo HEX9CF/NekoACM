@@ -3,9 +3,9 @@ package handler
 import (
 	"github.com/gin-gonic/gin"
 	"log"
+	"neko-acm-ai/internal/model"
+	"neko-acm-ai/internal/service/problem"
 	"net/http"
-	"stuoj-ai/internal/model"
-	"stuoj-ai/internal/service/problem"
 )
 
 func ProblemDraft(c *gin.Context) {

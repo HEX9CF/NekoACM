@@ -1,7 +1,7 @@
 package main
 
 import (
-	"stuoj-ai/internal/bootstrap"
+	"neko-acm-ai/internal/bootstrap"
 )
 
 func main() {

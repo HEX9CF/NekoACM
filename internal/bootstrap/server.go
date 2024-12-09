@@ -2,7 +2,7 @@ package bootstrap
 
 import (
 	"log"
-	"stuoj-ai/server"
+	"neko-acm-ai/server"
 )
 
 func initServer() {

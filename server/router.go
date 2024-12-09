@@ -2,11 +2,11 @@ package server
 
 import (
 	"github.com/gin-gonic/gin"
+	"neko-acm-ai/internal/conf"
+	"neko-acm-ai/internal/model"
+	"neko-acm-ai/server/handler"
+	"neko-acm-ai/server/middlewares"
 	"net/http"
-	"stuoj-ai/internal/conf"
-	"stuoj-ai/internal/model"
-	"stuoj-ai/server/handler"
-	"stuoj-ai/server/middlewares"
 )
 
 func InitRoute() error {
@@ -14,7 +14,7 @@ func InitRoute() error {
 
 	// index
 	ginServer.GET("/", func(c *gin.Context) {
-		c.JSON(http.StatusOK, model.RespOk("STUOJ AI出题模块启动成功！", nil))
+		c.JSON(http.StatusOK, model.RespOk("Neko ACM AI 启动成功！", nil))
 	})
 
 	// 404
