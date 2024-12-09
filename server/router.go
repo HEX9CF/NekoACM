@@ -28,6 +28,7 @@ func InitRoute() error {
 	// 初始化路由
 	ginServer.POST("/problem", handler.ProblemDraft)
 	ginServer.POST("/testcase", handler.TestcaseDraft)
+	ginServer.POST("/solution", handler.SolutionDraft)
 
 	// 启动服务
 	err := ginServer.Run(":" + config.Port)
