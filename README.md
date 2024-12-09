@@ -10,7 +10,7 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
 
 ### 终端启动模式
 
-直接通过终端输入命令行参数操作。
+直接通过终端启动程序并通过命令行参数选择功能。
 
 - `neko`: 以命令行模式启动
 - `neko server`: 以服务器模式启动
