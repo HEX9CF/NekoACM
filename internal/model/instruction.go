@@ -13,7 +13,7 @@ type ProblemInstruction struct {
 	Solution     string   `json:"solution,omitempty" binding:"omitempty"`
 }
 
-// 评测点数据说明
+// 测试用例说明
 type TestcaseInstruction struct {
 	Title        string   `json:"title,omitempty" binding:"omitempty"`
 	Description  string   `json:"description,omitempty" binding:"omitempty"`
@@ -23,6 +23,7 @@ type TestcaseInstruction struct {
 	SampleOutput string   `json:"sample_output,omitempty" binding:"omitempty"`
 	Hint         string   `json:"hint,omitempty" binding:"omitempty"`
 	Tags         []string `json:"tags,omitempty" binding:"omitempty"`
+	Solution     string   `json:"solution,omitempty" binding:"omitempty"`
 }
 
 // 题解说明
