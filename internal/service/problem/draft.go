@@ -22,8 +22,8 @@ func Draft(pi model.ProblemInstruction) (model.Problem, error) {
 	log.Println("请求生成题目：" + instruction)
 
 	// 组合Prompt
-	sysMsg := model.NewSysMsg(prompt.ProblemDraft)
-	userMsg := model.NewUserMsg(instruction)
+	sysMsg := llm.NewSysMsg(prompt.ProblemDraft)
+	userMsg := llm.NewUserMsg(instruction)
 	msgs := []openai.ChatCompletionMessage{sysMsg, userMsg}
 
 	// 请求模型

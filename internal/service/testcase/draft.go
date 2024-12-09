@@ -22,8 +22,8 @@ func Draft(pi model.TestcaseInstruction) (model.Testcase, error) {
 	log.Println("请求生成测试样例：" + instruction)
 
 	// 组合Prompt
-	sysMsg := model.NewSysMsg(prompt.TestcaseDraft)
-	userMsg := model.NewUserMsg(instruction)
+	sysMsg := llm.NewSysMsg(prompt.TestcaseDraft)
+	userMsg := llm.NewUserMsg(instruction)
 	msgs := []openai.ChatCompletionMessage{sysMsg, userMsg}
 
 	// 请求模型

@@ -5,9 +5,8 @@ import (
 )
 
 type Config struct {
-	Datebase DatabaseConf `yaml:"database" json:"database"`
-	Server   ServerConf   `yaml:"server" json:"server"`
-	Openai   OpenaiConf   `yaml:"openai" json:"openai"`
+	Server ServerConf `yaml:"server" json:"server"`
+	Openai OpenaiConf `yaml:"openai" json:"openai"`
 }
 
 // Config 初始化
@@ -31,7 +30,6 @@ func InitConfig() error {
 }
 
 func (c *Config) Default() {
-	c.Datebase.Default()
 	c.Server.Default()
 	c.Openai.Default()
 }

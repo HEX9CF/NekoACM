@@ -1,16 +1,7 @@
 server:
   port: 14515
-  token: XIv3ybWOTIR2Md3sKuMk6AgqjBUH48IRK2d9RMqHGeVymDwc9AWMFOWV7lXc3foJ
-database:
-  host: 8.134.48.192
-  port: 3306
-  name: stuoj_ai_db
-  user: stuoj
-  password: 12345678
-  max_open_conns: 10
-  max_idle_conns: 5
+  token: stuoj
 openai:
-  base_url: https://api.openai.com
-  api_key: sk-12345678
-  model: gpt-3.5-turbo
-
+  base_url:
+  api_key:
+  model:
