@@ -11,11 +11,11 @@ import (
 	"neko-acm/utils"
 )
 
-func Draft(pi model.TestcaseInstruction) (model.Testcase, error) {
+func Draft(ti model.TestcaseInstruction) (model.Testcase, error) {
 	var t model.Testcase
 
 	// 说明转换为字符串
-	instruction, err := utils.PrettyStruct(pi)
+	instruction, err := utils.PrettyStruct(ti)
 	if err != nil {
 		return model.Testcase{}, err
 	}

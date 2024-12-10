@@ -35,6 +35,10 @@ var rootCmd = &cobra.Command{
 				if err := TestcaseCmd.RunE(nil, nil); err != nil {
 					return err
 				}
+			case "solution":
+				if err := SolutionCmd.RunE(nil, nil); err != nil {
+					return err
+				}
 			default:
 				fmt.Println("未知命令！")
 			}
@@ -46,6 +50,7 @@ func init() {
 	rootCmd.AddCommand(ServerCmd)
 	rootCmd.AddCommand(ProblemCmd)
 	rootCmd.AddCommand(TestcaseCmd)
+	rootCmd.AddCommand(SolutionCmd)
 }
 
 func Execute() {

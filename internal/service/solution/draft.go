@@ -11,11 +11,11 @@ import (
 	"neko-acm/utils"
 )
 
-func Draft(pi model.SolutionInstruction) (model.Solution, error) {
-	var t model.Solution
+func Draft(si model.SolutionInstruction) (model.Solution, error) {
+	var s model.Solution
 
 	// 说明转换为字符串
-	instruction, err := utils.PrettyStruct(pi)
+	instruction, err := utils.PrettyStruct(si)
 	if err != nil {
 		return model.Solution{}, err
 	}
@@ -34,11 +34,11 @@ func Draft(pi model.SolutionInstruction) (model.Solution, error) {
 	log.Println("生成结果：" + resp.Content)
 
 	// 解析结果
-	err = json.Unmarshal([]byte(resp.Content), &t)
+	err = json.Unmarshal([]byte(resp.Content), &s)
 	if err != nil {
 		log.Println(err)
 		return model.Solution{}, errors.New("解析结果失败，请重试！")
 	}
 
-	return t, nil
+	return s, nil
 }
