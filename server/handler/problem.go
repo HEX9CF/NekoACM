@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-func ProblemDraft(c *gin.Context) {
+func GenerateProblem(c *gin.Context) {
 	var req model.ProblemInstruction
 
 	// 参数绑定

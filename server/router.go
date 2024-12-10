@@ -14,7 +14,7 @@ func InitRoute() error {
 
 	// index
 	ginServer.GET("/", func(c *gin.Context) {
-		c.JSON(http.StatusOK, model.RespOk("Neko ACM AI 启动成功！", nil))
+		c.JSON(http.StatusOK, model.RespOk("NekoACM 启动成功！", nil))
 	})
 
 	// 404
@@ -26,9 +26,15 @@ func InitRoute() error {
 	ginServer.Use(middlewares.TokenAuth())
 
 	// 初始化路由
-	ginServer.POST("/problem", handler.ProblemDraft)
-	ginServer.POST("/testcase", handler.TestcaseDraft)
-	ginServer.POST("/solution", handler.SolutionDraft)
+	apiRoute := ginServer.Group("/api")
+	{
+		apiRoute.GET("/", func(c *gin.Context) {
+			c.JSON(http.StatusOK, model.RespOk("NekoACM 启动成功！", nil))
+		})
+		apiRoute.POST("/problem", handler.GenerateProblem)
+		apiRoute.POST("/testcase", handler.GenerateTestcase)
+		apiRoute.POST("/solution", handler.GenerateSolution)
+	}
 
 	// 启动服务
 	err := ginServer.Run(":" + config.Port)

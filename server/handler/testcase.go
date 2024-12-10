@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-func TestcaseDraft(c *gin.Context) {
+func GenerateTestcase(c *gin.Context) {
 	var req model.TestcaseInstruction
 
 	// 参数绑定
