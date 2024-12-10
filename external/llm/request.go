@@ -2,7 +2,6 @@ package llm
 
 import (
 	"context"
-	"errors"
 	"github.com/sashabaranov/go-openai"
 )
 
@@ -16,7 +15,7 @@ func RequestMessage(msg openai.ChatCompletionMessage) (openai.ChatCompletionMess
 	)
 
 	if err != nil {
-		return openai.ChatCompletionMessage{}, errors.New("ChatCompletion error: " + err.Error())
+		return openai.ChatCompletionMessage{}, err
 	}
 
 	return resp.Choices[0].Message, nil
@@ -32,7 +31,7 @@ func RequestMessages(msgs []openai.ChatCompletionMessage) (openai.ChatCompletion
 	)
 
 	if err != nil {
-		return openai.ChatCompletionMessage{}, errors.New("ChatCompletion error: " + err.Error())
+		return openai.ChatCompletionMessage{}, err
 	}
 
 	return resp.Choices[0].Message, nil

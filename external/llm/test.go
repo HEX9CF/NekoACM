@@ -2,7 +2,6 @@ package llm
 
 import (
 	"context"
-	"errors"
 	"fmt"
 	"github.com/sashabaranov/go-openai"
 	"neko-acm/prompt"
@@ -45,7 +44,7 @@ func Info() (string, error) {
 		},
 	)
 	if err != nil {
-		return "", errors.New("ChatCompletion error: " + err.Error())
+		return "", err
 	}
 
 	return resp.Choices[0].Message.Content, nil

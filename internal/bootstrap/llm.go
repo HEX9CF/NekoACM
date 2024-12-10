@@ -8,10 +8,10 @@ import (
 func initLlm() error {
 	err := llm.InitLlm()
 	if err != nil {
-		log.Println("Init LLM failed!")
+		log.Println("初始化大模型失败！")
 		return err
 	}
 
-	log.Println("Init LLM success.")
+	log.Println("初始化大模型成功")
 	return nil
 }

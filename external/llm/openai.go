@@ -16,16 +16,16 @@ func InitLlm() error {
 
 	openaiConfig := openai.DefaultConfig(config.ApiKey)
 	openaiConfig.BaseURL = config.BaseUrl
-	log.Println("Connecting to AI LLM service: " + config.BaseUrl)
+	log.Println("正在连接大模型服务：" + config.BaseUrl)
 
 	client = openai.NewClientWithConfig(openaiConfig)
 
 	err := Test()
 	if err != nil {
-		log.Println("AI LLM service connection failed.")
+		log.Println("大模型服务连接失败！")
 		return err
 	}
 
-	log.Println("AI LLM service connected.")
+	log.Println("大模型服务连接成功")
 	return nil
 }
