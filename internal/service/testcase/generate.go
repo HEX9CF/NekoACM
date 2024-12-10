@@ -11,7 +11,7 @@ import (
 	"neko-acm/utils"
 )
 
-func Draft(ti model.TestcaseInstruction) (model.Testcase, error) {
+func Generate(ti model.TestcaseInstruction) (model.Testcase, error) {
 	var t model.Testcase
 
 	// 说明转换为字符串

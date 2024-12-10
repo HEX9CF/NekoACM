@@ -11,7 +11,7 @@ import (
 	"neko-acm/utils"
 )
 
-func Draft(pi model.ProblemInstruction) (model.Problem, error) {
+func Generate(pi model.ProblemInstruction) (model.Problem, error) {
 	var p model.Problem
 
 	// 题目说明转换为字符串

@@ -29,7 +29,7 @@ var ProblemCmd = &cobra.Command{
 		for {
 			// 生成题目
 			fmt.Println("正在生成题目...")
-			problem, err := problem.Draft(pi)
+			problem, err := problem.Generate(pi)
 			if err != nil {
 				log.Println(err)
 

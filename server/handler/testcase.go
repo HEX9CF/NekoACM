@@ -19,7 +19,7 @@ func TestcaseDraft(c *gin.Context) {
 		return
 	}
 
-	p, err := testcase.Draft(req)
+	p, err := testcase.Generate(req)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, model.RespError(err.Error(), nil))
 		return

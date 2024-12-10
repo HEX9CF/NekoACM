@@ -19,7 +19,7 @@ func ProblemDraft(c *gin.Context) {
 		return
 	}
 
-	p, err := problem.Draft(req)
+	p, err := problem.Generate(req)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, model.RespError(err.Error(), nil))
 		return

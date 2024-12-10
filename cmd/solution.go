@@ -29,7 +29,7 @@ var SolutionCmd = &cobra.Command{
 		for {
 			// 生成题目
 			fmt.Println("正在生成题解...")
-			solution, err := solution.Draft(si)
+			solution, err := solution.Generate(si)
 			if err != nil {
 				log.Println(err)
 

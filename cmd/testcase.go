@@ -29,7 +29,7 @@ var TestcaseCmd = &cobra.Command{
 		for {
 			// 生成题目
 			fmt.Println("正在生成测试用例...")
-			testcase, err := testcase.Draft(ti)
+			testcase, err := testcase.Generate(ti)
 			if err != nil {
 				log.Println(err)
 

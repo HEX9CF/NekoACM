@@ -11,7 +11,7 @@ import (
 	"neko-acm/utils"
 )
 
-func Draft(si model.SolutionInstruction) (model.Solution, error) {
+func Generate(si model.SolutionInstruction) (model.Solution, error) {
 	var s model.Solution
 
 	// 说明转换为字符串

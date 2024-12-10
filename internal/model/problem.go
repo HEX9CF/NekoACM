@@ -1,9 +1,5 @@
 package model
 
-type Difficulty uint8
-
-type ProblemStatus uint8
-
 // 题目
 type Problem struct {
 	Title        string   `json:"title,omitempty"`
