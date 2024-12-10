@@ -30,6 +30,15 @@ var TestcaseCmd = &cobra.Command{
 			if err != nil {
 				fmt.Println("测试用例生成失败！")
 				log.Println(err)
+
+				fmt.Print("是否重试(Y/N)?")
+				again, _ := reader.ReadString('\n')
+				again = strings.TrimSpace(again)
+				again = strings.ToLower(again)
+
+				if again != "y" {
+					break
+				}
 				continue
 			}
 			fmt.Println("测试用例生成成功")
@@ -61,23 +70,31 @@ func readTestcaseInstruction(reader *bufio.Reader) model.TestcaseInstruction {
 	fmt.Println("请输入题目信息：")
 	fmt.Print("标题：")
 	ti.Title, _ = reader.ReadString('\n')
+	ti.Title = strings.TrimSpace(ti.Title)
 	fmt.Print("描述：")
 	ti.Description, _ = reader.ReadString('\n')
+	ti.Description = strings.TrimSpace(ti.Description)
 	fmt.Print("输入说明：")
 	ti.Input, _ = reader.ReadString('\n')
+	ti.Input = strings.TrimSpace(ti.Input)
 	fmt.Print("输出说明：")
 	ti.Output, _ = reader.ReadString('\n')
+	ti.Output = strings.TrimSpace(ti.Output)
 	fmt.Print("样例输入：")
 	ti.SampleInput, _ = reader.ReadString('\n')
+	ti.SampleInput = strings.TrimSpace(ti.SampleInput)
 	fmt.Print("样例输出：")
 	ti.SampleOutput, _ = reader.ReadString('\n')
+	ti.SampleOutput = strings.TrimSpace(ti.SampleOutput)
 	fmt.Print("提示：")
 	ti.Hint, _ = reader.ReadString('\n')
+	ti.Hint = strings.TrimSpace(ti.Hint)
 	fmt.Print("标签（以空格分隔）：")
 	tagsInput, _ := reader.ReadString('\n')
 	ti.Tags = strings.Fields(tagsInput)
 	fmt.Print("题解代码：")
 	ti.Solution, _ = reader.ReadString('\n')
+	ti.Solution = strings.TrimSpace(ti.Solution)
 
 	return ti
 }

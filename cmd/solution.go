@@ -30,6 +30,15 @@ var SolutionCmd = &cobra.Command{
 			if err != nil {
 				fmt.Println("题解生成失败！")
 				log.Println(err)
+
+				fmt.Print("是否重试(Y/N)?")
+				again, _ := reader.ReadString('\n')
+				again = strings.TrimSpace(again)
+				again = strings.ToLower(again)
+
+				if again != "y" {
+					break
+				}
 				continue
 			}
 			fmt.Println("题解生成成功")
@@ -61,25 +70,34 @@ func readSolutionInstruction(reader *bufio.Reader) model.SolutionInstruction {
 	fmt.Println("请输入题目信息：")
 	fmt.Print("标题：")
 	si.Title, _ = reader.ReadString('\n')
+	si.Title = strings.TrimSpace(si.Title)
 	fmt.Print("描述：")
 	si.Description, _ = reader.ReadString('\n')
+	si.Description = strings.TrimSpace(si.Description)
 	fmt.Print("输入说明：")
 	si.Input, _ = reader.ReadString('\n')
+	si.Input = strings.TrimSpace(si.Input)
 	fmt.Print("输出说明：")
 	si.Output, _ = reader.ReadString('\n')
+	si.Output = strings.TrimSpace(si.Output)
 	fmt.Print("样例输入：")
 	si.SampleInput, _ = reader.ReadString('\n')
+	si.SampleOutput = strings.TrimSpace(si.SampleInput)
 	fmt.Print("样例输出：")
 	si.SampleOutput, _ = reader.ReadString('\n')
+	si.SampleOutput = strings.TrimSpace(si.SampleOutput)
 	fmt.Print("提示：")
 	si.Hint, _ = reader.ReadString('\n')
+	si.Hint = strings.TrimSpace(si.Hint)
 	fmt.Print("标签（以空格分隔）：")
 	tagsInput, _ := reader.ReadString('\n')
 	si.Tags = strings.Fields(tagsInput)
 	fmt.Print("已有题解代码：")
 	si.Solution, _ = reader.ReadString('\n')
+	si.Solution = strings.TrimSpace(si.Solution)
 	fmt.Print("目标编程语言：")
 	si.Language, _ = reader.ReadString('\n')
+	si.Language = strings.TrimSpace(si.Language)
 
 	return si
 }
