@@ -38,7 +38,7 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
 
 ### 服务器模式
 
-进入服务器模式后，通过 HTTP 请求调用 API 接口。
+进入服务器模式后，通过 HTTP 请求调用 API 接口。发送请求时，需要在 HTTP 请求头中添加 `Authorization` 字段，值为 `Bearer <token>`。其中 `<token>` 为用户的访问令牌，在 `config.yaml` 配置文件中配置。
 
 #### API 文档
 
