@@ -1,8 +1,8 @@
-# Neko ACM AI 
+# NekoACM 
 
 ## 简介
 
-基于大模型的 ACM-ICPC 算法题目自动出题系统，提供一只人工智能 ACMer 猫娘🐱🐾，可以自动生成算法题目、测试用例和题解代码。系统可以作为一个单独的服务运行，也可以作为一个模块集成到 OJ 系统中。
+基于大模型的 ACM-ICPC 算法题目自动出题系统，提供一只人工智能 ACMer 猫娘🐱🐾（bushi），可以自动生成算法题目、测试用例和题解代码。系统可以作为一个单独的服务运行，也可以作为一个模块集成到 OJ 系统中。
 
 A large model-based ACM-ICPC algorithm problem automatic generation system that can automatically generate algorithm problems, testcases, and problem solutions. The system can run as a standalone service or be integrated as a module into an OJ system.
 
@@ -180,3 +180,7 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
   }
 }
 ```
+
+![image](https://github.com/user-attachments/assets/6b533fc9-988a-41c5-b06f-9e3e3a2755d9)
+
+
