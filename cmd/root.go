@@ -18,6 +18,7 @@ var rootCmd = &cobra.Command{
 			fmt.Print("> ")
 			input, _ := reader.ReadString('\n')
 			input = strings.TrimSpace(input)
+			input = strings.ToLower(input)
 			//fmt.Println(input)
 			switch input {
 			case "exit":
@@ -30,6 +31,10 @@ var rootCmd = &cobra.Command{
 				if err := ProblemCmd.RunE(nil, nil); err != nil {
 					return err
 				}
+			case "testcase":
+				if err := TestcaseCmd.RunE(nil, nil); err != nil {
+					return err
+				}
 			default:
 				fmt.Println("未知命令！")
 			}
@@ -40,6 +45,7 @@ var rootCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(ServerCmd)
 	rootCmd.AddCommand(ProblemCmd)
+	rootCmd.AddCommand(TestcaseCmd)
 }
 
 func Execute() {

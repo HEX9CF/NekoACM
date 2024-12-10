@@ -6,7 +6,7 @@ import (
 	"github.com/spf13/cobra"
 	"log"
 	"neko-acm/internal/model"
-	"neko-acm/internal/service/problem"
+	"neko-acm/internal/service/testcase"
 	"neko-acm/utils"
 	"os"
 	"strconv"
@@ -14,33 +14,33 @@ import (
 	"time"
 )
 
-var ProblemCmd = &cobra.Command{
-	Use:   "problem",
-	Short: "Generate a problem",
-	Long:  "Generate an algorithm problem.",
+var TestcaseCmd = &cobra.Command{
+	Use:   "testcase",
+	Short: "Generate a testcase",
+	Long:  "Generate a testcase.",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		fmt.Println(" -------- 生成题目 -------- ")
+		fmt.Println(" -------- 生成测试用例 -------- ")
 		reader := bufio.NewReader(os.Stdin)
-		pi := readProblemInstruction(reader)
+		pi := readTestcaseInstruction(reader)
 
 		for {
 			// 生成题目
-			fmt.Println("正在生成题目...")
-			problem, err := problem.Draft(pi)
+			fmt.Println("正在生成测试用例...")
+			testcase, err := testcase.Draft(pi)
 			if err != nil {
-				fmt.Println("题目生成失败！")
+				fmt.Println("测试用例生成失败！")
 				log.Println(err)
 				continue
 			}
-			fmt.Println("题目生成成功")
+			fmt.Println("测试用例生成成功")
 
 			// 保存到文件
-			err = saveProblemJson(reader, problem)
+			err = saveTestcaseJson(reader, testcase)
 			if err != nil {
 				log.Println(err)
 			}
 
-			fmt.Print("是否继续生成题目(Y/N)?")
+			fmt.Print("是否继续生成测试用例(Y/N)?")
 			again, _ := reader.ReadString('\n')
 			again = strings.TrimSpace(again)
 			again = strings.ToLower(again)
@@ -54,35 +54,35 @@ var ProblemCmd = &cobra.Command{
 	},
 }
 
-func readProblemInstruction(reader *bufio.Reader) model.ProblemInstruction {
-	pi := model.ProblemInstruction{}
+func readTestcaseInstruction(reader *bufio.Reader) model.TestcaseInstruction {
+	ti := model.TestcaseInstruction{}
 
 	// 读取题目信息
 	fmt.Println("请输入题目信息：")
 	fmt.Print("标题：")
-	pi.Title, _ = reader.ReadString('\n')
+	ti.Title, _ = reader.ReadString('\n')
 	fmt.Print("描述：")
-	pi.Description, _ = reader.ReadString('\n')
+	ti.Description, _ = reader.ReadString('\n')
 	fmt.Print("输入说明：")
-	pi.Input, _ = reader.ReadString('\n')
+	ti.Input, _ = reader.ReadString('\n')
 	fmt.Print("输出说明：")
-	pi.Output, _ = reader.ReadString('\n')
+	ti.Output, _ = reader.ReadString('\n')
 	fmt.Print("样例输入：")
-	pi.SampleInput, _ = reader.ReadString('\n')
+	ti.SampleInput, _ = reader.ReadString('\n')
 	fmt.Print("样例输出：")
-	pi.SampleOutput, _ = reader.ReadString('\n')
+	ti.SampleOutput, _ = reader.ReadString('\n')
 	fmt.Print("提示：")
-	pi.Hint, _ = reader.ReadString('\n')
+	ti.Hint, _ = reader.ReadString('\n')
 	fmt.Print("标签（以空格分隔）：")
 	tagsInput, _ := reader.ReadString('\n')
-	pi.Tags = strings.Fields(tagsInput)
+	ti.Tags = strings.Fields(tagsInput)
 	fmt.Print("题解代码：")
-	pi.Solution, _ = reader.ReadString('\n')
+	ti.Solution, _ = reader.ReadString('\n')
 
-	return pi
+	return ti
 }
 
-func saveProblemJson(reader *bufio.Reader, problem model.Problem) error {
+func saveTestcaseJson(reader *bufio.Reader, testcase model.Testcase) error {
 	fmt.Print("是否保存到文件(Y/N)?")
 	save, _ := reader.ReadString('\n')
 	save = strings.TrimSpace(save)
@@ -90,8 +90,8 @@ func saveProblemJson(reader *bufio.Reader, problem model.Problem) error {
 
 	if save == "y" {
 		timestamp := time.Now().Unix()
-		path := "output/problem/" + problem.Title + "_" + strconv.FormatInt(timestamp, 10) + ".json"
-		err := utils.WriteJson(problem, path)
+		path := "output/testcase/" + strconv.FormatInt(timestamp, 10) + ".json"
+		err := utils.WriteJson(testcase, path)
 		if err != nil {
 			fmt.Println("保存失败！")
 			return err

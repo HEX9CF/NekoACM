@@ -19,7 +19,7 @@ func Draft(pi model.TestcaseInstruction) (model.Testcase, error) {
 	if err != nil {
 		return model.Testcase{}, err
 	}
-	log.Println("请求生成测试样例：" + instruction)
+	log.Println("请求生成测试用例：" + instruction)
 
 	// 组合Prompt
 	sysMsg := llm.NewSysMsg(prompt.TestcaseDraft)
