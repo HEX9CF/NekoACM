@@ -14,7 +14,11 @@ var rootCmd = &cobra.Command{
 	Long:  "A large model-based ACM-ICPC algorithm problem automatic generation system that can automatically generate algorithm problems, testcases, and problem solutions. ",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		reader := bufio.NewReader(os.Stdin)
+		fmt.Println(" -------- 命令行模式 -------- ")
 		for {
+			if err := clearBuffer(reader); err != nil {
+				return err
+			}
 			fmt.Print("> ")
 			input, _ := reader.ReadString('\n')
 			input = strings.TrimSpace(input)

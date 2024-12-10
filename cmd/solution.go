@@ -21,17 +21,23 @@ var SolutionCmd = &cobra.Command{
 	RunE: func(cmd *cobra.Command, args []string) error {
 		fmt.Println(" -------- 生成题解 -------- ")
 		reader := bufio.NewReader(os.Stdin)
-		pi := readSolutionInstruction(reader)
+		si, err := readSolutionInstruction(reader)
+		if err != nil {
+			return err
+		}
 
 		for {
 			// 生成题目
 			fmt.Println("正在生成题解...")
-			solution, err := solution.Draft(pi)
+			solution, err := solution.Draft(si)
 			if err != nil {
-				fmt.Println("题解生成失败！")
 				log.Println(err)
 
-				fmt.Print("是否重试(Y/N)?")
+				err := clearBuffer(reader)
+				if err != nil {
+					return err
+				}
+				fmt.Print("生成失败，是否重试(Y/N)?")
 				again, _ := reader.ReadString('\n')
 				again = strings.TrimSpace(again)
 				again = strings.ToLower(again)
@@ -49,6 +55,10 @@ var SolutionCmd = &cobra.Command{
 				log.Println(err)
 			}
 
+			_, err = reader.Discard(reader.Buffered())
+			if err != nil {
+				return err
+			}
 			fmt.Print("是否继续生成题解(Y/N)?")
 			again, _ := reader.ReadString('\n')
 			again = strings.TrimSpace(again)
@@ -63,8 +73,12 @@ var SolutionCmd = &cobra.Command{
 	},
 }
 
-func readSolutionInstruction(reader *bufio.Reader) model.SolutionInstruction {
+func readSolutionInstruction(reader *bufio.Reader) (model.SolutionInstruction, error) {
 	si := model.SolutionInstruction{}
+	err := clearBuffer(reader)
+	if err != nil {
+		return model.SolutionInstruction{}, err
+	}
 
 	// 读取题目信息
 	fmt.Println("请输入题目信息：")
@@ -82,7 +96,7 @@ func readSolutionInstruction(reader *bufio.Reader) model.SolutionInstruction {
 	si.Output = strings.TrimSpace(si.Output)
 	fmt.Print("样例输入：")
 	si.SampleInput, _ = reader.ReadString('\n')
-	si.SampleOutput = strings.TrimSpace(si.SampleInput)
+	si.SampleInput = strings.TrimSpace(si.SampleInput)
 	fmt.Print("样例输出：")
 	si.SampleOutput, _ = reader.ReadString('\n')
 	si.SampleOutput = strings.TrimSpace(si.SampleOutput)
@@ -99,10 +113,14 @@ func readSolutionInstruction(reader *bufio.Reader) model.SolutionInstruction {
 	si.Language, _ = reader.ReadString('\n')
 	si.Language = strings.TrimSpace(si.Language)
 
-	return si
+	return si, nil
 }
 
 func saveSolutionJson(reader *bufio.Reader, solution model.Solution) error {
+	err := clearBuffer(reader)
+	if err != nil {
+		return err
+	}
 	fmt.Print("是否保存到文件(Y/N)?")
 	save, _ := reader.ReadString('\n')
 	save = strings.TrimSpace(save)

@@ -21,17 +21,23 @@ var ProblemCmd = &cobra.Command{
 	RunE: func(cmd *cobra.Command, args []string) error {
 		fmt.Println(" -------- 生成题目 -------- ")
 		reader := bufio.NewReader(os.Stdin)
-		pi := readProblemInstruction(reader)
+		pi, err := readProblemInstruction(reader)
+		if err != nil {
+			return err
+		}
 
 		for {
 			// 生成题目
 			fmt.Println("正在生成题目...")
 			problem, err := problem.Draft(pi)
 			if err != nil {
-				fmt.Println("题目生成失败！")
 				log.Println(err)
 
-				fmt.Print("是否重试(Y/N)?")
+				err := clearBuffer(reader)
+				if err != nil {
+					return err
+				}
+				fmt.Print("生成失败，是否重试(Y/N)?")
 				again, _ := reader.ReadString('\n')
 				again = strings.TrimSpace(again)
 				again = strings.ToLower(again)
@@ -49,6 +55,10 @@ var ProblemCmd = &cobra.Command{
 				log.Println(err)
 			}
 
+			_, err = reader.Discard(reader.Buffered())
+			if err != nil {
+				return err
+			}
 			fmt.Print("是否继续生成题目(Y/N)?")
 			again, _ := reader.ReadString('\n')
 			again = strings.TrimSpace(again)
@@ -63,8 +73,12 @@ var ProblemCmd = &cobra.Command{
 	},
 }
 
-func readProblemInstruction(reader *bufio.Reader) model.ProblemInstruction {
+func readProblemInstruction(reader *bufio.Reader) (model.ProblemInstruction, error) {
 	pi := model.ProblemInstruction{}
+	err := clearBuffer(reader)
+	if err != nil {
+		return model.ProblemInstruction{}, err
+	}
 
 	// 读取题目信息
 	fmt.Println("请输入题目信息：")
@@ -96,10 +110,14 @@ func readProblemInstruction(reader *bufio.Reader) model.ProblemInstruction {
 	pi.Solution, _ = reader.ReadString('\n')
 	pi.Solution = strings.TrimSpace(pi.Solution)
 
-	return pi
+	return pi, nil
 }
 
 func saveProblemJson(reader *bufio.Reader, problem model.Problem) error {
+	err := clearBuffer(reader)
+	if err != nil {
+		return err
+	}
 	fmt.Print("是否保存到文件(Y/N)?")
 	save, _ := reader.ReadString('\n')
 	save = strings.TrimSpace(save)
