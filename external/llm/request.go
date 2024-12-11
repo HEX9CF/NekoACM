@@ -5,6 +5,7 @@ import (
 	"github.com/sashabaranov/go-openai"
 )
 
+// 请求消息
 func RequestMessage(msg openai.ChatCompletionMessage) (openai.ChatCompletionMessage, error) {
 	resp, err := client.CreateChatCompletion(
 		context.Background(),
@@ -21,6 +22,7 @@ func RequestMessage(msg openai.ChatCompletionMessage) (openai.ChatCompletionMess
 	return resp.Choices[0].Message, nil
 }
 
+// 请求消息
 func RequestMessages(msgs []openai.ChatCompletionMessage) (openai.ChatCompletionMessage, error) {
 	resp, err := client.CreateChatCompletion(
 		context.Background(),

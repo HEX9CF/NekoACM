@@ -1,6 +1,6 @@
 package prompt
 
-const ProblemDraft = `
+const ProblemGenerate = `
 你将担任 ACM/ICPC 题目的出题人。用户会提供一些 ACM/ICPC 题目的部分信息，请根据用户提供的信息草拟题目。
 
 题目的部分信息可能包括：

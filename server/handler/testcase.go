@@ -8,6 +8,7 @@ import (
 	"net/http"
 )
 
+// 生成测试用例
 func GenerateTestcase(c *gin.Context) {
 	var req model.TestcaseInstruction
 
@@ -19,6 +20,7 @@ func GenerateTestcase(c *gin.Context) {
 		return
 	}
 
+	// 生成测试用例
 	p, err := testcase.Generate(req)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, model.RespError(err.Error(), nil))

@@ -11,6 +11,7 @@ import (
 	"strings"
 )
 
+// 生成测试用例
 var TestcaseCmd = &cobra.Command{
 	Use:   "testcase",
 	Short: "Generate a testcase",
@@ -24,12 +25,13 @@ var TestcaseCmd = &cobra.Command{
 		}
 
 		for {
-			// 生成题目
+			// 生成测试用例
 			fmt.Println("正在生成测试用例...")
 			t, err := testcase.Generate(ti)
 			if err != nil {
 				log.Println(err)
 
+				// 重试
 				err := clearBuffer(reader)
 				if err != nil {
 					return err
@@ -38,7 +40,6 @@ var TestcaseCmd = &cobra.Command{
 				again, _ := reader.ReadString('\n')
 				again = strings.TrimSpace(again)
 				again = strings.ToLower(again)
-
 				if again != "y" {
 					break
 				}
@@ -52,6 +53,7 @@ var TestcaseCmd = &cobra.Command{
 				log.Println(err)
 			}
 
+			// 继续生成
 			_, err = reader.Discard(reader.Buffered())
 			if err != nil {
 				return err
@@ -60,7 +62,6 @@ var TestcaseCmd = &cobra.Command{
 			again, _ := reader.ReadString('\n')
 			again = strings.TrimSpace(again)
 			again = strings.ToLower(again)
-
 			if again != "y" {
 				break
 			}
@@ -70,6 +71,7 @@ var TestcaseCmd = &cobra.Command{
 	},
 }
 
+// 读取测试用例信息
 func readTestcaseInstruction(reader *bufio.Reader) (model.TestcaseInstruction, error) {
 	ti := model.TestcaseInstruction{}
 	err := clearBuffer(reader)
@@ -110,6 +112,7 @@ func readTestcaseInstruction(reader *bufio.Reader) (model.TestcaseInstruction, e
 	return ti, nil
 }
 
+// 保存测试用例到文件
 func saveTestcaseJson(reader *bufio.Reader, t model.Testcase) error {
 	err := clearBuffer(reader)
 	if err != nil {

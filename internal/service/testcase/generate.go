@@ -11,6 +11,7 @@ import (
 	"neko-acm/utils"
 )
 
+// 生成测试用例
 func Generate(ti model.TestcaseInstruction) (model.Testcase, error) {
 	var t model.Testcase
 
@@ -22,7 +23,7 @@ func Generate(ti model.TestcaseInstruction) (model.Testcase, error) {
 	log.Println("请求生成测试用例：" + instruction)
 
 	// 组合Prompt
-	sysMsg := llm.NewSysMsg(prompt.TestcaseDraft)
+	sysMsg := llm.NewSysMsg(prompt.TestcaseGenerate)
 	userMsg := llm.NewUserMsg(instruction)
 	msgs := []openai.ChatCompletionMessage{sysMsg, userMsg}
 

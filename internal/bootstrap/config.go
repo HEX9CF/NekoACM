@@ -5,6 +5,7 @@ import (
 	"neko-acm/internal/conf"
 )
 
+// 初始化配置
 func initConfig() error {
 	err := conf.InitConfig()
 	if err != nil {

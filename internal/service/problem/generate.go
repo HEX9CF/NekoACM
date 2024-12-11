@@ -11,6 +11,7 @@ import (
 	"neko-acm/utils"
 )
 
+// 生成题目
 func Generate(pi model.ProblemInstruction) (model.Problem, error) {
 	var p model.Problem
 
@@ -22,7 +23,7 @@ func Generate(pi model.ProblemInstruction) (model.Problem, error) {
 	log.Println("请求生成题目：" + instruction)
 
 	// 组合Prompt
-	sysMsg := llm.NewSysMsg(prompt.ProblemDraft)
+	sysMsg := llm.NewSysMsg(prompt.ProblemGenerate)
 	userMsg := llm.NewUserMsg(instruction)
 	msgs := []openai.ChatCompletionMessage{sysMsg, userMsg}
 

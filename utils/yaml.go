@@ -5,6 +5,7 @@ import (
 	"os"
 )
 
+// 读取yaml文件
 func ReadYaml(v interface{}, path string) error {
 	file, err := os.Open(path)
 	if err != nil {
@@ -20,6 +21,7 @@ func ReadYaml(v interface{}, path string) error {
 	return nil
 }
 
+// 写入yaml文件
 func WriteYaml(v interface{}, path string) error {
 	yamlData, err := yaml.Marshal(v)
 	if err != nil {

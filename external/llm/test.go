@@ -7,6 +7,7 @@ import (
 	"neko-acm/prompt"
 )
 
+// 测试连接
 func Test() error {
 	resp, err := client.CreateChatCompletion(
 		context.Background(),

@@ -8,6 +8,7 @@ var (
 	ginServer *gin.Engine
 )
 
+// 初始化服务器
 func InitServer() error {
 	ginServer = gin.Default()
 	err := InitRoute()

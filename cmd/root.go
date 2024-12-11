@@ -8,6 +8,7 @@ import (
 	"strings"
 )
 
+// 根命令
 var rootCmd = &cobra.Command{
 	Use:   "neko",
 	Short: "A large model-based ACM-ICPC algorithm problem automatic generation system",
@@ -50,6 +51,7 @@ var rootCmd = &cobra.Command{
 	},
 }
 
+// 初始化
 func init() {
 	rootCmd.AddCommand(ServerCmd)
 	rootCmd.AddCommand(ProblemCmd)
@@ -57,6 +59,7 @@ func init() {
 	rootCmd.AddCommand(SolutionCmd)
 }
 
+// 执行
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)

@@ -5,7 +5,8 @@ import (
 	"neko-acm/server"
 )
 
-func initServer() error {
+// 初始化服务器
+func InitServer() error {
 	err := server.InitServer()
 	if err != nil {
 		log.Println("初始化服务器失败！")

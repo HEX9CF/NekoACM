@@ -2,6 +2,7 @@ package llm
 
 import "github.com/sashabaranov/go-openai"
 
+// 创建系统消息
 func NewSysMsg(c string) openai.ChatCompletionMessage {
 	return openai.ChatCompletionMessage{
 		Role:    openai.ChatMessageRoleSystem,
@@ -9,6 +10,7 @@ func NewSysMsg(c string) openai.ChatCompletionMessage {
 	}
 }
 
+// 创建用户消息
 func NewUserMsg(c string) openai.ChatCompletionMessage {
 	return openai.ChatCompletionMessage{
 		Role:    openai.ChatMessageRoleUser,

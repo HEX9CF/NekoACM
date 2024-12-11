@@ -14,7 +14,7 @@ func InitRoute() error {
 
 	// index
 	ginServer.GET("/", func(c *gin.Context) {
-		c.JSON(http.StatusOK, model.RespOk("NekoACM 启动成功！", nil))
+		c.JSON(http.StatusOK, model.RespOk("NekoACM 启动成功", nil))
 	})
 
 	// 404
@@ -29,7 +29,7 @@ func InitRoute() error {
 	apiRoute := ginServer.Group("/api")
 	{
 		apiRoute.GET("/", func(c *gin.Context) {
-			c.JSON(http.StatusOK, model.RespOk("NekoACM 启动成功！", nil))
+			c.JSON(http.StatusOK, model.RespOk("NekoACM 服务可用", nil))
 		})
 		apiRoute.POST("/problem", handler.GenerateProblem)
 		apiRoute.POST("/testcase", handler.GenerateTestcase)

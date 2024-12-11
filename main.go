@@ -6,6 +6,9 @@ import (
 )
 
 func main() {
-	bootstrap.Init()
+	err := bootstrap.Init()
+	if err != nil {
+		panic(err)
+	}
 	cmd.Execute()
 }

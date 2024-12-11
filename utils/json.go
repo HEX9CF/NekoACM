@@ -6,6 +6,7 @@ import (
 	"path/filepath"
 )
 
+// 写入json文件
 func WriteJson(v interface{}, path string) error {
 	jsonData, err := json.Marshal(v)
 	if err != nil {

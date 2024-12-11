@@ -33,8 +33,7 @@ go.work.sum
 # dist
 dist/
 
-tmp/
-
+# Output directory
 output/
 
 

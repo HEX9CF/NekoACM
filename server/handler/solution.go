@@ -8,6 +8,7 @@ import (
 	"net/http"
 )
 
+// 生成题解
 func GenerateSolution(c *gin.Context) {
 	var req model.SolutionInstruction
 
@@ -19,6 +20,7 @@ func GenerateSolution(c *gin.Context) {
 		return
 	}
 
+	// 生成题解
 	p, err := solution.Generate(req)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, model.RespError(err.Error(), nil))

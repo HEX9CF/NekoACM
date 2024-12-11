@@ -11,6 +11,7 @@ import (
 	"strings"
 )
 
+// 生成题解
 var SolutionCmd = &cobra.Command{
 	Use:   "solution",
 	Short: "Generate a solution",
@@ -24,12 +25,13 @@ var SolutionCmd = &cobra.Command{
 		}
 
 		for {
-			// 生成题目
+			// 生成题解
 			fmt.Println("正在生成题解...")
 			s, err := solution.Generate(si)
 			if err != nil {
 				log.Println(err)
 
+				// 重试
 				err := clearBuffer(reader)
 				if err != nil {
 					return err
@@ -38,7 +40,6 @@ var SolutionCmd = &cobra.Command{
 				again, _ := reader.ReadString('\n')
 				again = strings.TrimSpace(again)
 				again = strings.ToLower(again)
-
 				if again != "y" {
 					break
 				}
@@ -52,6 +53,7 @@ var SolutionCmd = &cobra.Command{
 				log.Println(err)
 			}
 
+			// 继续生成
 			_, err = reader.Discard(reader.Buffered())
 			if err != nil {
 				return err
@@ -60,7 +62,6 @@ var SolutionCmd = &cobra.Command{
 			again, _ := reader.ReadString('\n')
 			again = strings.TrimSpace(again)
 			again = strings.ToLower(again)
-
 			if again != "y" {
 				break
 			}
@@ -70,6 +71,7 @@ var SolutionCmd = &cobra.Command{
 	},
 }
 
+// 读取题解信息
 func readSolutionInstruction(reader *bufio.Reader) (model.SolutionInstruction, error) {
 	si := model.SolutionInstruction{}
 	err := clearBuffer(reader)
@@ -77,7 +79,6 @@ func readSolutionInstruction(reader *bufio.Reader) (model.SolutionInstruction, e
 		return model.SolutionInstruction{}, err
 	}
 
-	// 读取题目信息
 	fmt.Println("请输入题目信息：")
 	fmt.Print("标题：")
 	si.Title, _ = reader.ReadString('\n')
@@ -113,6 +114,7 @@ func readSolutionInstruction(reader *bufio.Reader) (model.SolutionInstruction, e
 	return si, nil
 }
 
+// 保存题解到文件
 func saveSolutionJson(reader *bufio.Reader, s model.Solution) error {
 	err := clearBuffer(reader)
 	if err != nil {
