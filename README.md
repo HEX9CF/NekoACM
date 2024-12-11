@@ -48,6 +48,7 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
 
 | 功能名称   | 请求方法 | 路由路径          | 操作者 | 功能简述                   |
 |--------|------|---------------|-----|------------------------|
+| 服务运行状态 | GET  | /api          | 用户  | 检查服务是否正常运行             |
 | 生成题目   | POST | /api/problem  | 用户  | 根据用户提供的题目信息或题解出题       |
 | 生成测试用例 | POST | /api/testcase | 用户  | 根据用户提供的题目信息或题解生成测试数据   |
 | 生成题解代码 | POST | /api/solution | 用户  | 根据用户提供的题目信息生成指定编程语言的题解 |
