@@ -7,11 +7,8 @@ import (
 	"log"
 	"neko-acm/internal/model"
 	"neko-acm/internal/service/testcase"
-	"neko-acm/utils"
 	"os"
-	"strconv"
 	"strings"
-	"time"
 )
 
 var TestcaseCmd = &cobra.Command{
@@ -29,7 +26,7 @@ var TestcaseCmd = &cobra.Command{
 		for {
 			// 生成题目
 			fmt.Println("正在生成测试用例...")
-			testcase, err := testcase.Generate(ti)
+			t, err := testcase.Generate(ti)
 			if err != nil {
 				log.Println(err)
 
@@ -50,7 +47,7 @@ var TestcaseCmd = &cobra.Command{
 			fmt.Println("测试用例生成成功")
 
 			// 保存到文件
-			err = saveTestcaseJson(reader, testcase)
+			err = saveTestcaseJson(reader, t)
 			if err != nil {
 				log.Println(err)
 			}
@@ -113,7 +110,7 @@ func readTestcaseInstruction(reader *bufio.Reader) (model.TestcaseInstruction, e
 	return ti, nil
 }
 
-func saveTestcaseJson(reader *bufio.Reader, testcase model.Testcase) error {
+func saveTestcaseJson(reader *bufio.Reader, t model.Testcase) error {
 	err := clearBuffer(reader)
 	if err != nil {
 		return err
@@ -124,9 +121,7 @@ func saveTestcaseJson(reader *bufio.Reader, testcase model.Testcase) error {
 	save = strings.ToLower(save)
 
 	if save == "y" {
-		timestamp := time.Now().Unix()
-		path := "output/testcase/" + strconv.FormatInt(timestamp, 10) + ".json"
-		err := utils.WriteJson(testcase, path)
+		path, err := testcase.SaveJson(t)
 		if err != nil {
 			fmt.Println("保存失败！")
 			return err

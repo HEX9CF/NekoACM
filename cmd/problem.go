@@ -7,11 +7,8 @@ import (
 	"log"
 	"neko-acm/internal/model"
 	"neko-acm/internal/service/problem"
-	"neko-acm/utils"
 	"os"
-	"strconv"
 	"strings"
-	"time"
 )
 
 var ProblemCmd = &cobra.Command{
@@ -29,7 +26,7 @@ var ProblemCmd = &cobra.Command{
 		for {
 			// 生成题目
 			fmt.Println("正在生成题目...")
-			problem, err := problem.Generate(pi)
+			p, err := problem.Generate(pi)
 			if err != nil {
 				log.Println(err)
 
@@ -50,7 +47,7 @@ var ProblemCmd = &cobra.Command{
 			fmt.Println("题目生成成功")
 
 			// 保存到文件
-			err = saveProblemJson(reader, problem)
+			err = saveProblemJson(reader, p)
 			if err != nil {
 				log.Println(err)
 			}
@@ -113,7 +110,7 @@ func readProblemInstruction(reader *bufio.Reader) (model.ProblemInstruction, err
 	return pi, nil
 }
 
-func saveProblemJson(reader *bufio.Reader, problem model.Problem) error {
+func saveProblemJson(reader *bufio.Reader, p model.Problem) error {
 	err := clearBuffer(reader)
 	if err != nil {
 		return err
@@ -124,9 +121,7 @@ func saveProblemJson(reader *bufio.Reader, problem model.Problem) error {
 	save = strings.ToLower(save)
 
 	if save == "y" {
-		timestamp := time.Now().Unix()
-		path := "output/problem/" + problem.Title + "_" + strconv.FormatInt(timestamp, 10) + ".json"
-		err := utils.WriteJson(problem, path)
+		path, err := problem.SaveJson(p)
 		if err != nil {
 			fmt.Println("保存失败！")
 			return err
