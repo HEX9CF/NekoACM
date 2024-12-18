@@ -202,9 +202,6 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
 
 ## 许可与声明
 
-本项目采用 GPL-3.0 license 进行许可，详情请参阅 [LICENSE](LICENSE) 文件。
+本项目采用 LGPL-3.0 license 进行许可，详情请参阅 [LICENSE](LICENSE) 文件。
 
-开源授权：如果你的系统中
-
-如果你的系统中使用了 NekoACM，欢迎在系统的关于页面或其他适当位置添加 NekoACM 的来源声明。
-
+如果你的软件通过 API 调用了 NekoACM 的服务，不会对你的软件是否开源做出限制，不影响你的软件的开源请求。如果可以的话，欢迎在你的软件中加入 NekoACM 的来源说明。但是，如果你要修改 NekoACM 的源码并重新发布，需要遵循 LGPL-3.0 license 的规定。
