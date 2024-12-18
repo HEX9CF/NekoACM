@@ -184,4 +184,12 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
 
 ![image](https://github.com/user-attachments/assets/6b533fc9-988a-41c5-b06f-9e3e3a2755d9)
 
+## 参与贡献
 
+- 如果你觉得这个项目对你有所帮助，欢迎给个 Star⭐️。
+- 如果你有任何问题或建议，欢迎提交 Issue。
+- 如果你有兴趣参与贡献代码，欢迎提交 Pull Request。
+
+## 许可与声明
+
+本项目采用 GPL-3.0 license 进行许可，详情请参阅 [LICENSE](LICENSE) 文件。
