@@ -12,6 +12,14 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
 - **测试数据生成**：根据用户提供的题目信息或题解生成测试用例
 - **题解生成**：根据用户提供的题目信息生成指定编程语言的题解代码，支持任何编程语言
 
+## OJ 系统集成
+
+可以将 NekoACM 作为一个模块集成到 OJ 系统中，实现自动出题、测试数据生成和题解生成的功能。将 NekoACM 部署到服务器上，OJ 系统通过 HTTP 请求调用 NekoACM 的接口。
+
+目前，以下 OJ 系统已经集成了 NekoACM 模块：
+
+- [STUOJ](https://github.com/STUOJ/STUOJ)
+
 ## 操作模式
 
 ### 终端启动模式
@@ -53,7 +61,9 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
 | 生成测试用例 | POST | /api/testcase | 用户  | 根据用户提供的题目信息或题解生成测试数据   |
 | 生成题解代码 | POST | /api/solution | 用户  | 根据用户提供的题目信息生成指定编程语言的题解 |
 
-## 样例
+## 使用样例
+
+以下样例基于服务器模式，通过 HTTP 请求调用 API 接口，展示了题目生成、测试数据生成和题解生成的操作。
 
 ### 题目生成
 
