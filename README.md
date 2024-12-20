@@ -1,4 +1,4 @@
-# 🐱🐾 NekoACM
+# NekoACM 🐱🐾
 
 ## 项目简介
 
