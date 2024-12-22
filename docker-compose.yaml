@@ -1,0 +1,10 @@
+version: '3'
+services:
+    neko-acm:
+        container_name: neko-acm
+        image: neko-acm
+        restart: no
+        volumes:
+            - ./config.yaml:/app/config.yaml
+        ports:
+            - 14515:14515
