@@ -1,6 +1,6 @@
 server:
   port: 14515
-  token: stuoj
+  token: neko
 openai:
   base_url:
   api_key:
