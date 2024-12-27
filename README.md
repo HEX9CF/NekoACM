@@ -10,8 +10,8 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
 
 - **题目生成**：根据用户提供的题目信息或题解生成算法题目
 - **测试数据生成**：根据用户提供的题目信息或题解生成测试用例
-- **题解生成**：根据用户提供的题目信息生成指定编程语言的题解代码，支持任意编程语言
-- **题目翻译**：支持题目翻译为多种语言，包括但不限于汉语、英语、西班牙语、法语、德语、日语、意大利语、韩语、俄语、葡萄牙语
+- **题解生成**：根据用户提供的题目信息生成指定编程语言的题解代码，支持任意编程语言，包括但不限于 C、C++、Java、Python、汇编语言
+- **题目翻译**：将题目翻译为多种语言，支持任意人类语言，包括但不限于汉语、英语、西班牙语、法语、德语、日语、意大利语、韩语、俄语、葡萄牙语
 
 ## OJ 系统集成
 
@@ -144,6 +144,8 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
 
 #### 响应1
 
+language: "Java"
+
 ```json
 {
     "code": 1,
@@ -162,6 +164,8 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
 
 #### 响应1
 
+"target_lang": "英语"
+
 ```json
 {
     "code": 1,
@@ -171,8 +175,6 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
         "description": "Chenchen is a child with exceptional talent, and his dream is to become the greatest physician in the world. To achieve this, he wants to apprentice under the most respected physician in the vicinity. To assess his aptitude, the physician presents him with a challenge. The physician takes him to a cave filled with various herbs and says, \"Child, there are different herbs in this cave. Each takes a certain amount of time to harvest and has its own value. I will give you a specific amount of time, during which you can harvest some herbs. If you are a smart child, you should be able to maximize the total value of the herbs you collect.\" Can you help Chenchen complete this task?",
         "input": "The first line contains two integers $T$ ($1 \\le T \\le 1000$) and $M$ ($1 \\le M \\le 100$), separated by a space. $T$ represents the total time available for herb collection, and $M$ represents the number of herbs in the cave.\nFollowing this, there are $M$ lines, each containing two integers between $1$ and $100$ (inclusive), representing the time required to harvest a particular herb and its value.",
         "output": "Output the maximum total value of herbs that can be collected within the given time.",
-        "sample_input": "70 3\n71 100\n69 1\n1 2",
-        "sample_output": "3",
         "hint": "- For $30\\%$ of the data, $M \\le 10$;\n- For all data, $M \\le 100$.",
         "tags": [
             "Dynamic Programming",
@@ -184,6 +186,8 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
 
 #### 响应2
 
+"target_lang": "Russian"
+
 ```json
 {
     "code": 1,
@@ -193,8 +197,6 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
         "description": "Чэньчэнь - одарённый ребёнок, мечтающий стать величайшим врачом. Чтобы проверить его способности, знаменитый врач приводит его в пещеру, полную различных трав. Каждую траву нужно определённое время собирать, и у каждой есть своя ценность.Given a limited time, Chenchen needs to maximize the total value of the herbs he collects. Can you help Chenchen achieve this task?",
         "input": "Первая строка содержит два целых числа $T$ (1 ≤ $T$ ≤ 1000) и $M$ (1 ≤ $M$ ≤ 100), где $T$ представляет собой общее время, доступное для сбора трав, а $M$ - количество трав в пещере. Следующие $M$ строк каждая содержит два целых числа, представляющих время, необходимое для сбора определённой травы, и её ценность, оба значения варьируются от 1 до 100.",
         "output": "Выведите максимальную общую ценность трав, которые можно собрать за данное время.",
-        "sample_input": "70 3\n71 100\n69 1\n1 2",
-        "sample_output": "3",
         "hint": "- Для 30% данных $M$ ≤ 10;\n- Для всех данных $M$ ≤ 100.",
         "tags": [
             "Динамическое программирование",
@@ -206,6 +208,8 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
 
 #### 响应3
 
+"target_lang": "ja-jp"
+
 ```json
 {
   "code": 1,
@@ -215,14 +219,34 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
     "description": "辰辰は天賦の才を持つ子どもで、最も偉大な医師になるという夢を持っています。彼の資質を試、名医は彼を様々な薬草が生い茂る洞窟に連れて行きました。各薬药は一定の時間を必要とし、独自の価値を持っています。限られた時間の中で、辰辰は採集できる薬草portunitiesの総価値を最大化する必要があります。あなたは乱王を助けることができますか？",
     "input": "最初の行には2つの整数 $T$ (1 ≤ $T$ ≤ 1000) と $M$ (1 ≤ $M$ ≤ 100) が含まれています。$T$ は薬草を収集するために利用可能な総時間を、$M$ は洞窟内の薬草の数を示します。次の $M$ 行には、各薬草の収集に必要な時間とその価値を示す2つの整数が含まれています。これらの数値はどちらも1から100の範囲です。",
     "output": "指定された時間内に収集できる薬草の最大総価値を出力してください。",
-    "sample_input": "70 3\n71 100\n69 1\n1 2",
-    "sample_output": "3",
     "hint": "- 30%のデータでは、$M$ は10以下です;\n- すべてのデータでは、$M$ は100以下です。",
     "tags": [
       "動的計画法",
       "ナップサック"
     ]
   }
+}
+```
+
+#### 响应4
+
+"target_lang": "纯emoji"
+
+```json
+{
+    "code": 1,
+    "msg": "OK",
+    "data": {
+        "title": "🌿🔍",
+        "description": "👦🧠🌟👨‍⚕️💭🌿🏞️🕒🌿💰🕒🔝🌿💰🤔👦🌿🔝🤝?",
+        "input": "🔢1️⃣🔢$T$ (1️⃣ ≤ $T$ ≤ 1000️⃣) 🔢$M$ (1️⃣ ≤ $M$ ≤ 100️⃣) 🕒🌿🔢$M$ 🔢🕒🌿💰1️⃣🔢100️⃣.",
+        "output": "🔢🌿💰🔝🕒.",
+        "hint": "- 🔢30️⃣%️⃣🌿$M$ ≤ 10️⃣;\n- 🔢100️⃣%️⃣🌿$M$ ≤ 100️⃣.",
+        "tags": [
+            "🔄📊",
+            "🎒"
+        ]
+    }
 }
 ```
 
