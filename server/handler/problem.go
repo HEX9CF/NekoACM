@@ -29,3 +29,25 @@ func GenerateProblem(c *gin.Context) {
 
 	c.JSON(http.StatusOK, model.RespOk("OK", p))
 }
+
+// 翻译题目
+func TranslateProblem(c *gin.Context) {
+	var req model.TranslateInstruction
+
+	// 参数绑定
+	err := c.ShouldBindBodyWithJSON(&req)
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusBadRequest, model.RespError("参数错误", nil))
+		return
+	}
+
+	// 生成题目
+	p, err := problem.Translate(req)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, model.RespError(err.Error(), nil))
+		return
+	}
+
+	c.JSON(http.StatusOK, model.RespOk("OK", p))
+}

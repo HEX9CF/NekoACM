@@ -16,10 +16,11 @@ var rootCmd = &cobra.Command{
 	RunE: func(cmd *cobra.Command, args []string) error {
 		reader := bufio.NewReader(os.Stdin)
 		for {
-			fmt.Println(" -------- 命令列表 -------- ")
+			fmt.Println(" -------- NekoACM -------- ")
 			fmt.Println(" problem: 生成题目")
 			fmt.Println(" testcase: 生成测试用例")
 			fmt.Println(" solution: 生成题解")
+			fmt.Println(" translate: 翻译题目")
 			fmt.Println(" server: 启动服务器模式")
 			fmt.Println(" exit: 退出")
 			fmt.Println(" ------------------------- ")
@@ -50,6 +51,10 @@ var rootCmd = &cobra.Command{
 				if err := SolutionCmd.RunE(nil, nil); err != nil {
 					return err
 				}
+			case "translate":
+				if err := TranslateCmd.RunE(nil, nil); err != nil {
+					return err
+				}
 			default:
 				fmt.Println("未知命令！")
 			}
@@ -63,6 +68,7 @@ func init() {
 	rootCmd.AddCommand(ProblemCmd)
 	rootCmd.AddCommand(TestcaseCmd)
 	rootCmd.AddCommand(SolutionCmd)
+	rootCmd.AddCommand(TranslateCmd)
 }
 
 // 执行
