@@ -35,6 +35,7 @@ func InitRoute() error {
 		apiRoute.POST("/testcase", handler.GenerateTestcase)
 		apiRoute.POST("/solution", handler.GenerateSolution)
 		apiRoute.POST("/translate", handler.TranslateProblem)
+		apiRoute.GET("/joke", handler.GenerateJoke)
 	}
 
 	// 启动服务
