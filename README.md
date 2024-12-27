@@ -12,6 +12,7 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
 - **测试数据生成**：根据用户提供的题目信息或题解生成测试用例
 - **题解生成**：根据用户提供的题目信息生成指定编程语言的题解代码，支持任意编程语言，包括但不限于 C、C++、Java、Python、汇编语言
 - **题目翻译**：将题目翻译为多种语言，支持任意人类语言，包括但不限于汉语、英语、西班牙语、法语、德语、日语、意大利语、韩语、俄语、葡萄牙语
+- **算法笑话**：讲个关于 ACM/ICPC 算法竞赛或 OI 信息学竞赛的冷笑话，让你开心一下。可以在用户 AC 之后调用
 
 ## OJ 系统集成
 
@@ -33,6 +34,7 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
 - `neko testcase`: 功能同命令行模式的 `testcase` 命令
 - `neko solution`: 功能同命令行模式的 `solution` 命令
 - `neko translate`: 功能同命令行模式的 `translate` 命令
+- `neko joke`: 功能同命令行模式的 `joke` 命令
 
 ### 命令行模式
 
@@ -44,6 +46,7 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
 - `testcase`: 根据用户提供的题目信息或题解生成测试用例，可以以 JSON 格式保存到文件
 - `solution`: 根据用户提供的题目信息，生成指定编程语言的题解和解释，可以以 JSON 格式保存到文件
 - `translate`: 翻译题目为指定语言，支持多种人类语言，可以以 JSON 格式保存到文件
+- `joke`: 讲个关于 ACM/ICPC 算法竞赛或 OI 信息学竞赛的冷笑话
 - `server`: 启动服务器模式
 - `exit`: 退出程序
 
@@ -57,13 +60,14 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
 
 #### API 接口
 
-| 功能名称   | 请求方法 | 路由路径           | 操作者 | 功能简述                   |
-|--------|------|----------------|-----|------------------------|
-| 服务运行状态 | GET  | /api           | 用户  | 检查服务是否正常运行             |
-| 生成题目   | POST | /api/problem   | 用户  | 根据用户提供的题目信息或题解出题       |
-| 生成测试用例 | POST | /api/testcase  | 用户  | 根据用户提供的题目信息或题解生成测试数据   |
-| 生成题解代码 | POST | /api/solution  | 用户  | 根据用户提供的题目信息生成指定编程语言的题解 |
-| 翻译题目   | POST | /api/translate | 用户  | 翻译题目为指定语言              |
+| 功能名称   | 请求方法 | 路由路径           | 操作者 | 功能简述                               |
+|--------|------|----------------|-----|------------------------------------|
+| 服务运行状态 | GET  | /api           | 用户  | 检查服务是否正常运行                         |
+| 生成题目   | POST | /api/problem   | 用户  | 根据用户提供的题目信息或题解出题                   |
+| 生成测试用例 | POST | /api/testcase  | 用户  | 根据用户提供的题目信息或题解生成测试数据               |
+| 生成题解代码 | POST | /api/solution  | 用户  | 根据用户提供的题目信息生成指定编程语言的题解             |
+| 翻译题目   | POST | /api/translate | 用户  | 将题目翻译为指定语言                         |
+| 算法笑话   | GET  | /api/joke      | 用户  | 返回一个关于 ACM/ICPC 算法竞赛或 OI 信息学竞赛的冷笑话 |
 
 ## 使用样例
 
@@ -247,6 +251,18 @@ language: "Java"
             "🎒"
         ]
     }
+}
+```
+
+### 算法笑话
+
+#### 响应1
+
+```json
+{
+    "code": 1,
+    "msg": "OK",
+    "data": "程序员的代码通过了所有测试用例，却败在了女朋友的“你爱我吗？”这个无解问题上。"
 }
 ```
 
