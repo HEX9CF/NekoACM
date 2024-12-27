@@ -64,6 +64,11 @@ var TranslateCmd = &cobra.Command{
 			again = strings.ToLower(again)
 			if again != "y" {
 				break
+			} else {
+				ti, err = readTargetLang(reader, ti)
+				if err != nil {
+					return err
+				}
 			}
 		}
 
@@ -104,6 +109,15 @@ func readTranslateInstruction(reader *bufio.Reader) (model.TranslateInstruction,
 	fmt.Print("标签（以空格分隔）：")
 	tagsInput, _ := reader.ReadString('\n')
 	ti.Tags = strings.Fields(tagsInput)
+	ti, err = readTargetLang(reader, ti)
+	if err != nil {
+		return model.TranslateInstruction{}, err
+	}
+
+	return ti, nil
+}
+
+func readTargetLang(reader *bufio.Reader, ti model.TranslateInstruction) (model.TranslateInstruction, error) {
 	fmt.Print("目标语言：")
 	ti.TargetLang, _ = reader.ReadString('\n')
 	ti.TargetLang = strings.TrimSpace(ti.TargetLang)
