@@ -10,6 +10,5 @@ type TranslateInstruction struct {
 	SampleOutput string   `json:"sample_output,omitempty" binding:"omitempty"`
 	Hint         string   `json:"hint,omitempty" binding:"omitempty"`
 	Tags         []string `json:"tags,omitempty" binding:"omitempty"`
-	SourceLang   string   `json:"source_lang,omitempty" binding:"omitempty"`
 	TargetLang   string   `json:"target_lang,omitempty" binding:"omitempty"`
 }
