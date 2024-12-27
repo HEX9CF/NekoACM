@@ -65,6 +65,112 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
 | 生成题解代码 | POST | /api/solution  | 用户  | 根据用户提供的题目信息生成指定编程语言的题解 |
 | 翻译题目   | POST | /api/translate | 用户  | 翻译题目为指定语言              |
 
+## 输入输出格式
+
+### 题目生成
+
+#### 输入
+
+| 字段名           | 数据类型   | 字段说明                         |
+|---------------|--------|------------------------------|
+| title         | string | 题目标题                         |
+| description   | string | 题目的描述                        |
+| input         | string | 题目对输入的要求说明                   |
+| output        | string | 题目对输出的要求说明                   |
+| sample_input  | string | 样例输入                         |
+| sample_output | string | 样例输出                         |
+| hint          | string | 出题人提供的解题提示                   |
+| tags          | array  | 标签列表，包括多个标签，用于标记题目涉及的数据结构与算法 |
+| solution      | string | 题解代码                         |
+
+#### 输出
+
+| 字段名           | 数据类型   | 字段说明                         |
+|---------------|--------|------------------------------|
+| title         | string | 题目标题                         |
+| description   | string | 题目的详细描述，包括背景、问题定义等信息         |
+| input         | string | 题目对输入的详细要求说明，包括输入格式、输入范围等信息  |
+| output        | string | 题目对输出的详细要求说明，包括输出格式等信息       |
+| sample_input  | string | 样例输入                         |
+| sample_output | string | 样例输出                         |
+| hint          | string | 出题人提供的解题提示，帮助用户更好地理解题目       |
+| tags          | array  | 标签列表，包括多个标签，用于标记题目涉及的数据结构与算法 |
+
+### 测试数据生成
+
+#### 输入
+
+| 字段名           | 数据类型   | 字段说明                         |
+|---------------|--------|------------------------------|
+| title         | string | 题目标题                         |
+| description   | string | 题目的描述                        |
+| input         | string | 题目对输入的要求说明                   |
+| output        | string | 题目对输出的要求说明                   |
+| sample_input  | string | 样例输入                         |
+| sample_output | string | 样例输出                         |
+| hint          | string | 出题人提供的解题提示                   |
+| tags          | array  | 标签列表，包括多个标签，用于标记题目涉及的数据结构与算法 |
+| solution      | string | 题解代码                         |
+
+#### 输出
+
+| 字段名                | 数据类型   | 字段说明            |
+|--------------------|--------|-----------------|
+| test_input         | string | 测试用例的输入         |
+| test_output        | string | 测试用例的输出         |
+| input_explanation  | string | 这条测试用例输入数据的解释说明 |
+| output_explanation | string | 这条测试用例输出数据的解释说明 |
+
+### 题解生成
+
+#### 输入
+
+| 字段名           | 数据类型   | 字段说明                         |
+|---------------|--------|------------------------------|
+| title         | string | 题目标题                         |
+| description   | string | 题目的描述                        |
+| input         | string | 题目对输入的要求说明                   |
+| output        | string | 题目对输出的要求说明                   |
+| sample_input  | string | 样例输入                         |
+| sample_output | string | 样例输出                         |
+| hint          | string | 出题人提供的解题提示                   |
+| tags          | array  | 标签列表，包括多个标签，用于标记题目涉及的数据结构与算法 |
+| solution      | string | 已有的题解代码                      |
+| language      | string | 草拟题解代码使用的目标编程语言              |
+
+#### 输出
+
+| 字段名         | 数据类型   | 字段说明                                 |
+|-------------|--------|--------------------------------------|
+| language    | string | 草拟题解代码使用的目标编程语言                      |
+| source_code | string | 草拟的题解代码                              |
+| explanation | string | 解题思路，包括涉及的算法和数据结构，主要思路，时间复杂度和空间复杂度分析 |
+
+### 翻译题目
+
+#### 输入
+
+| 字段名         | 数据类型   | 字段说明                            |
+|-------------|--------|---------------------------------|
+| title       | string | 题目标题                            |
+| description | string | 题目的描述                           |
+| input       | string | 题目对输入的要求说明                      |
+| output      | string | 题目对输出的要求说明                      |
+| hint        | string | 出题人提供的解题提示                      |
+| tags        | array  | 标签列表，包括多个标签，用于标记题目涉及的数据结构与算法    |
+| target_lang | string | 目标语言，用户要求翻译成的语言，可以是语言的名称或者语言的代码 |
+
+#### 输出
+
+| 字段名         | 数据类型   | 字段说明                         |
+|-------------|--------|------------------------------|
+| title       | string | 题目标题                         |
+| description | string | 题目的详细描述，包括背景、问题定义等信息         |
+| input       | string | 题目对输入的详细要求说明，包括输入格式、输入范围等信息  |
+| output      | string | 题目对输出的详细要求说明，包括输出格式等信息       |
+| hint        | string | 出题人提供的解题提示，帮助用户更好地理解题目       |
+| tags        | array  | 标签列表，包括多个标签，用于标记题目涉及的数据结构与算法 |
+
 ## 使用样例
 
 以下样例基于服务器模式，通过 HTTP 请求调用 API 接口，展示了题目生成、测试数据生成和题解生成的操作。
