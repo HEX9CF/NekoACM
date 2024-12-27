@@ -10,7 +10,8 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
 
 - **题目生成**：根据用户提供的题目信息或题解生成算法题目
 - **测试数据生成**：根据用户提供的题目信息或题解生成测试用例
-- **题解生成**：根据用户提供的题目信息生成指定编程语言的题解代码，支持任何编程语言
+- **题解生成**：根据用户提供的题目信息生成指定编程语言的题解代码，支持任意编程语言
+- **题目翻译**：支持题目翻译为多种语言，包括但不限于英语、西班牙语、法语、德语、日语、意大利语、韩语、汉语、俄语、葡萄牙语
 
 ## OJ 系统集成
 
@@ -31,6 +32,7 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
 - `neko problem`: 功能同命令行模式的 `problem` 命令
 - `neko testcase`: 功能同命令行模式的 `testcase` 命令
 - `neko solution`: 功能同命令行模式的 `solution` 命令
+- `neko translate`: 功能同命令行模式的 `translate` 命令
 
 ### 命令行模式
 
@@ -39,8 +41,9 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
 #### 命令
 
 - `problem`: 根据用户提供的题目信息或题解出题，可以以 JSON 格式保存到文件
-- `testcase`: 根据用户提供的题目信息或题解生成测试数据，可以以 JSON 格式保存到文件
-- `solution`: 根据用户提供的题目信息生成指定编程语言的题解，可以以 JSON 格式保存到文件
+- `testcase`: 根据用户提供的题目信息或题解生成测试用例，可以以 JSON 格式保存到文件
+- `solution`: 根据用户提供的题目信息，生成指定编程语言的题解和解释，可以以 JSON 格式保存到文件
+- `translate`: 翻译题目为指定语言，支持多种人类语言，可以以 JSON 格式保存到文件
 - `server`: 启动服务器模式
 - `exit`: 退出程序
 
@@ -54,12 +57,13 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
 
 #### API 接口
 
-| 功能名称   | 请求方法 | 路由路径          | 操作者 | 功能简述                   |
-|--------|------|---------------|-----|------------------------|
-| 服务运行状态 | GET  | /api          | 用户  | 检查服务是否正常运行             |
-| 生成题目   | POST | /api/problem  | 用户  | 根据用户提供的题目信息或题解出题       |
-| 生成测试用例 | POST | /api/testcase | 用户  | 根据用户提供的题目信息或题解生成测试数据   |
-| 生成题解代码 | POST | /api/solution | 用户  | 根据用户提供的题目信息生成指定编程语言的题解 |
+| 功能名称   | 请求方法 | 路由路径           | 操作者 | 功能简述                   |
+|--------|------|----------------|-----|------------------------|
+| 服务运行状态 | GET  | /api           | 用户  | 检查服务是否正常运行             |
+| 生成题目   | POST | /api/problem   | 用户  | 根据用户提供的题目信息或题解出题       |
+| 生成测试用例 | POST | /api/testcase  | 用户  | 根据用户提供的题目信息或题解生成测试数据   |
+| 生成题解代码 | POST | /api/solution  | 用户  | 根据用户提供的题目信息生成指定编程语言的题解 |
+| 翻译题目   | POST | /api/translate | 用户  | 翻译题目为指定语言              |
 
 ## 使用样例
 
@@ -136,21 +140,7 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
 
 ### 题解生成
 
-#### 请求1
-
-```json
-{
-  "title": "采药",
-  "description": "辰辰是个天资聪颖的孩子，他的梦想是成为世界上最伟大的医师。为此，他想拜附近最有威望的医师为师。医师为了判断他的资质，给他出了一个难题。医师把他带到一个到处都是草药的山洞里对他说：“孩子，这个山洞里有一些不同的草药，采每一株都需要一些时间，每一株也有它自身的价值。我会给你一段时间，在这段时间里，你可以采到一些草药。如果你是一个聪明的孩子，你应该可以让采到的草药的总价值最大。”\n如果你是辰辰，你能完成这个任务吗？",
-  "input": "第一行有 $2$ 个整数 $T$（$1 \\le T \\le 1000$）和 $M$（$1 \\le  M \\le 100$），用一个空格隔开，$T$ 代表总共能够用来采药的时间，$M$ 代表山洞里的草药的数目。\n接下来的 $M$ 行每行包括两个在 $1$ 到 $100$ 之间（包括 $1$ 和 $100$）的整数，分别表示采摘某株草药的时间和这株草药的价值。",
-  "output": "输出在规定的时间内可以采到的草药的最大总价值。",
-  "sample_input": "70 3\n71 100\n69 1\n1 2",
-  "sample_output": "3",
-  "hint": "- 对于 $30\\%$ 的数据，$M \\le 10$；\n- 对于全部的数据，$M \\le 100$。",
-  "tags": ["动态规划", "背包"],
-  "language": "Java"
-}
-```
+请求同上。
 
 #### 响应1
 
@@ -163,6 +153,76 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
         "source_code": "import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int T = scanner.nextInt(); // 总共能够用来采药的时间\n        int M = scanner.nextInt(); // 山洞里的草药的数目\n\n        int[] time = new int[M];\n        int[] value = new int[M];\n\n        for (int i = 0; i < M; i++) {\n            time[i] = scanner.nextInt();\n            value[i] = scanner.nextInt();\n        }\n\n        int[] dp = new int[T + 1];\n        for (int i = 0; i < M; i++) {\n            for (int j = T; j >= time[i]; j--) {\n                dp[j] = Math.max(dp[j], dp[j - time[i]] + value[i]);\n            }\n        }\n\n        System.out.println(dp[T]);\n    }\n}",
         "explanation": "这道题是一个典型的01背包问题，使用动态规划解决。定义dp数组，dp[j]表示在时间j内能获得的最大价值。遍历每种草药，更新dp数组。对于每种草药，从后向前遍历时间，确保每种草药只被选择一次。最终dp[T]即为在总时间T内能获得的最大价值。\n\n主要思路是动态规划，时间复杂度为O(M*T)，空间复杂度为O(T)。这里M是草药数目，T是总时间。通过逐个考虑每种草药，并在有限的时间内选择最优解，最终得到最大价值。"
     }
+}
+```
+
+### 翻译题目
+
+请求同上。
+
+#### 响应1
+
+```json
+{
+    "code": 1,
+    "msg": "OK",
+    "data": {
+        "title": "Herb Collection",
+        "description": "Chenchen is a child with exceptional talent, and his dream is to become the greatest physician in the world. To achieve this, he wants to apprentice under the most respected physician in the vicinity. To assess his aptitude, the physician presents him with a challenge. The physician takes him to a cave filled with various herbs and says, \"Child, there are different herbs in this cave. Each takes a certain amount of time to harvest and has its own value. I will give you a specific amount of time, during which you can harvest some herbs. If you are a smart child, you should be able to maximize the total value of the herbs you collect.\" Can you help Chenchen complete this task?",
+        "input": "The first line contains two integers $T$ ($1 \\le T \\le 1000$) and $M$ ($1 \\le M \\le 100$), separated by a space. $T$ represents the total time available for herb collection, and $M$ represents the number of herbs in the cave.\nFollowing this, there are $M$ lines, each containing two integers between $1$ and $100$ (inclusive), representing the time required to harvest a particular herb and its value.",
+        "output": "Output the maximum total value of herbs that can be collected within the given time.",
+        "sample_input": "70 3\n71 100\n69 1\n1 2",
+        "sample_output": "3",
+        "hint": "- For $30\\%$ of the data, $M \\le 10$;\n- For all data, $M \\le 100$.",
+        "tags": [
+            "Dynamic Programming",
+            "Knapsack"
+        ]
+    }
+}
+```
+
+#### 响应2
+
+```json
+{
+    "code": 1,
+    "msg": "OK",
+    "data": {
+        "title": "Сбор трав",
+        "description": "Чэньчэнь - одарённый ребёнок, мечтающий стать величайшим врачом. Чтобы проверить его способности, знаменитый врач приводит его в пещеру, полную различных трав. Каждую траву нужно определённое время собирать, и у каждой есть своя ценность.Given a limited time, Chenchen needs to maximize the total value of the herbs he collects. Can you help Chenchen achieve this task?",
+        "input": "Первая строка содержит два целых числа $T$ (1 ≤ $T$ ≤ 1000) и $M$ (1 ≤ $M$ ≤ 100), где $T$ представляет собой общее время, доступное для сбора трав, а $M$ - количество трав в пещере. Следующие $M$ строк каждая содержит два целых числа, представляющих время, необходимое для сбора определённой травы, и её ценность, оба значения варьируются от 1 до 100.",
+        "output": "Выведите максимальную общую ценность трав, которые можно собрать за данное время.",
+        "sample_input": "70 3\n71 100\n69 1\n1 2",
+        "sample_output": "3",
+        "hint": "- Для 30% данных $M$ ≤ 10;\n- Для всех данных $M$ ≤ 100.",
+        "tags": [
+            "Динамическое программирование",
+            "Рюкзак"
+        ]
+    }
+}
+```
+
+#### 响应3
+
+```json
+{
+  "code": 1,
+  "msg": "OK",
+  "data": {
+    "title": "薬草採集",
+    "description": "辰辰は天賦の才を持つ子どもで、最も偉大な医師になるという夢を持っています。彼の資質を試、名医は彼を様々な薬草が生い茂る洞窟に連れて行きました。各薬药は一定の時間を必要とし、独自の価値を持っています。限られた時間の中で、辰辰は採集できる薬草portunitiesの総価値を最大化する必要があります。あなたは乱王を助けることができますか？",
+    "input": "最初の行には2つの整数 $T$ (1 ≤ $T$ ≤ 1000) と $M$ (1 ≤ $M$ ≤ 100) が含まれています。$T$ は薬草を収集するために利用可能な総時間を、$M$ は洞窟内の薬草の数を示します。次の $M$ 行には、各薬草の収集に必要な時間とその価値を示す2つの整数が含まれています。これらの数値はどちらも1から100の範囲です。",
+    "output": "指定された時間内に収集できる薬草の最大総価値を出力してください。",
+    "sample_input": "70 3\n71 100\n69 1\n1 2",
+    "sample_output": "3",
+    "hint": "- 30%のデータでは、$M$ は10以下です;\n- すべてのデータでは、$M$ は100以下です。",
+    "tags": [
+      "動的計画法",
+      "ナップサック"
+    ]
+  }
 }
 ```
 
