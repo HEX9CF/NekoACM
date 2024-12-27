@@ -77,8 +77,8 @@ NekoACM 支持将题目翻译为多种自然语言，包括但不限于汉语、
 
 | Language                  | Country/Region Code | Language Code |
 |---------------------------|---------------------|---------------|
-| Chinese/中文/中文             | CN/CHN              | zh/zho/zh-CN  |
-| English/英语/English        | US/USA              | en/eng/en-US  |
+| Chinese/汉语/中文             | CN/CHN              | zh/zho/zh-CN  |
+| English/English/英语        | US/USA              | en/eng/en-US  |
 | Spanish/Español/西班牙语      | ES/ESP              | es/spa/es-ES  |
 | French/Français/法语        | FR/FRA              | fr/fra/fr-FR  |
 | German/Deutsch/德语         | DE/DEU              | de/deu/de-DE  |

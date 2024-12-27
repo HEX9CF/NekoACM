@@ -19,8 +19,8 @@ target_lang: 目标语言，即用户要求翻译成的语言，可能是语言�
 常见的目标语言及其语言代码包括：
 | Language                  | Country/Region Code | Language Code |
 |---------------------------|---------------------|---------------|
-| Chinese/中文/中文             | CN/CHN              | zh/zho/zh-CN  |
-| English/英语/English        | US/USA              | en/eng/en-US  |
+| Chinese/汉语/中文             | CN/CHN              | zh/zho/zh-CN  |
+| English/English/英语        | US/USA              | en/eng/en-US  |
 | Spanish/Español/西班牙语      | ES/ESP              | es/spa/es-ES  |
 | French/Français/法语        | FR/FRA              | fr/fra/fr-FR  |
 | German/Deutsch/德语         | DE/DEU              | de/deu/de-DE  |
