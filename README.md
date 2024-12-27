@@ -45,7 +45,7 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
 - `problem`: 根据用户提供的题目信息或题解出题，可以以 JSON 格式保存到文件
 - `testcase`: 根据用户提供的题目信息或题解生成测试用例，可以以 JSON 格式保存到文件
 - `solution`: 根据用户提供的题目信息，生成指定编程语言的题解和解释，可以以 JSON 格式保存到文件
-- `translate`: 翻译题目为指定语言，支持多种人类语言，可以以 JSON 格式保存到文件
+- `translate`: 翻译题目为指定语言，支持多种自然语言，可以以 JSON 格式保存到文件
 - `joke`: 讲个关于 ACM/ICPC 算法竞赛或 OI 信息学竞赛的冷笑话
 - `server`: 启动服务器模式
 - `exit`: 退出程序
@@ -68,6 +68,25 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
 | 生成题解代码 | POST | /api/solution  | 用户  | 根据用户提供的题目信息生成指定编程语言的题解             |
 | 翻译题目   | POST | /api/translate | 用户  | 将题目翻译为指定语言                         |
 | 算法笑话   | GET  | /api/joke      | 用户  | 返回一个关于 ACM/ICPC 算法竞赛或 OI 信息学竞赛的冷笑话 |
+
+## 翻译功能
+
+NekoACM 支持将题目翻译为多种自然语言，包括但不限于汉语、英语、西班牙语、法语、德语、日语、意大利语、韩语、俄语、葡萄牙语。目标语言可以是语言名称或者语言代码。推荐使用语言代码，以避免歧义。
+
+常见的目标语言及其语言代码包括：
+
+| Language                  | Country/Region Code | Language Code |
+|---------------------------|---------------------|---------------|
+| Chinese/中文/中文             | CN/CHN              | zh/zho/zh-CN  |
+| English/英语/English        | US/USA              | en/eng/en-US  |
+| Spanish/Español/西班牙语      | ES/ESP              | es/spa/es-ES  |
+| French/Français/法语        | FR/FRA              | fr/fra/fr-FR  |
+| German/Deutsch/德语         | DE/DEU              | de/deu/de-DE  |
+| Japanese/日本語/日语           | JP/JPN              | ja/jpn/ja-JP  |
+| Italian/Italiano/意大利语     | IT/ITA              | it/ita/it-IT  |
+| Korean/한국어/韩语             | KR/KOR              | ko/kor/ko-KR  |
+| Russian/Русский/俄语        | RU/RUS              | ru/rus/ru-RU  |
+| Portuguese/Português/葡萄牙语 | PT/PRT              | pt/por/pt-PT  |
 
 ## 注意事项
 

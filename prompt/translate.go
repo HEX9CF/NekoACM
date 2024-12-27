@@ -17,18 +17,18 @@ tags: 标签列表，包括多个标签，用于标记题目涉及的数据结�
 target_lang: 目标语言，即用户要求翻译成的语言，可能是语言的名称或者语言的代码
 
 常见的目标语言及其语言代码包括：
-| Language    | 中文名     | Native Name | Country Code | ISO 3166-1 Alpha-3 | ISO 639-1 | ISO 639-2 | Locale  |
-|-------------|------------|-------------|--------------|--------------------|-----------|-----------|---------|
-| Chinese     | 中文       | 中文        | CN           | CHN                | zh        | zho       | zh-cn   |
-| English     | 英语       | English     | US           | USA                | en        | eng       | en-us   |
-| Spanish     | 西班牙语   | Español     | ES           | ESP                | es        | spa       | es-es   |
-| French      | 法语       | Français    | FR           | FRA                | fr        | fra       | fr-fr   |
-| German      | 德语       | Deutsch     | DE           | DEU                | de        | deu       | de-de   |
-| Japanese    | 日语       | 日本語      | JP           | JPN                | ja        | jpn       | ja-jp   |
-| Italian     | 意大利语   | Italiano    | IT           | ITA                | it        | ita       | it-it   |
-| Korean      | 韩语       | 한국어      | KR           | KOR                | ko        | kor       | ko-kr   |
-| Russian     | 俄语       | Русский     | RU           | RUS                | ru        | rus       | ru-ru   |
-| Portuguese  | 葡萄牙语   | Português   | PT           | PRT                | pt        | por       | pt-pt   |
+| Language                  | Country/Region Code | Language Code |
+|---------------------------|---------------------|---------------|
+| Chinese/中文/中文             | CN/CHN              | zh/zho/zh-CN  |
+| English/英语/English        | US/USA              | en/eng/en-US  |
+| Spanish/Español/西班牙语      | ES/ESP              | es/spa/es-ES  |
+| French/Français/法语        | FR/FRA              | fr/fra/fr-FR  |
+| German/Deutsch/德语         | DE/DEU              | de/deu/de-DE  |
+| Japanese/日本語/日语           | JP/JPN              | ja/jpn/ja-JP  |
+| Italian/Italiano/意大利语     | IT/ITA              | it/ita/it-IT  |
+| Korean/한국어/韩语             | KR/KOR              | ko/kor/ko-KR  |
+| Russian/Русский/俄语        | RU/RUS              | ru/rus/ru-RU  |
+| Portuguese/Português/葡萄牙语 | PT/PRT              | pt/por/pt-PT  |
 
 不在上述列表中的语言，若用户要求翻译成这些语言，那么你需要按照用户要求的目标语言进行翻译。如果用户没有提供这个字段，则将中文翻译成英文，将所有非中文的翻译成中文。
 
