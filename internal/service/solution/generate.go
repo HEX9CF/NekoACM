@@ -5,7 +5,7 @@ import (
 	"errors"
 	"github.com/sashabaranov/go-openai"
 	"log"
-	"neko-acm/external/llm"
+	"neko-acm/external/open_ai"
 	"neko-acm/internal/model"
 	"neko-acm/prompt"
 	"neko-acm/utils"
@@ -23,13 +23,14 @@ func Generate(si model.SolutionInstruction) (model.Solution, error) {
 	log.Println("请求生成题解：" + instruction)
 
 	// 组合Prompt
-	sysMsg := llm.NewSysMsg(prompt.SolutionGenerate)
-	userMsg := llm.NewUserMsg(instruction)
+	sysMsg := open_ai.NewSysMsg(prompt.SolutionGenerate)
+	userMsg := open_ai.NewUserMsg(instruction)
 	msgs := []openai.ChatCompletionMessage{sysMsg, userMsg}
 
 	// 请求模型
-	resp, err := llm.RequestMessages(msgs)
+	resp, err := open_ai.RequestMessages(msgs)
 	if err != nil {
+		log.Println(err)
 		return model.Solution{}, errors.New("请求模型失败！")
 	}
 	log.Println("生成结果：" + resp.Content)

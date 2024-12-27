@@ -5,13 +5,13 @@ import (
 	"errors"
 	"github.com/sashabaranov/go-openai"
 	"log"
-	"neko-acm/external/llm"
+	"neko-acm/external/open_ai"
 	"neko-acm/internal/model"
 	"neko-acm/prompt"
 	"neko-acm/utils"
 )
 
-// 生成题目
+// 翻译题目
 func Translate(pi model.TranslateInstruction) (model.Problem, error) {
 	var p model.Problem
 
@@ -23,12 +23,12 @@ func Translate(pi model.TranslateInstruction) (model.Problem, error) {
 	log.Println("请求翻译题目：" + instruction)
 
 	// 组合Prompt
-	sysMsg := llm.NewSysMsg(prompt.ProblemGenerate)
-	userMsg := llm.NewUserMsg(instruction)
+	sysMsg := open_ai.NewSysMsg(prompt.ProblemTranslate)
+	userMsg := open_ai.NewUserMsg(instruction)
 	msgs := []openai.ChatCompletionMessage{sysMsg, userMsg}
 
 	// 请求模型
-	resp, err := llm.RequestMessages(msgs)
+	resp, err := open_ai.RequestMessages(msgs)
 	if err != nil {
 		return model.Problem{}, errors.New("请求模型失败！")
 	}
