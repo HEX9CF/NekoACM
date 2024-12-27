@@ -30,6 +30,7 @@ func Generate(si model.SolutionInstruction) (model.Solution, error) {
 	// 请求模型
 	resp, err := open_ai.RequestMessages(msgs)
 	if err != nil {
+		log.Println(err)
 		return model.Solution{}, errors.New("请求模型失败！")
 	}
 	log.Println("生成结果：" + resp.Content)

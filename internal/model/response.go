@@ -14,7 +14,6 @@ func (c ResponseCode) String() string {
 		return "错误"
 	case ResponseCodeOk:
 		return "成功"
-		return "重新请求"
 	default:
 		return "未知状态"
 	}

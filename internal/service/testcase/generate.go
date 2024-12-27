@@ -30,6 +30,7 @@ func Generate(ti model.TestcaseInstruction) (model.Testcase, error) {
 	// 请求模型
 	resp, err := open_ai.RequestMessages(msgs)
 	if err != nil {
+		log.Println(err)
 		return model.Testcase{}, errors.New("请求模型失败！")
 	}
 	log.Println("生成结果：" + resp.Content)
