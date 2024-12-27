@@ -11,7 +11,7 @@ import (
 	"neko-acm/utils"
 )
 
-// 生成题目
+// 翻译题目
 func Translate(pi model.TranslateInstruction) (model.Problem, error) {
 	var p model.Problem
 
@@ -23,7 +23,7 @@ func Translate(pi model.TranslateInstruction) (model.Problem, error) {
 	log.Println("请求翻译题目：" + instruction)
 
 	// 组合Prompt
-	sysMsg := llm.NewSysMsg(prompt.ProblemGenerate)
+	sysMsg := llm.NewSysMsg(prompt.ProblemTranslate)
 	userMsg := llm.NewUserMsg(instruction)
 	msgs := []openai.ChatCompletionMessage{sysMsg, userMsg}
 
