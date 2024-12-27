@@ -1,4 +1,4 @@
-package llm
+package open_ai
 
 import (
 	"context"

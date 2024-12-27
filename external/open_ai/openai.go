@@ -1,7 +1,7 @@
-package llm
+package open_ai
 
 import (
-	openai "github.com/sashabaranov/go-openai"
+	"github.com/sashabaranov/go-openai"
 	"log"
 	"neko-acm/internal/conf"
 )

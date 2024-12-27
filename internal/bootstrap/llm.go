@@ -2,12 +2,12 @@ package bootstrap
 
 import (
 	"log"
-	"neko-acm/external/llm"
+	"neko-acm/external/open_ai"
 )
 
 // 初始化大模型服务
 func initLlm() error {
-	err := llm.InitLlm()
+	err := open_ai.InitLlm()
 	if err != nil {
 		log.Println("初始化大模型服务失败！")
 		return err
