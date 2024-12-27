@@ -21,6 +21,7 @@ var rootCmd = &cobra.Command{
 			fmt.Println(" testcase: 生成测试用例")
 			fmt.Println(" solution: 生成题解")
 			fmt.Println(" translate: 翻译题目")
+			fmt.Println(" joke: 生成算法冷笑话")
 			fmt.Println(" server: 启动服务器模式")
 			fmt.Println(" exit: 退出")
 			fmt.Println(" ------------------------- ")
@@ -53,6 +54,10 @@ var rootCmd = &cobra.Command{
 				}
 			case "translate":
 				if err := TranslateCmd.RunE(nil, nil); err != nil {
+					return err
+				}
+			case "joke":
+				if err := JokeCmd.RunE(nil, nil); err != nil {
 					return err
 				}
 			default:
