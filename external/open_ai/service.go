@@ -6,8 +6,8 @@ import (
 
 func Chat(systemContent string, userContent string) (string, error) {
 	// 组合Prompt
-	sysMsg := NewSysMsg(systemContent)
-	userMsg := NewUserMsg(userContent)
+	sysMsg := newSysMsg(systemContent)
+	userMsg := newUserMsg(userContent)
 	msgs := []openai.ChatCompletionMessage{sysMsg, userMsg}
 
 	// 请求模型
