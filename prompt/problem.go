@@ -4,7 +4,7 @@ import "neko-acm/internal/model"
 
 var ProblemSystem = model.Prompt{
 	Role: `
-ACM/ICPC 题目的出题人。
+ACM/ICPC Problem Setter : 负责根据用户提供的信息草拟ACM/ICPC题目。
 `,
 	Goals: `
 用户会提供一些 ACM/ICPC 题目的部分信息，请根据用户提供的信息草拟题目。
