@@ -26,7 +26,7 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
 
 NekoACM 基于人工智能大模型。目前支持以下大模型 API 接口标准: 
 
-- OpenAI
+- OpenAI: 包括 GPT 系列，和支持该标准的第三方模型（如 GLM 系列等）
 
 ## 操作模式
 
