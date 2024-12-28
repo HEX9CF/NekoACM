@@ -74,6 +74,7 @@ func init() {
 	rootCmd.AddCommand(TestcaseCmd)
 	rootCmd.AddCommand(SolutionCmd)
 	rootCmd.AddCommand(TranslateCmd)
+	rootCmd.AddCommand(JokeCmd)
 }
 
 // 执行
