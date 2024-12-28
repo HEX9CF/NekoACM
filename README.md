@@ -314,7 +314,7 @@ NekoACM 支持将题目翻译为多种自然语言，包括但不限于汉语、
 
 #### 响应1
 
-language: "Java"
+"language": "Java"
 
 ```json
 {
