@@ -22,7 +22,7 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
 
 - [STUOJ](https://github.com/STUOJ/STUOJ)
 
-集成方法可以参考 STUOJ 的 neko 包: [STUOJ/external/neko](https://github.com/STUOJ/STUOJ/tree/main/external/neko) 
+集成方法可以参考 STUOJ 的 [neko](https://github.com/STUOJ/STUOJ/tree/main/external/neko) package。
 
 ## 大模型支持
 
