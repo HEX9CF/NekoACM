@@ -22,6 +22,8 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
 
 - [STUOJ](https://github.com/STUOJ/STUOJ)
 
+集成方法可以参考 STUOJ 的 neko 包: [STUOJ/external/neko](https://github.com/STUOJ/STUOJ/tree/main/external/neko) 
+
 ## 大模型支持
 
 NekoACM 基于人工智能大模型。目前支持以下大模型 API 接口标准: 
