@@ -49,6 +49,10 @@ NekoACM 基于人工智能大模型。目前支持以下大模型 API 接口标�
 | Russian/Русский/俄语        | RU/RUS              | ru/rus/ru-RU  |
 | Portuguese/Português/葡萄牙语 | PT/PRT              | pt/por/pt-PT  |
 
+为避免歧义，推荐使用形如 `zh-CN` 这样的语言代码。
+
+> 你也可以使用 `纯emoji` 来指定生成 Emoji 题目。
+
 ## 操作模式
 
 ### 终端启动模式
