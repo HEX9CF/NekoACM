@@ -11,7 +11,7 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
 - **题目生成**：根据用户提供的题目信息或题解生成算法题目
 - **测试数据生成**：根据用户提供的题目信息或题解生成测试用例
 - **题解生成**：根据用户提供的题目信息生成指定编程语言的题解代码，支持任意程序设计语言，包括但不限于 C、C++、Java、Python、汇编语言
-- **题目翻译**：将题目翻译为多种语言，支持任意自然语言，包括但不限于汉语、英语、西班牙语、法语、德语、日语、意大利语、韩语、俄语、葡萄牙语
+- **题目翻译**：在理解算法题目中专业术语和特定语境的基础上，将题目翻译为多种语言，支持任意自然语言，包括但不限于汉语、英语、西班牙语、法语、德语、日语、意大利语、韩语、俄语、葡萄牙语
 - **算法笑话**：讲个关于 ACM/ICPC 算法竞赛或 OI 信息学竞赛的冷笑话，让你开心一下。可以用来奖励一下 AC 的 OJ 用户
 
 ## OJ 系统集成
@@ -29,6 +29,25 @@ A large model-based ACM-ICPC algorithm problem automatic generation system that 
 NekoACM 基于人工智能大模型。目前支持以下大模型 API 接口标准: 
 
 - OpenAI: 包括 GPT 系列，和支持该标准的第三方模型（如 GLM 系列等）
+
+## 翻译功能
+
+在传统的机器翻译中，算法题目的语境往往被忽视，导致翻译结果出现术语错误和理解偏差。NekoACM 利用其基于人工智能大模型的优势，能够理解算法题目中的专业术语和特定语境，提供了一种更为精准和专业的翻译解决方案，支持将题目翻译为多种自然语言，包括但不限于汉语、英语、西班牙语、法语、德语、日语、意大利语、韩语、俄语、葡萄牙语。为算法题目提供国际化支持，使优秀的算法题目资源能够跨越语言障碍，被全球更多的学习者和教育者所使用。
+
+目标语言可以是语言名称或者语言代码。推荐使用语言代码，以避免歧义。常见的目标语言及其语言代码包括：
+
+| Language                  | Country/Region Code | Language Code |
+|---------------------------|---------------------|---------------|
+| Chinese/汉语/中文             | CN/CHN              | zh/zho/zh-CN  |
+| English/English/英语        | US/USA              | en/eng/en-US  |
+| Spanish/Español/西班牙语      | ES/ESP              | es/spa/es-ES  |
+| French/Français/法语        | FR/FRA              | fr/fra/fr-FR  |
+| German/Deutsch/德语         | DE/DEU              | de/deu/de-DE  |
+| Japanese/日本語/日语           | JP/JPN              | ja/jpn/ja-JP  |
+| Italian/Italiano/意大利语     | IT/ITA              | it/ita/it-IT  |
+| Korean/한국어/韩语             | KR/KOR              | ko/kor/ko-KR  |
+| Russian/Русский/俄语        | RU/RUS              | ru/rus/ru-RU  |
+| Portuguese/Português/葡萄牙语 | PT/PRT              | pt/por/pt-PT  |
 
 ## 操作模式
 
@@ -76,25 +95,6 @@ NekoACM 基于人工智能大模型。目前支持以下大模型 API 接口标�
 | 生成题解代码 | POST | /api/solution  | 用户  | 根据用户提供的题目信息生成指定编程语言的题解             |
 | 翻译题目   | POST | /api/translate | 用户  | 将题目翻译为指定语言                         |
 | 算法笑话   | GET  | /api/joke      | 用户  | 返回一个关于 ACM/ICPC 算法竞赛或 OI 信息学竞赛的冷笑话 |
-
-## 翻译功能
-
-NekoACM 支持将题目翻译为多种自然语言，包括但不限于汉语、英语、西班牙语、法语、德语、日语、意大利语、韩语、俄语、葡萄牙语。目标语言可以是语言名称或者语言代码。推荐使用语言代码，以避免歧义。
-
-常见的目标语言及其语言代码包括：
-
-| Language                  | Country/Region Code | Language Code |
-|---------------------------|---------------------|---------------|
-| Chinese/汉语/中文             | CN/CHN              | zh/zho/zh-CN  |
-| English/English/英语        | US/USA              | en/eng/en-US  |
-| Spanish/Español/西班牙语      | ES/ESP              | es/spa/es-ES  |
-| French/Français/法语        | FR/FRA              | fr/fra/fr-FR  |
-| German/Deutsch/德语         | DE/DEU              | de/deu/de-DE  |
-| Japanese/日本語/日语           | JP/JPN              | ja/jpn/ja-JP  |
-| Italian/Italiano/意大利语     | IT/ITA              | it/ita/it-IT  |
-| Korean/한국어/韩语             | KR/KOR              | ko/kor/ko-KR  |
-| Russian/Русский/俄语        | RU/RUS              | ru/rus/ru-RU  |
-| Portuguese/Português/葡萄牙语 | PT/PRT              | pt/por/pt-PT  |
 
 ## 注意事项
 
