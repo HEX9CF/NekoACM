@@ -1,4 +1,4 @@
-# NekoACM 🐱🐾 
+# NekoACM 🐱🐾 Neural-network Engine Kit of ACM-ICPC
 
 ## 项目简介
 
