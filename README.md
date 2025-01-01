@@ -2,7 +2,7 @@
 
 ## 项目简介
 
-NekoACM: Neural-network Engine Knowledge-base of ACM-ICPC
+NekoACM: Neural-network Engine Kit of ACM-ICPC
 
 基于人工智能大模型的 ACM-ICPC 算法题目自动出题系统，可以自动生成算法题目、测试用例和题解代码。系统可以作为一个单独的服务运行，也可以作为一个模块集成到 Online Judge 系统中。
 
