@@ -7,6 +7,7 @@ import (
 	"log"
 	"neko-acm/internal/model"
 	"neko-acm/internal/service/chat"
+	"neko-acm/prompt"
 	"os"
 	"strings"
 )
@@ -17,10 +18,11 @@ var ChatCmd = &cobra.Command{
 	Short: "Chat with AI",
 	Long:  "Chat with AI.",
 	RunE: func(cmd *cobra.Command, args []string) error {
+		reader := bufio.NewReader(os.Stdin)
 		fmt.Println(" ----- NekoACM Chat ----- ")
 		fmt.Println(" exit: 退出")
-		fmt.Println(" ------------------------- ")
-		reader := bufio.NewReader(os.Stdin)
+		fmt.Println(" ------------------------ ")
+		fmt.Println(prompt.ChatSystem.Initialization)
 
 		for {
 			if err := clearBuffer(reader); err != nil {
