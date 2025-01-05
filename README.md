@@ -4,17 +4,16 @@ NekoACM: Neural-network Engine Kit of ACM-ICPC
 
 ## 项目简介
 
-基于人工智能大模型的 ACM-ICPC 算法题目自动出题套件，可以自动生成算法题目、测试用例和题解代码。系统可以作为一个单独的服务运行，也可以作为一个模块集成到 Online Judge 系统中。
-
-A large model-based ACM-ICPC algorithm problem automatic generation kit that can automatically generate algorithm problems, testcases, and problem solutions. The system can run as a standalone service or be integrated as a module into an Online Judge system.
+基于人工智能大模型的 ACM-ICPC Online Judge 神经网络引擎套件，可以自动生成算法题目、测试用例和题解代码，同时提供一个算法竞赛 AI 编程助手。系统可以作为一个单独的服务运行，也可以作为一个模块集成到 Online Judge 系统中。
 
 ## 功能介绍
 
-- **题目生成**：根据用户提供的题目信息或题解生成算法题目
-- **测试数据生成**：根据用户提供的题目信息或题解生成测试用例
-- **题解生成**：根据用户提供的题目信息生成指定编程语言的题解代码，支持任意程序设计语言，包括但不限于 C、C++、Java、Python、汇编语言
-- **题目翻译**：在理解算法题目中专业术语和特定语境的基础上，将题目翻译为多种语言，支持任意自然语言，包括但不限于汉语、英语、西班牙语、法语、德语、日语、意大利语、韩语、俄语、葡萄牙语
-- **算法笑话**：讲个关于 ACM/ICPC 算法竞赛或 OI 信息学竞赛的冷笑话，让你开心一下。可以用来奖励一下 AC 的 OJ 用户
+- **编程助手**：一个专注于为 ACM/ICPC 算法竞赛和 OI 信息学竞赛选手提供帮助的编程助手，提供数据结构与算法相关的指导。
+- **题目生成**：根据用户提供的题目信息或题解生成算法题目。
+- **测试数据生成**：根据用户提供的题目信息或题解生成测试用例。
+- **题解生成**：根据用户提供的题目信息生成指定编程语言的题解代码，支持任意程序设计语言，包括但不限于 C、C++、Java、Python、汇编语言。
+- **题目翻译**：在理解算法题目中专业术语和特定语境的基础上，将题目翻译为多种语言，支持任意自然语言，包括但不限于汉语、英语、西班牙语、法语、德语、日语、意大利语、韩语、俄语、葡萄牙语。
+- **算法笑话**：讲个关于 ACM/ICPC 算法竞赛或 OI 信息学竞赛的冷笑话，让你开心一下。可以用来奖励一下 AC 的 OJ 用户。
 
 ## OJ 系统集成
 
@@ -62,12 +61,17 @@ NekoACM 基于人工智能大模型。目前支持以下大模型 API 接口标�
 直接通过终端启动程序并通过命令行参数选择功能。
 
 - `neko`: 以命令行模式启动
+- `neko chat`: 直接以对话模式启动
 - `neko server`: 直接以服务器模式启动
 - `neko problem`: 功能同命令行模式的 `problem` 命令
 - `neko testcase`: 功能同命令行模式的 `testcase` 命令
 - `neko solution`: 功能同命令行模式的 `solution` 命令
 - `neko translate`: 功能同命令行模式的 `translate` 命令
 - `neko joke`: 功能同命令行模式的 `joke` 命令
+
+### 对话模式
+
+进入对话模式后，可以与编程助手进行对话。输入 `exit` 退出对话模式。
 
 ### 命令行模式
 
@@ -138,6 +142,14 @@ NekoACM 基于人工智能大模型。目前支持以下大模型 API 接口标�
 ![image](https://github.com/user-attachments/assets/6b533fc9-988a-41c5-b06f-9e3e3a2755d9)
 
 ## 输入输出格式
+
+### 编程助手对话
+
+#### 输入
+
+| 字段名     | 数据类型   | 字段说明 |
+|---------|--------|------|
+| content | string | 对话内容 |
 
 ### 题目生成
 
