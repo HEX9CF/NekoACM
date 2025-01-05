@@ -17,6 +17,7 @@ var rootCmd = &cobra.Command{
 		reader := bufio.NewReader(os.Stdin)
 		for {
 			fmt.Println(" -------- NekoACM -------- ")
+			fmt.Println(" chat: 编程助手对话")
 			fmt.Println(" problem: 生成题目")
 			fmt.Println(" testcase: 生成测试用例")
 			fmt.Println(" solution: 生成题解")
@@ -60,6 +61,10 @@ var rootCmd = &cobra.Command{
 				if err := JokeCmd.RunE(nil, nil); err != nil {
 					return err
 				}
+			case "chat":
+				if err := ChatCmd.RunE(nil, nil); err != nil {
+					return err
+				}
 			default:
 				fmt.Println("未知命令！")
 			}
@@ -75,6 +80,7 @@ func init() {
 	rootCmd.AddCommand(SolutionCmd)
 	rootCmd.AddCommand(TranslateCmd)
 	rootCmd.AddCommand(JokeCmd)
+	rootCmd.AddCommand(ChatCmd)
 }
 
 // 执行
