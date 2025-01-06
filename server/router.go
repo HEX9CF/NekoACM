@@ -32,6 +32,7 @@ func InitRoute() error {
 			c.JSON(http.StatusOK, model.RespOk("NekoACM 服务可用", nil))
 		})
 		apiRoute.POST("/chat", handler.ChatAssistant)
+		apiRoute.POST("/judge", handler.JudgeSubmit)
 		apiRoute.POST("/problem", handler.GenerateProblem)
 		apiRoute.POST("/testcase", handler.GenerateTestcase)
 		apiRoute.POST("/solution", handler.GenerateSolution)

@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"github.com/sashabaranov/go-openai"
-	"neko-acm/prompt"
 )
 
 // 测试连接
@@ -31,7 +30,7 @@ func Test() error {
 	return nil
 }
 
-func Info() (string, error) {
+/*func Info() (string, error) {
 	resp, err := client.CreateChatCompletion(
 		context.Background(),
 		openai.ChatCompletionRequest{
@@ -50,3 +49,4 @@ func Info() (string, error) {
 
 	return resp.Choices[0].Message.Content, nil
 }
+*/
