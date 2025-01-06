@@ -4,7 +4,7 @@ NekoACM: Neural-network Engine Kit of ACM-ICPC
 
 ## 项目简介
 
-基于人工智能大模型的 ACM-ICPC Online Judge 神经网络引擎套件，可以自动出题、生成测试用例和题解代码，同时提供一个算法竞赛 AI 编程助手。系统可以作为一个单独的服务运行，也可以作为一个模块集成到 Online Judge 系统中。
+基于人工智能大模型的 ACM-ICPC Online Judge 神经网络引擎套件，提供自动出题、生成测试用例和题解代码、算法竞赛 AI 编程助手、虚拟评测等功能。系统可以作为一个单独的服务运行，也可以作为一个模块集成到 Online Judge 系统中。
 
 ## 功能介绍
 
