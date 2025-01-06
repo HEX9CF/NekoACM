@@ -2,6 +2,7 @@ package bootstrap
 
 import (
 	"log"
+	"neko-acm/prompt"
 	"os"
 )
 
@@ -14,5 +15,6 @@ func Init() error {
 	if err := initLlm(); err != nil {
 		return err
 	}
+	prompt.InitPrompt()
 	return nil
 }
