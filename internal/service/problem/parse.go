@@ -7,22 +7,21 @@ import (
 	"neko-acm/external/open_ai"
 	"neko-acm/internal/model"
 	"neko-acm/prompt"
-	"neko-acm/utils"
 )
 
 // 解析题目
-func Parse(pi model.ProblemData) (model.Problem, error) {
+func Parse(pd model.ProblemData) (model.Problem, error) {
 	var p model.Problem
 
-	// 题目数据转换为字符串
-	instruction, err := utils.PrettyStruct(pi)
-	if err != nil {
-		return model.Problem{}, err
+	// 题目数据为空
+	if pd.Data == "" {
+		return model.Problem{}, nil
 	}
-	log.Println("请求解析题目：" + instruction)
+
+	log.Println("请求解析题目：" + pd.Data)
 
 	// 请求模型
-	resp, err := open_ai.Chat(prompt.ParseSystem.String(), instruction)
+	resp, err := open_ai.Chat(prompt.ParseSystem.String(), pd.Data)
 	if err != nil {
 		return model.Problem{}, errors.New("请求模型失败！")
 	}
