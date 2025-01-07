@@ -15,7 +15,7 @@ import (
 // 对话
 var ChatCmd = &cobra.Command{
 	Use:   "chat",
-	Short: "Chat with AI",
+	Short: "Chat with AI.",
 	Long:  "Chat with AI.",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		reader := bufio.NewReader(os.Stdin)

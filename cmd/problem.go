@@ -14,8 +14,8 @@ import (
 // 生成题目
 var ProblemCmd = &cobra.Command{
 	Use:   "problem",
-	Short: "Generate a problem",
-	Long:  "Generate an algorithm problem.",
+	Short: "Generate a problem.",
+	Long:  "Generate an ACM-ICPC algorithm problem.",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		fmt.Println(" -------- 生成题目 -------- ")
 		reader := bufio.NewReader(os.Stdin)

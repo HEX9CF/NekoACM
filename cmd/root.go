@@ -18,11 +18,12 @@ var rootCmd = &cobra.Command{
 		for {
 			fmt.Println(" -------- NekoACM -------- ")
 			fmt.Println(" chat: 编程助手对话")
+			fmt.Println(" parse: 解析题目")
+			fmt.Println(" translate: 翻译题目")
 			fmt.Println(" problem: 生成题目")
 			fmt.Println(" testcase: 生成测试用例")
 			fmt.Println(" solution: 生成题解")
-			fmt.Println(" translate: 翻译题目")
-			fmt.Println(" joke: 生成算法冷笑话")
+			fmt.Println(" joke: 生成算法笑话")
 			fmt.Println(" server: 启动服务器模式")
 			fmt.Println(" exit: 退出")
 			fmt.Println(" ------------------------- ")
@@ -53,6 +54,10 @@ var rootCmd = &cobra.Command{
 				if err := SolutionCmd.RunE(nil, nil); err != nil {
 					return err
 				}
+			case "parse":
+				if err := ParseCmd.RunE(nil, nil); err != nil {
+					return err
+				}
 			case "translate":
 				if err := TranslateCmd.RunE(nil, nil); err != nil {
 					return err
@@ -78,6 +83,7 @@ func init() {
 	rootCmd.AddCommand(ProblemCmd)
 	rootCmd.AddCommand(TestcaseCmd)
 	rootCmd.AddCommand(SolutionCmd)
+	rootCmd.AddCommand(ParseCmd)
 	rootCmd.AddCommand(TranslateCmd)
 	rootCmd.AddCommand(JokeCmd)
 	rootCmd.AddCommand(ChatCmd)

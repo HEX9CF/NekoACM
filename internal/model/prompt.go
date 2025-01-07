@@ -1,14 +1,14 @@
 package model
 
 type Prompt struct {
-	Role           string `json:"role,omitempty"`           // 角色
-	Goals          string `json:"goals,omitempty"`          // 目标
-	Constrains     string `json:"constrains,omitempty"`     // 约束
-	Skills         string `json:"skills,omitempty"`         // 技能
-	InputFormat    string `json:"input_format,omitempty"`   // 输入格式
-	OutputFormat   string `json:"output_format,omitempty"`  // 输出格式
-	Workflow       string `json:"workflow,omitempty"`       // 工作流程
-	Initialization string `json:"initialization,omitempty"` // 初始化
+	Role           string `json:"role"`           // 角色
+	Goals          string `json:"goals"`          // 目标
+	Constrains     string `json:"constrains"`     // 约束
+	Skills         string `json:"skills"`         // 技能
+	InputFormat    string `json:"input_format"`   // 输入格式
+	OutputFormat   string `json:"output_format"`  // 输出格式
+	Workflow       string `json:"workflow"`       // 工作流程
+	Initialization string `json:"initialization"` // 初始化
 }
 
 func (p *Prompt) String() string {

@@ -13,7 +13,7 @@ import (
 // 生成笑话
 var JokeCmd = &cobra.Command{
 	Use:   "joke",
-	Short: "Tell a joke",
+	Short: "Tell a joke.",
 	Long:  "Tell a joke about algorithm competition to make you happy.",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		fmt.Println(" -------- 生成笑话 -------- ")
