@@ -6,15 +6,15 @@ type JudgeStatus uint64
 type Submission struct {
 	SourceCode     string `json:"source_code"`
 	Language       string `json:"language"`
-	Stdin          string `json:"stdin,omitempty"`
-	ExpectedOutput string `json:"expected_output,omitempty"`
+	Stdin          string `json:"stdin"`
+	ExpectedOutput string `json:"expected_output"`
 }
 
 // 评测结果
 type Judgement struct {
-	Stdout        string `json:"stdout,omitempty"`
-	Stderr        string `json:"stderr,omitempty"`
-	CompileOutput string `json:"compile_output,omitempty"`
-	Message       string `json:"message,omitempty"`
+	Stdout        string `json:"stdout"`
+	Stderr        string `json:"stderr"`
+	CompileOutput string `json:"compile_output"`
+	Message       string `json:"message"`
 	Status        string `json:"status"`
 }
