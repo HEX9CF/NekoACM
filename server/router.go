@@ -31,14 +31,14 @@ func InitRoute() error {
 		apiRoute.GET("/", func(c *gin.Context) {
 			c.JSON(http.StatusOK, model.RespOk("NekoACM 服务可用", nil))
 		})
-		apiRoute.POST("/chat", handler.ChatAssistant)
-		apiRoute.POST("/judge", handler.JudgeSubmit)
-		apiRoute.POST("/problem", handler.GenerateProblem)
-		apiRoute.POST("/testcase", handler.GenerateTestcase)
-		apiRoute.POST("/solution", handler.GenerateSolution)
-		apiRoute.POST("/translate", handler.TranslateProblem)
-		apiRoute.GET("/joke", handler.GenerateJoke)
 	}
+
+	initProblemRoute(apiRoute)
+	initTestcaseRoute(apiRoute)
+	initSolutionRoute(apiRoute)
+	initJudgeRoute(apiRoute)
+	initChatRoute(apiRoute)
+	initMiscRoute(apiRoute)
 
 	// 启动服务
 	err := ginServer.Run(":" + config.Port)
@@ -46,4 +46,42 @@ func InitRoute() error {
 		return err
 	}
 	return nil
+}
+
+func initProblemRoute(rg *gin.RouterGroup) {
+	pr := rg.Group("/problem")
+
+	pr.POST("/parse", handler.ParseProblem)
+	pr.POST("/translate", handler.TranslateProblem)
+	pr.POST("/generate", handler.GenerateProblem)
+}
+
+func initTestcaseRoute(rg *gin.RouterGroup) {
+	tc := rg.Group("/testcase")
+
+	tc.POST("/generate", handler.GenerateTestcase)
+}
+
+func initSolutionRoute(rg *gin.RouterGroup) {
+	s := rg.Group("/solution")
+
+	s.POST("/generate", handler.GenerateSolution)
+}
+
+func initJudgeRoute(rg *gin.RouterGroup) {
+	j := rg.Group("/judge")
+
+	j.POST("/submit", handler.JudgeSubmit)
+}
+
+func initChatRoute(rg *gin.RouterGroup) {
+	c := rg.Group("/chat")
+
+	c.POST("/assistant", handler.ChatAssistant)
+}
+
+func initMiscRoute(rg *gin.RouterGroup) {
+	m := rg.Group("/misc")
+
+	m.GET("/joke", handler.GenerateJoke)
 }
