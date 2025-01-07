@@ -3,7 +3,7 @@ services:
     neko-acm:
         container_name: neko-acm
         image: neko-acm
-        restart: no
+        restart: "no"
         volumes:
             - ./config.yaml:/app/config.yaml
         ports:
