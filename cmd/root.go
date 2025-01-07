@@ -17,8 +17,8 @@ var rootCmd = &cobra.Command{
 		reader := bufio.NewReader(os.Stdin)
 		for {
 			fmt.Println(" -------- NekoACM -------- ")
-			fmt.Println(" chat: 编程助手对话")
-			fmt.Println(" parse: 解析题目")
+			fmt.Println(" chat: AI 编程助手对话")
+			fmt.Println(" parse: 解析题目为 JSON 格式")
 			fmt.Println(" translate: 翻译题目")
 			fmt.Println(" problem: 生成题目")
 			fmt.Println(" testcase: 生成测试用例")
