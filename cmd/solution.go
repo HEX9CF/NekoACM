@@ -14,7 +14,7 @@ import (
 // 生成题解
 var SolutionCmd = &cobra.Command{
 	Use:   "solution",
-	Short: "Generate a solution",
+	Short: "Generate a solution.",
 	Long:  "Generate a solution.",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		fmt.Println(" -------- 生成题解 -------- ")

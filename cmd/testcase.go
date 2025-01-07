@@ -14,7 +14,7 @@ import (
 // 生成测试用例
 var TestcaseCmd = &cobra.Command{
 	Use:   "testcase",
-	Short: "Generate a testcase",
+	Short: "Generate a testcase.",
 	Long:  "Generate a testcase.",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		fmt.Println(" -------- 生成测试用例 -------- ")

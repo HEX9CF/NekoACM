@@ -14,7 +14,7 @@ import (
 // 翻译题目
 var TranslateCmd = &cobra.Command{
 	Use:   "translate",
-	Short: "Translate a problem",
+	Short: "Translate a problem.",
 	Long:  "Translate an algorithm problem to target language.",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		fmt.Println(" -------- 翻译题目 -------- ")
