@@ -2,6 +2,7 @@ package open_ai
 
 import (
 	"github.com/sashabaranov/go-openai"
+	"strings"
 )
 
 func Chat(systemContent string, userContent string) (string, error) {
@@ -16,5 +17,11 @@ func Chat(systemContent string, userContent string) (string, error) {
 		return "", err
 	}
 
-	return resp.Content, nil
+	// 处理结果
+	data := strings.TrimSpace(resp.Content)
+	data = strings.Replace(data, "```json\n{", "{", 1)
+	data = strings.Replace(data, "```\n{", "{", 1)
+	data = strings.Replace(data, "}\n```", "}", 1)
+
+	return data, nil
 }
