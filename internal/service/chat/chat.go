@@ -17,7 +17,7 @@ func Assistant(msg model.ChatMsg) (string, error) {
 	log.Println("请求对话，内容长度:", len(msg.Content))
 
 	// 请求模型
-	resp, err := open_ai.Chat(prompt.ChatSystem.String(), msg.Content)
+	resp, err := open_ai.Chat(prompt.ChatAssistant, msg.Content)
 	if err != nil {
 		return "", err
 	}

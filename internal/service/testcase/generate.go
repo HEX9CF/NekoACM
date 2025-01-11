@@ -22,7 +22,7 @@ func Generate(ti model.TestcaseInstruction) (model.Testcase, error) {
 	log.Println("请求生成测试用例：" + instruction)
 
 	// 请求模型
-	resp, err := open_ai.Chat(prompt.TestcaseSystem.String(), instruction)
+	resp, err := open_ai.Chat(prompt.TestcaseGenerate, instruction)
 	if err != nil {
 		log.Println(err)
 		return model.Testcase{}, errors.New("请求模型失败！")

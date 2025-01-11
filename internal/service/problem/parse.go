@@ -21,7 +21,7 @@ func Parse(pd model.ProblemData) (model.Problem, error) {
 	log.Println("请求解析题目：" + pd.Data)
 
 	// 请求模型
-	resp, err := open_ai.Chat(prompt.ParseSystem.String(), pd.Data)
+	resp, err := open_ai.Chat(prompt.ProblemParse, pd.Data)
 	if err != nil {
 		return model.Problem{}, errors.New("请求模型失败！")
 	}

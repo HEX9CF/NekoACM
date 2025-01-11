@@ -22,7 +22,7 @@ func Generate(pi model.ProblemInstruction) (model.Problem, error) {
 	log.Println("请求生成题目：" + instruction)
 
 	// 请求模型
-	resp, err := open_ai.Chat(prompt.ProblemSystem.String(), instruction)
+	resp, err := open_ai.Chat(prompt.ProblemGenerate, instruction)
 	if err != nil {
 		log.Println(err)
 		return model.Problem{}, errors.New("请求模型失败！")

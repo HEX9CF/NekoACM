@@ -11,7 +11,7 @@ func TellJoke() (string, error) {
 	log.Println("请求生成笑话...")
 
 	// 请求模型
-	resp, err := open_ai.Chat(prompt.JokeSystem.String(), prompt.JokeUser)
+	resp, err := open_ai.Chat(prompt.TellJoke, prompt.TellJokeUser)
 	if err != nil {
 		return "", err
 	}

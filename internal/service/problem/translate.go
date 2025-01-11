@@ -22,7 +22,7 @@ func Translate(pi model.TranslateInstruction) (model.Problem, error) {
 	log.Println("请求翻译题目：" + instruction)
 
 	// 请求模型
-	resp, err := open_ai.Chat(prompt.TranslateSystem.String(), instruction)
+	resp, err := open_ai.Chat(prompt.ProblemTranslate, instruction)
 	if err != nil {
 		return model.Problem{}, errors.New("请求模型失败！")
 	}
