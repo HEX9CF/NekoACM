@@ -469,7 +469,7 @@ NekoACM 基于人工智能大模型。目前支持以下大模型 API 接口标�
 
 #### 响应4
 
-"target_lang": "纯emoji"
+"target_lang": "Emojis only"
 
 ```json
 {
