@@ -1,4 +1,4 @@
-package conf
+package config
 
 type ServerConf struct {
 	Port  string `yaml:"port" json:"port"`

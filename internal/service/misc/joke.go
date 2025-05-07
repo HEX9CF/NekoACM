@@ -2,7 +2,7 @@ package misc
 
 import (
 	"log"
-	"neko-acm/external/open_ai"
+	"neko-acm/internal/infrastructure/open_ai"
 	"neko-acm/prompt"
 )
 

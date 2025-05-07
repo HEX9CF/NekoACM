@@ -1,16 +1,16 @@
-package server
+package http
 
 import (
 	"github.com/gin-gonic/gin"
-	"neko-acm/internal/conf"
+	handler2 "neko-acm/internal/interfaces/http/handler"
+	"neko-acm/internal/interfaces/http/middlewares"
 	"neko-acm/internal/model"
-	"neko-acm/server/handler"
-	"neko-acm/server/middlewares"
+	"neko-acm/pkg/config"
 	"net/http"
 )
 
 func InitRoute() error {
-	config := conf.Conf.Server
+	config := config.Conf.Server
 
 	// index
 	ginServer.GET("/", func(c *gin.Context) {
@@ -51,37 +51,37 @@ func InitRoute() error {
 func initProblemRoute(rg *gin.RouterGroup) {
 	pr := rg.Group("/problem")
 
-	pr.POST("/parse", handler.ParseProblem)
-	pr.POST("/translate", handler.TranslateProblem)
-	pr.POST("/generate", handler.GenerateProblem)
+	pr.POST("/parse", handler2.ParseProblem)
+	pr.POST("/translate", handler2.TranslateProblem)
+	pr.POST("/generate", handler2.GenerateProblem)
 }
 
 func initTestcaseRoute(rg *gin.RouterGroup) {
 	tc := rg.Group("/testcase")
 
-	tc.POST("/generate", handler.GenerateTestcase)
+	tc.POST("/generate", handler2.GenerateTestcase)
 }
 
 func initSolutionRoute(rg *gin.RouterGroup) {
 	s := rg.Group("/solution")
 
-	s.POST("/generate", handler.GenerateSolution)
+	s.POST("/generate", handler2.GenerateSolution)
 }
 
 func initJudgeRoute(rg *gin.RouterGroup) {
 	j := rg.Group("/judge")
 
-	j.POST("/submit", handler.JudgeSubmit)
+	j.POST("/submit", handler2.JudgeSubmit)
 }
 
 func initChatRoute(rg *gin.RouterGroup) {
 	c := rg.Group("/chat")
 
-	c.POST("/assistant", handler.ChatAssistant)
+	c.POST("/assistant", handler2.ChatAssistant)
 }
 
 func initMiscRoute(rg *gin.RouterGroup) {
 	m := rg.Group("/misc")
 
-	m.GET("/joke", handler.GenerateJoke)
+	m.GET("/joke", handler2.GenerateJoke)
 }

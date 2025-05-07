@@ -3,22 +3,22 @@ package open_ai
 import (
 	"github.com/sashabaranov/go-openai"
 	"log"
-	"neko-acm/internal/conf"
+	"neko-acm/pkg/config"
 )
 
 var (
 	client *openai.Client
-	config conf.OpenaiConf
+	conf   config.OpenaiConf
 )
 
 // 初始化大模型服务
 func InitLlm() error {
-	config = conf.Conf.Openai
+	conf = config.Conf.Openai
 
 	// 配置大模型服务
-	openaiConfig := openai.DefaultConfig(config.ApiKey)
-	openaiConfig.BaseURL = config.BaseUrl
-	log.Println("正在连接大模型服务：" + config.BaseUrl)
+	openaiConfig := openai.DefaultConfig(conf.ApiKey)
+	openaiConfig.BaseURL = conf.BaseUrl
+	log.Println("正在连接大模型服务：" + conf.BaseUrl)
 
 	// 创建客户端
 	client = openai.NewClientWithConfig(openaiConfig)

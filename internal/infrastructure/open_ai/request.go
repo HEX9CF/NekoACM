@@ -10,7 +10,7 @@ func RequestMessage(msg openai.ChatCompletionMessage) (openai.ChatCompletionMess
 	resp, err := client.CreateChatCompletion(
 		context.Background(),
 		openai.ChatCompletionRequest{
-			Model:    config.Model,
+			Model:    conf.Model,
 			Messages: []openai.ChatCompletionMessage{msg},
 		},
 	)
@@ -27,7 +27,7 @@ func RequestMessages(msgs []openai.ChatCompletionMessage) (openai.ChatCompletion
 	resp, err := client.CreateChatCompletion(
 		context.Background(),
 		openai.ChatCompletionRequest{
-			Model:    config.Model,
+			Model:    conf.Model,
 			Messages: msgs,
 		},
 	)
