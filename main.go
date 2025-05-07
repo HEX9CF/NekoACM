@@ -1,8 +1,8 @@
 package main
 
 import (
-	"neko-acm/cmd"
-	"neko-acm/internal/bootstrap"
+	"neko-acm/cmd/bootstrap"
+	"neko-acm/cmd/cli"
 )
 
 func main() {
@@ -10,5 +10,5 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	cmd.Execute()
+	cli.Execute()
 }
