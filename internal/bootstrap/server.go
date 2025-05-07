@@ -2,12 +2,12 @@ package bootstrap
 
 import (
 	"log"
-	"neko-acm/server"
+	"neko-acm/internal/interfaces/http"
 )
 
 // 初始化服务器
 func InitServer() error {
-	err := server.InitServer()
+	err := http.InitServer()
 	if err != nil {
 		log.Println("初始化服务器失败！")
 		return err

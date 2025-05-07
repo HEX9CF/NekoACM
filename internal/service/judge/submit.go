@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"log"
-	"neko-acm/external/open_ai"
+	"neko-acm/internal/infrastructure/open_ai"
 	"neko-acm/internal/model"
 	"neko-acm/prompt"
 	"neko-acm/utils"
