@@ -1,4 +1,4 @@
-package conf
+package config
 
 type OpenaiConf struct {
 	Model   string `yaml:"model" json:"model"`
