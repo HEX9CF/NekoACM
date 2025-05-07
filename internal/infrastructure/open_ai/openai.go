@@ -3,17 +3,17 @@ package open_ai
 import (
 	"github.com/sashabaranov/go-openai"
 	"log"
-	"neko-acm/internal/conf"
+	"neko-acm/internal/config"
 )
 
 var (
 	client *openai.Client
-	config conf.OpenaiConf
+	config config.OpenaiConf
 )
 
 // 初始化大模型服务
 func InitLlm() error {
-	config = conf.Conf.Openai
+	config = config.Conf.Openai
 
 	// 配置大模型服务
 	openaiConfig := openai.DefaultConfig(config.ApiKey)

@@ -6,8 +6,8 @@ import (
 	"log"
 	"neko-acm/internal/infrastructure/open_ai"
 	"neko-acm/internal/model"
+	"neko-acm/pkg/utils"
 	"neko-acm/prompt"
-	"neko-acm/utils"
 )
 
 // 生成题解

@@ -2,15 +2,15 @@ package http
 
 import (
 	"github.com/gin-gonic/gin"
-	"neko-acm/internal/conf"
 	handler2 "neko-acm/internal/interfaces/http/handler"
 	"neko-acm/internal/interfaces/http/middlewares"
 	"neko-acm/internal/model"
+	"neko-acm/pkg/config"
 	"net/http"
 )
 
 func InitRoute() error {
-	config := conf.Conf.Server
+	config := config.Conf.Server
 
 	// index
 	ginServer.GET("/", func(c *gin.Context) {

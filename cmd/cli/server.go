@@ -3,7 +3,7 @@ package cli
 import (
 	"fmt"
 	"github.com/spf13/cobra"
-	"neko-acm/internal/bootstrap"
+	"neko-acm/cmd/bootstrap"
 )
 
 // 服务器命令

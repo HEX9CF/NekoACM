@@ -2,7 +2,7 @@ package problem
 
 import (
 	"neko-acm/internal/model"
-	"neko-acm/utils"
+	"neko-acm/pkg/utils"
 	"strconv"
 	"time"
 )
