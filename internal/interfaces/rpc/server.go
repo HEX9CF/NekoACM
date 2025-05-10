@@ -3,6 +3,7 @@ package rpc
 import (
 	"google.golang.org/grpc"
 	"neko-acm/internal/interfaces/rpc/handler"
+	"neko-acm/internal/interfaces/rpc/interceptors"
 	"neko-acm/pkg/config"
 	"neko-acm/pkg/pb"
 	"net"
@@ -16,7 +17,11 @@ func InitServer() error {
 		return err
 	}
 
-	grpcServer := grpc.NewServer()
+	grpcServer := grpc.NewServer(
+		grpc.ChainUnaryInterceptor(
+			interceptors.TokenAuthInterceptor(),
+		),
+	)
 
 	// 注册服务
 	pb.RegisterProblemServiceServer(grpcServer, &handler.ProblemServer{})
