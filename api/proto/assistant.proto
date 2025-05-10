@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package assistant;
+option go_package = ".;pb";
+
+// 助手服务
+service AssistantService {
+  // 聊天功能
+  rpc Chat(ChatRequest) returns (ChatResponse);
+}
+
+// 聊天请求
+message ChatRequest {
+  string content = 1;
+}
+
+// 聊天响应
+message ChatResponse {
+  string content = 1;
+}
