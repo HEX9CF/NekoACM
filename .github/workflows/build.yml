@@ -29,6 +29,7 @@ jobs:
       run: go mod tidy
 
     - name: Generate
+      shell: bash
       run: go generate ./...
 
     - name: Build
