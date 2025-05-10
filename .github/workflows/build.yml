@@ -28,18 +28,9 @@ jobs:
     - name: Tidy
       run: go mod tidy
 
-    - name: Debug directory structure
-      run: |
-        pwd
-        find api -type f | sort
-        cat api/proto/generate.go
-
     - name: Generate
       shell: bash
-      run: |
-        pwd
-        ls -la api/proto/
-        go generate ./...
+      run: go generate ./...
 
     - name: Build
       run: GOOS=windows GOARCH=amd64 go build -ldflags="-s -w" -o neko-acm.exe
