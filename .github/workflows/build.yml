@@ -25,8 +25,11 @@ jobs:
     - name: Setup Protoc
       uses: arduino/setup-protoc@v3
 
-    - name: Update PATH
-      run: export PATH="$PATH:$(go env GOPATH)/bin"
+    - name: Setup Go Protobuf
+      run: |
+        go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+        go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+        export PATH="$PATH:$(go env GOPATH)/bin"
 
     - name: Tidy
       run: go mod tidy
