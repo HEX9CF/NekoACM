@@ -25,6 +25,9 @@ jobs:
     - name: Setup Protoc
       uses: arduino/setup-protoc@v3
 
+    - name: Update PATH
+      run: export PATH="$PATH:$(go env GOPATH)/bin"
+
     - name: Tidy
       run: go mod tidy
 
