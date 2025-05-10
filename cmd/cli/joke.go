@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"github.com/spf13/cobra"
 	"log"
-	"neko-acm/internal/service/misc"
+	"neko-acm/internal/application/service"
 	"os"
 	"strings"
 )
@@ -22,7 +22,7 @@ var JokeCmd = &cobra.Command{
 		for {
 			// 生成笑话
 			fmt.Println("正在生成笑话...")
-			_, err := misc.TellJoke()
+			_, err := service.TellJoke()
 			if err != nil {
 				log.Println(err)
 

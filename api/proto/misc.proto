@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package misc;
+option go_package = ".;pb";
+
+// 杂项服务
+service MiscService {
+  // 生成笑话
+  rpc TellJoke(Empty) returns (JokeResponse);
+}
+
+// 空请求
+message Empty {
+}
+
+// 笑话响应
+message JokeResponse {
+  string content = 1;
+}

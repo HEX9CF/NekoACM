@@ -36,5 +36,6 @@ dist/
 # Output directory
 output/
 
-
+# protobuf
+pkg/pb/
 

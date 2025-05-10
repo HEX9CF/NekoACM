@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"github.com/spf13/cobra"
 	"log"
-	"neko-acm/internal/model"
-	"neko-acm/internal/service/chat"
+	"neko-acm/internal/application/dto"
+	"neko-acm/internal/application/service"
 	"os"
 	"strings"
 )
@@ -35,10 +35,10 @@ var ChatCmd = &cobra.Command{
 				break
 			}
 
-			msg := model.ChatMsg{
+			msg := dto.ChatMsg{
 				Content: input,
 			}
-			resp, err := chat.Assistant(msg)
+			resp, err := service.AssistantChat(msg)
 			if err != nil {
 				log.Println(err)
 			}

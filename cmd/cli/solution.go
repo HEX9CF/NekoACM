@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"github.com/spf13/cobra"
 	"log"
-	"neko-acm/internal/model"
-	"neko-acm/internal/service/solution"
+	"neko-acm/internal/application/dto"
+	"neko-acm/internal/application/service"
 	"os"
 	"strings"
 )
@@ -27,7 +27,7 @@ var SolutionCmd = &cobra.Command{
 		for {
 			// 生成题解
 			fmt.Println("正在生成题解...")
-			s, err := solution.Generate(si)
+			s, err := service.SolutionGenerate(si)
 			if err != nil {
 				log.Println(err)
 
@@ -72,11 +72,11 @@ var SolutionCmd = &cobra.Command{
 }
 
 // 读取题解信息
-func readSolutionInstruction(reader *bufio.Reader) (model.SolutionInstruction, error) {
-	si := model.SolutionInstruction{}
+func readSolutionInstruction(reader *bufio.Reader) (dto.SolutionInstruction, error) {
+	si := dto.SolutionInstruction{}
 	err := clearBuffer(reader)
 	if err != nil {
-		return model.SolutionInstruction{}, err
+		return dto.SolutionInstruction{}, err
 	}
 
 	fmt.Println("请输入题目信息：")
@@ -115,7 +115,7 @@ func readSolutionInstruction(reader *bufio.Reader) (model.SolutionInstruction, e
 }
 
 // 保存题解到文件
-func saveSolutionJson(reader *bufio.Reader, s model.Solution) error {
+func saveSolutionJson(reader *bufio.Reader, s dto.Solution) error {
 	err := clearBuffer(reader)
 	if err != nil {
 		return err
@@ -126,7 +126,7 @@ func saveSolutionJson(reader *bufio.Reader, s model.Solution) error {
 	save = strings.ToLower(save)
 
 	if save == "y" {
-		path, err := solution.SaveJson(s)
+		path, err := service.SolutionSaveJson(s)
 		if err != nil {
 			fmt.Println("保存失败！")
 			return err

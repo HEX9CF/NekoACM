@@ -1,7 +1,10 @@
 server:
-  port: 14515
-  token: neko
+    port: 14515
+    token:
+grpc:
+    port: 14516
+    token:
 openai:
-  base_url:
-  api_key:
-  model:
+    base_url:
+    api_key:
+    model:

@@ -2,24 +2,24 @@ package http
 
 import (
 	"github.com/gin-gonic/gin"
-	handler2 "neko-acm/internal/interfaces/http/handler"
+	"neko-acm/internal/interfaces/http/handler"
 	"neko-acm/internal/interfaces/http/middlewares"
-	"neko-acm/internal/model"
+	"neko-acm/internal/interfaces/http/vo"
 	"neko-acm/pkg/config"
 	"net/http"
 )
 
 func InitRoute() error {
-	config := config.Conf.Server
+	conf := config.Conf.Server
 
 	// index
 	ginServer.GET("/", func(c *gin.Context) {
-		c.JSON(http.StatusOK, model.RespOk("NekoACM 启动成功", nil))
+		c.JSON(http.StatusOK, vo.RespOk("NekoACM 启动成功", nil))
 	})
 
 	// 404
 	ginServer.NoRoute(func(c *gin.Context) {
-		c.JSON(http.StatusNotFound, model.RespError("404 Not Found", nil))
+		c.JSON(http.StatusNotFound, vo.RespError("404 Not Found", nil))
 	})
 
 	// 使用中间件
@@ -29,7 +29,7 @@ func InitRoute() error {
 	apiRoute := ginServer.Group("/api")
 	{
 		apiRoute.GET("/", func(c *gin.Context) {
-			c.JSON(http.StatusOK, model.RespOk("NekoACM 服务可用", nil))
+			c.JSON(http.StatusOK, vo.RespOk("NekoACM 服务可用", nil))
 		})
 	}
 
@@ -41,7 +41,7 @@ func InitRoute() error {
 	initMiscRoute(apiRoute)
 
 	// 启动服务
-	err := ginServer.Run(":" + config.Port)
+	err := ginServer.Run(":" + conf.Port)
 	if err != nil {
 		return err
 	}
@@ -51,37 +51,37 @@ func InitRoute() error {
 func initProblemRoute(rg *gin.RouterGroup) {
 	pr := rg.Group("/problem")
 
-	pr.POST("/parse", handler2.ParseProblem)
-	pr.POST("/translate", handler2.TranslateProblem)
-	pr.POST("/generate", handler2.GenerateProblem)
+	pr.POST("/parse", handler.ParseProblem)
+	pr.POST("/translate", handler.TranslateProblem)
+	pr.POST("/generate", handler.GenerateProblem)
 }
 
 func initTestcaseRoute(rg *gin.RouterGroup) {
 	tc := rg.Group("/testcase")
 
-	tc.POST("/generate", handler2.GenerateTestcase)
+	tc.POST("/generate", handler.GenerateTestcase)
 }
 
 func initSolutionRoute(rg *gin.RouterGroup) {
 	s := rg.Group("/solution")
 
-	s.POST("/generate", handler2.GenerateSolution)
+	s.POST("/generate", handler.GenerateSolution)
 }
 
 func initJudgeRoute(rg *gin.RouterGroup) {
 	j := rg.Group("/judge")
 
-	j.POST("/submit", handler2.JudgeSubmit)
+	j.POST("/submit", handler.JudgeSubmit)
 }
 
 func initChatRoute(rg *gin.RouterGroup) {
 	c := rg.Group("/chat")
 
-	c.POST("/assistant", handler2.ChatAssistant)
+	c.POST("/assistant", handler.ChatAssistant)
 }
 
 func initMiscRoute(rg *gin.RouterGroup) {
 	m := rg.Group("/misc")
 
-	m.GET("/joke", handler2.GenerateJoke)
+	m.GET("/joke", handler.GenerateJoke)
 }

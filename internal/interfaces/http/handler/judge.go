@@ -3,28 +3,29 @@ package handler
 import (
 	"github.com/gin-gonic/gin"
 	"log"
-	"neko-acm/internal/model"
-	"neko-acm/internal/service/judge"
+	"neko-acm/internal/application/dto"
+	"neko-acm/internal/application/service"
+	"neko-acm/internal/interfaces/http/vo"
 	"net/http"
 )
 
 // 提交评测
 func JudgeSubmit(c *gin.Context) {
-	var req model.Submission
+	var req dto.Submission
 
 	// 参数绑定
 	err := c.ShouldBindBodyWithJSON(&req)
 	if err != nil {
 		log.Println(err)
-		c.JSON(http.StatusBadRequest, model.RespError("参数错误", nil))
+		c.JSON(http.StatusBadRequest, vo.RespError("参数错误", nil))
 		return
 	}
 
-	j, err := judge.Submit(req)
+	j, err := service.Submit(req)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, model.RespError(err.Error(), nil))
+		c.JSON(http.StatusInternalServerError, vo.RespError(err.Error(), nil))
 		return
 	}
 
-	c.JSON(http.StatusOK, model.RespOk("OK", j))
+	c.JSON(http.StatusOK, vo.RespOk("OK", j))
 }

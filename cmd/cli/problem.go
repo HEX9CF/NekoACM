@@ -5,17 +5,17 @@ import (
 	"fmt"
 	"github.com/spf13/cobra"
 	"log"
-	"neko-acm/internal/model"
-	"neko-acm/internal/service/problem"
+	"neko-acm/internal/application/dto"
+	service "neko-acm/internal/application/service"
 	"os"
 	"strings"
 )
 
 // 生成题目
 var ProblemCmd = &cobra.Command{
-	Use:   "problem",
-	Short: "Generate a problem.",
-	Long:  "Generate an ACM-ICPC algorithm problem.",
+	Use:   "service",
+	Short: "Generate a service.",
+	Long:  "Generate an ACM-ICPC algorithm service.",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		fmt.Println(" -------- 生成题目 -------- ")
 		reader := bufio.NewReader(os.Stdin)
@@ -27,7 +27,7 @@ var ProblemCmd = &cobra.Command{
 		for {
 			// 生成题目
 			fmt.Println("正在生成题目...")
-			p, err := problem.Generate(pi)
+			p, err := service.ProblemGenerate(pi)
 			if err != nil {
 				log.Println(err)
 
@@ -72,11 +72,11 @@ var ProblemCmd = &cobra.Command{
 }
 
 // 读取题目信息
-func readProblemInstruction(reader *bufio.Reader) (model.ProblemInstruction, error) {
-	pi := model.ProblemInstruction{}
+func readProblemInstruction(reader *bufio.Reader) (dto.ProblemInstruction, error) {
+	pi := dto.ProblemInstruction{}
 	err := clearBuffer(reader)
 	if err != nil {
-		return model.ProblemInstruction{}, err
+		return dto.ProblemInstruction{}, err
 	}
 
 	fmt.Println("请输入题目信息：")
@@ -112,7 +112,7 @@ func readProblemInstruction(reader *bufio.Reader) (model.ProblemInstruction, err
 }
 
 // 保存题目到文件
-func saveProblemJson(reader *bufio.Reader, p model.Problem) error {
+func saveProblemJson(reader *bufio.Reader, p dto.Problem) error {
 	err := clearBuffer(reader)
 	if err != nil {
 		return err
@@ -123,7 +123,7 @@ func saveProblemJson(reader *bufio.Reader, p model.Problem) error {
 	save = strings.ToLower(save)
 
 	if save == "y" {
-		path, err := problem.SaveJson(p)
+		path, err := service.ProblemSaveJson(p)
 		if err != nil {
 			fmt.Println("保存失败！")
 			return err
