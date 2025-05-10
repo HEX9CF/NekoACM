@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"github.com/spf13/cobra"
 	"log"
-	"neko-acm/internal/model"
-	"neko-acm/internal/service/testcase"
+	"neko-acm/internal/application/dto"
+	"neko-acm/internal/application/service"
 	"os"
 	"strings"
 )
@@ -27,7 +27,7 @@ var TestcaseCmd = &cobra.Command{
 		for {
 			// 生成测试用例
 			fmt.Println("正在生成测试用例...")
-			t, err := testcase.Generate(ti)
+			t, err := service.TestcaseGenerate(ti)
 			if err != nil {
 				log.Println(err)
 
@@ -72,11 +72,11 @@ var TestcaseCmd = &cobra.Command{
 }
 
 // 读取测试用例信息
-func readTestcaseInstruction(reader *bufio.Reader) (model.TestcaseInstruction, error) {
-	ti := model.TestcaseInstruction{}
+func readTestcaseInstruction(reader *bufio.Reader) (dto.TestcaseInstruction, error) {
+	ti := dto.TestcaseInstruction{}
 	err := clearBuffer(reader)
 	if err != nil {
-		return model.TestcaseInstruction{}, err
+		return dto.TestcaseInstruction{}, err
 	}
 
 	// 读取题目信息
@@ -113,7 +113,7 @@ func readTestcaseInstruction(reader *bufio.Reader) (model.TestcaseInstruction, e
 }
 
 // 保存测试用例到文件
-func saveTestcaseJson(reader *bufio.Reader, t model.Testcase) error {
+func saveTestcaseJson(reader *bufio.Reader, t dto.Testcase) error {
 	err := clearBuffer(reader)
 	if err != nil {
 		return err
@@ -124,7 +124,7 @@ func saveTestcaseJson(reader *bufio.Reader, t model.Testcase) error {
 	save = strings.ToLower(save)
 
 	if save == "y" {
-		path, err := testcase.SaveJson(t)
+		path, err := service.TestcaseSaveJson(t)
 		if err != nil {
 			fmt.Println("保存失败！")
 			return err

@@ -3,7 +3,7 @@ package middlewares
 import (
 	"github.com/gin-gonic/gin"
 	"log"
-	"neko-acm/internal/model"
+	"neko-acm/internal/interfaces/http/vo"
 	"neko-acm/pkg/config"
 	"net/http"
 )
@@ -16,7 +16,7 @@ func TokenAuth() gin.HandlerFunc {
 		// 验证Token
 		if token != "Bearer "+config.Conf.Server.Token {
 			log.Println("Token 错误，拒绝请求")
-			c.JSON(http.StatusUnauthorized, model.RespError("Token 错误，拒绝请求", nil))
+			c.JSON(http.StatusUnauthorized, vo.RespError("Token 错误，拒绝请求", nil))
 			c.Abort()
 			return
 		}

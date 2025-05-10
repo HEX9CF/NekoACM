@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"github.com/spf13/cobra"
 	"log"
-	"neko-acm/internal/model"
-	"neko-acm/internal/service/problem"
+	"neko-acm/internal/application/dto"
+	"neko-acm/internal/application/service"
 	"os"
 	"strings"
 )
@@ -19,7 +19,7 @@ var ParseCmd = &cobra.Command{
 	RunE: func(cmd *cobra.Command, args []string) error {
 		fmt.Println(" -------- 解析题目 -------- ")
 		reader := bufio.NewReader(os.Stdin)
-		pd := model.ProblemData{}
+		pd := dto.ProblemData{}
 		if err := clearBuffer(reader); err != nil {
 			return err
 		}
@@ -31,7 +31,7 @@ var ParseCmd = &cobra.Command{
 
 			// 生成题目
 			fmt.Println("正在解析题目...")
-			p, err := problem.Parse(pd)
+			p, err := service.ProblemParse(pd)
 			if err != nil {
 				log.Println(err)
 

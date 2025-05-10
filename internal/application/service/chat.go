@@ -1,15 +1,15 @@
-package chat
+package service
 
 import (
 	"log"
+	"neko-acm/internal/application/dto"
 	"neko-acm/internal/infrastructure/open_ai"
-	"neko-acm/internal/model"
 	"neko-acm/prompt"
 	"strings"
 )
 
 // 助手
-func Assistant(msg model.ChatMsg) (string, error) {
+func Assistant(msg dto.ChatMsg) (string, error) {
 	msg.Content = strings.TrimSpace(msg.Content)
 	if msg.Content == "" {
 		return "", nil

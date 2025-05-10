@@ -4,7 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	handler "neko-acm/internal/interfaces/http/handler"
 	"neko-acm/internal/interfaces/http/middlewares"
-	"neko-acm/internal/model"
+	"neko-acm/internal/interfaces/http/vo"
 	"neko-acm/pkg/config"
 	"net/http"
 )
@@ -14,12 +14,12 @@ func InitRoute() error {
 
 	// index
 	ginServer.GET("/", func(c *gin.Context) {
-		c.JSON(http.StatusOK, model.RespOk("NekoACM 启动成功", nil))
+		c.JSON(http.StatusOK, vo.RespOk("NekoACM 启动成功", nil))
 	})
 
 	// 404
 	ginServer.NoRoute(func(c *gin.Context) {
-		c.JSON(http.StatusNotFound, model.RespError("404 Not Found", nil))
+		c.JSON(http.StatusNotFound, vo.RespError("404 Not Found", nil))
 	})
 
 	// 使用中间件
@@ -29,7 +29,7 @@ func InitRoute() error {
 	apiRoute := ginServer.Group("/api")
 	{
 		apiRoute.GET("/", func(c *gin.Context) {
-			c.JSON(http.StatusOK, model.RespOk("NekoACM 服务可用", nil))
+			c.JSON(http.StatusOK, vo.RespOk("NekoACM 服务可用", nil))
 		})
 	}
 

@@ -1,4 +1,4 @@
-package model
+package dto
 
 type Prompt struct {
 	Role           string `json:"role"`           // 角色

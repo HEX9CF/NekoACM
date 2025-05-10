@@ -1,4 +1,4 @@
-package model
+package dto
 
 // 题目
 type Problem struct {

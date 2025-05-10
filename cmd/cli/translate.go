@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"github.com/spf13/cobra"
 	"log"
-	"neko-acm/internal/model"
-	"neko-acm/internal/service/problem"
+	"neko-acm/internal/application/dto"
+	"neko-acm/internal/application/service"
 	"os"
 	"strings"
 )
@@ -27,7 +27,7 @@ var TranslateCmd = &cobra.Command{
 		for {
 			// 翻译题目
 			fmt.Println("正在翻译题目...")
-			p, err := problem.Translate(ti)
+			p, err := service.ProblemTranslate(ti)
 			if err != nil {
 				log.Println(err)
 
@@ -77,11 +77,11 @@ var TranslateCmd = &cobra.Command{
 }
 
 // 读取翻译题目信息
-func readTranslateInstruction(reader *bufio.Reader) (model.TranslateInstruction, error) {
-	ti := model.TranslateInstruction{}
+func readTranslateInstruction(reader *bufio.Reader) (dto.TranslateInstruction, error) {
+	ti := dto.TranslateInstruction{}
 	err := clearBuffer(reader)
 	if err != nil {
-		return model.TranslateInstruction{}, err
+		return dto.TranslateInstruction{}, err
 	}
 
 	fmt.Println("请输入题目信息：")
@@ -105,13 +105,13 @@ func readTranslateInstruction(reader *bufio.Reader) (model.TranslateInstruction,
 	ti.Tags = strings.Fields(tagsInput)
 	ti, err = readTargetLang(reader, ti)
 	if err != nil {
-		return model.TranslateInstruction{}, err
+		return dto.TranslateInstruction{}, err
 	}
 
 	return ti, nil
 }
 
-func readTargetLang(reader *bufio.Reader, ti model.TranslateInstruction) (model.TranslateInstruction, error) {
+func readTargetLang(reader *bufio.Reader, ti dto.TranslateInstruction) (dto.TranslateInstruction, error) {
 	fmt.Print("目标语言：")
 	ti.TargetLang, _ = reader.ReadString('\n')
 	ti.TargetLang = strings.TrimSpace(ti.TargetLang)

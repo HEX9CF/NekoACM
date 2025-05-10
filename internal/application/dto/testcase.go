@@ -1,14 +1,15 @@
-package model
+package dto
 
-// 题解
-type Solution struct {
-	Language    string `json:"language"`
-	SourceCode  string `json:"source_code"`
-	Explanation string `json:"explanation"`
+// 测试用例
+type Testcase struct {
+	TestInput         string `json:"test_input"`
+	TestOutput        string `json:"test_output"`
+	InputExplanation  string `json:"input_explanation"`
+	OutputExplanation string `json:"output_explanation"`
 }
 
-// 题解说明
-type SolutionInstruction struct {
+// 测试用例说明
+type TestcaseInstruction struct {
 	Title        string   `json:"title" binding:"omitempty"`
 	Description  string   `json:"description" binding:"omitempty"`
 	Input        string   `json:"input" binding:"omitempty"`
@@ -18,5 +19,4 @@ type SolutionInstruction struct {
 	Hint         string   `json:"hint" binding:"omitempty"`
 	Tags         []string `json:"tags" binding:"omitempty"`
 	Solution     string   `json:"solution" binding:"omitempty"`
-	Language     string   `json:"language" binding:"omitempty"`
 }

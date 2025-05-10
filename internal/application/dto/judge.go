@@ -1,4 +1,4 @@
-package model
+package dto
 
 // 提交信息
 type Submission struct {

@@ -4,6 +4,8 @@ import (
 	"context"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	problem2 "neko-acm/internal/application/service"
+	"neko-acm/internal/interfaces/grpc/converter"
 	"neko-acm/pkg/pb"
 )
 
@@ -13,15 +15,43 @@ type ProblemServer struct {
 }
 
 func (s *ProblemServer) GenerateProblem(ctx context.Context, req *pb.ProblemInstructionRequest) (*pb.ProblemResponse, error) {
-	return &pb.ProblemResponse{
-		Title: "New" + req.Title,
-	}, nil
+	// 将proto请求转换为内部模型
+	instruction := converter.ProblemInstructionToModel(req)
+
+	// 调用服务生成题目
+	p, err := problem2.ProblemGenerate(*instruction)
+	if err != nil {
+		return nil, status.Errorf(codes.Internal, "生成题目失败: %v", err)
+	}
+
+	// 将内部模型转换为proto响应
+	return converter.ProblemResponseFromModel(&p), nil
 }
 
 func (s *ProblemServer) TranslateProblem(ctx context.Context, req *pb.TranslateInstructionRequest) (*pb.ProblemResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method TranslateProblem not implemented")
+	// 将proto请求转换为内部模型
+	instruction := converter.TranslateInstructionToModel(req)
+
+	// 调用服务翻译题目
+	p, err := problem2.ProblemTranslate(*instruction)
+	if err != nil {
+		return nil, status.Errorf(codes.Internal, "翻译题目失败: %v", err)
+	}
+
+	// 将内部模型转换为proto响应
+	return converter.ProblemResponseFromModel(&p), nil
 }
 
 func (s *ProblemServer) ParseProblem(ctx context.Context, req *pb.ProblemDataRequest) (*pb.ProblemResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ParseProblem not implemented")
+	// 将proto请求转换为内部模型
+	data := converter.ProblemDataToModel(req)
+
+	// 调用服务解析题目
+	p, err := problem2.ProblemParse(*data)
+	if err != nil {
+		return nil, status.Errorf(codes.Internal, "解析题目失败: %v", err)
+	}
+
+	// 将内部模型转换为proto响应
+	return converter.ProblemResponseFromModel(&p), nil
 }

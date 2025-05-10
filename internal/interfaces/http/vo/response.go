@@ -1,4 +1,4 @@
-package model
+package vo
 
 // 0 失败，1 成功，2 重新请求
 type RespCode uint8
