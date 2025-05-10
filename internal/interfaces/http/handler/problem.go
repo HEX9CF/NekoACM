@@ -4,7 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"log"
 	"neko-acm/internal/application/dto"
-	problem2 "neko-acm/internal/application/service"
+	"neko-acm/internal/application/service"
 	"neko-acm/internal/interfaces/http/vo"
 	"net/http"
 )
@@ -22,7 +22,7 @@ func GenerateProblem(c *gin.Context) {
 	}
 
 	// 生成题目
-	p, err := problem2.ProblemGenerate(req)
+	p, err := service.ProblemGenerate(req)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, vo.RespError(err.Error(), nil))
 		return
@@ -44,7 +44,7 @@ func TranslateProblem(c *gin.Context) {
 	}
 
 	// 翻译题目
-	p, err := problem2.ProblemTranslate(req)
+	p, err := service.ProblemTranslate(req)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, vo.RespError(err.Error(), nil))
 		return
@@ -66,7 +66,7 @@ func ParseProblem(c *gin.Context) {
 	}
 
 	// 解析题目
-	p, err := problem2.ProblemParse(req)
+	p, err := service.ProblemParse(req)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, vo.RespError(err.Error(), nil))
 		return
