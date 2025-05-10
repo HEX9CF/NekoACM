@@ -1,8 +1,8 @@
-package grpc
+package rpc
 
 import (
 	"google.golang.org/grpc"
-	"neko-acm/internal/interfaces/grpc/handler"
+	"neko-acm/internal/interfaces/rpc/handler"
 	"neko-acm/pkg/config"
 	"neko-acm/pkg/pb"
 	"net"

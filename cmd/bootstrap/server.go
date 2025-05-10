@@ -2,12 +2,12 @@ package bootstrap
 
 import (
 	"log"
-	"neko-acm/internal/interfaces/grpc"
+	"neko-acm/internal/interfaces/rpc"
 )
 
 // 初始化服务器
 func InitServer() error {
-	err := grpc.InitServer()
+	err := rpc.InitServer()
 	if err != nil {
 		log.Println("初始化服务器失败！")
 		return err

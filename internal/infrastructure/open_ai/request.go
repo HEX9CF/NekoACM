@@ -24,6 +24,7 @@ func RequestMessage(msg openai.ChatCompletionMessage) (openai.ChatCompletionMess
 
 // 请求消息
 func RequestMessages(msgs []openai.ChatCompletionMessage) (openai.ChatCompletionMessage, error) {
+
 	resp, err := client.CreateChatCompletion(
 		context.Background(),
 		openai.ChatCompletionRequest{

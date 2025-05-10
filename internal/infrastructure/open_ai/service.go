@@ -11,6 +11,9 @@ func Chat(systemContent string, userContent string) (string, error) {
 	userMsg := newUserMsg(userContent)
 	msgs := []openai.ChatCompletionMessage{sysMsg, userMsg}
 
+	//fmt.Println("system:", systemContent)
+	//fmt.Println("user:", userContent)
+
 	// 请求模型
 	resp, err := RequestMessages(msgs)
 	if err != nil {
