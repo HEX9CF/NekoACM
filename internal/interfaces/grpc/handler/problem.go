@@ -5,7 +5,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"neko-acm/internal/application/service"
-	"neko-acm/internal/interfaces/grpc/converter"
+	"neko-acm/internal/interfaces/converter"
 	"neko-acm/pkg/pb"
 )
 
