@@ -21,7 +21,7 @@ func ChatAssistant(c *gin.Context) {
 		return
 	}
 
-	p, err := service.Assistant(req)
+	p, err := service.AssistantChat(req)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, vo.RespError(err.Error(), nil))
 		return

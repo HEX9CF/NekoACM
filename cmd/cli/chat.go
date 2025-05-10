@@ -38,7 +38,7 @@ var ChatCmd = &cobra.Command{
 			msg := dto.ChatMsg{
 				Content: input,
 			}
-			resp, err := service.Assistant(msg)
+			resp, err := service.AssistantChat(msg)
 			if err != nil {
 				log.Println(err)
 			}

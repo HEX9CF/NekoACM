@@ -9,7 +9,7 @@ import (
 )
 
 // 助手
-func Assistant(msg dto.ChatMsg) (string, error) {
+func AssistantChat(msg dto.ChatMsg) (string, error) {
 	msg.Content = strings.TrimSpace(msg.Content)
 	if msg.Content == "" {
 		return "", nil
