@@ -36,7 +36,9 @@ jobs:
 
     - name: Generate
       shell: bash
-      run: go generate ./...
+      run: |
+        mkdir -p pkg/pb
+        go generate ./...
 
     - name: Build
       run: GOOS=windows GOARCH=amd64 go build -ldflags="-s -w" -o neko-acm.exe
