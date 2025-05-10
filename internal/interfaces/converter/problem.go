@@ -5,8 +5,8 @@ import (
 	"neko-acm/pkg/pb"
 )
 
-// ProblemResponseFromModel 将内部模型转换为 protobuf 响应
-func ProblemResponseFromModel(p *dto.Problem) *pb.ProblemResponse {
+// ProblemResponseFromDTO 将内部模型转换为 protobuf 响应
+func ProblemResponseFromDTO(p *dto.Problem) *pb.ProblemResponse {
 	if p == nil {
 		return nil
 	}
@@ -22,8 +22,8 @@ func ProblemResponseFromModel(p *dto.Problem) *pb.ProblemResponse {
 	}
 }
 
-// ProblemInstructionToModel 将 protobuf 请求转换为内部模型
-func ProblemInstructionToModel(req *pb.ProblemInstructionRequest) *dto.ProblemInstruction {
+// ProblemInstructionToDTO 将 protobuf 请求转换为内部模型
+func ProblemInstructionToDTO(req *pb.ProblemInstructionRequest) *dto.ProblemInstruction {
 	if req == nil {
 		return nil
 	}
@@ -40,8 +40,8 @@ func ProblemInstructionToModel(req *pb.ProblemInstructionRequest) *dto.ProblemIn
 	}
 }
 
-// TranslateInstructionToModel 将 protobuf 翻译请求转换为内部模型
-func TranslateInstructionToModel(req *pb.TranslateInstructionRequest) *dto.TranslateInstruction {
+// TranslateInstructionToDTO 将 protobuf 翻译请求转换为内部模型
+func TranslateInstructionToDTO(req *pb.TranslateInstructionRequest) *dto.TranslateInstruction {
 	if req == nil {
 		return nil
 	}
@@ -56,8 +56,8 @@ func TranslateInstructionToModel(req *pb.TranslateInstructionRequest) *dto.Trans
 	}
 }
 
-// ProblemDataToModel 将 protobuf 数据请求转换为内部模型
-func ProblemDataToModel(req *pb.ProblemDataRequest) *dto.ProblemData {
+// ProblemDataToDTO 将 protobuf 数据请求转换为内部模型
+func ProblemDataToDTO(req *pb.ProblemDataRequest) *dto.ProblemData {
 	if req == nil {
 		return nil
 	}

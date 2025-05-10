@@ -16,7 +16,7 @@ type ProblemServer struct {
 
 func (s *ProblemServer) GenerateProblem(ctx context.Context, req *pb.ProblemInstructionRequest) (*pb.ProblemResponse, error) {
 	// 将proto请求转换为内部模型
-	instruction := converter.ProblemInstructionToModel(req)
+	instruction := converter.ProblemInstructionToDTO(req)
 
 	// 调用服务生成题目
 	p, err := service.ProblemGenerate(*instruction)
@@ -25,12 +25,12 @@ func (s *ProblemServer) GenerateProblem(ctx context.Context, req *pb.ProblemInst
 	}
 
 	// 将内部模型转换为proto响应
-	return converter.ProblemResponseFromModel(&p), nil
+	return converter.ProblemResponseFromDTO(&p), nil
 }
 
 func (s *ProblemServer) TranslateProblem(ctx context.Context, req *pb.TranslateInstructionRequest) (*pb.ProblemResponse, error) {
 	// 将proto请求转换为内部模型
-	instruction := converter.TranslateInstructionToModel(req)
+	instruction := converter.TranslateInstructionToDTO(req)
 
 	// 调用服务翻译题目
 	p, err := service.ProblemTranslate(*instruction)
@@ -39,12 +39,12 @@ func (s *ProblemServer) TranslateProblem(ctx context.Context, req *pb.TranslateI
 	}
 
 	// 将内部模型转换为proto响应
-	return converter.ProblemResponseFromModel(&p), nil
+	return converter.ProblemResponseFromDTO(&p), nil
 }
 
 func (s *ProblemServer) ParseProblem(ctx context.Context, req *pb.ProblemDataRequest) (*pb.ProblemResponse, error) {
 	// 将proto请求转换为内部模型
-	data := converter.ProblemDataToModel(req)
+	data := converter.ProblemDataToDTO(req)
 
 	// 调用服务解析题目
 	p, err := service.ProblemParse(*data)
@@ -53,5 +53,5 @@ func (s *ProblemServer) ParseProblem(ctx context.Context, req *pb.ProblemDataReq
 	}
 
 	// 将内部模型转换为proto响应
-	return converter.ProblemResponseFromModel(&p), nil
+	return converter.ProblemResponseFromDTO(&p), nil
 }
