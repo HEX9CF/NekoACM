@@ -2,7 +2,7 @@ package http
 
 import (
 	"github.com/gin-gonic/gin"
-	handler "neko-acm/internal/interfaces/http/handler"
+	"neko-acm/internal/interfaces/http/handler"
 	"neko-acm/internal/interfaces/http/middlewares"
 	"neko-acm/internal/interfaces/http/vo"
 	"neko-acm/pkg/config"
@@ -10,7 +10,7 @@ import (
 )
 
 func InitRoute() error {
-	config := config.Conf.Server
+	conf := config.Conf.Server
 
 	// index
 	ginServer.GET("/", func(c *gin.Context) {
@@ -41,7 +41,7 @@ func InitRoute() error {
 	initMiscRoute(apiRoute)
 
 	// 启动服务
-	err := ginServer.Run(":" + config.Port)
+	err := ginServer.Run(":" + conf.Port)
 	if err != nil {
 		return err
 	}

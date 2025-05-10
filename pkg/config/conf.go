@@ -6,10 +6,11 @@ import (
 
 type Config struct {
 	Server ServerConf `yaml:"server" json:"server"`
+	Grpc   GrpcConf   `yaml:"grpc" json:"grpc"`
 	Openai OpenaiConf `yaml:"openai" json:"openai"`
 }
 
-// Config 初始化
+// InitConfig 初始化
 func InitConfig() error {
 	v, err := utils.IsFileExists("config.yaml")
 	if err != nil {
