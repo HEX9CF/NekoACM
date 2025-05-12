@@ -1,7 +1,7 @@
 package converter
 
 import (
-	"neko-acm/pkg/pb"
+	"nekoacm-server/pkg/pb"
 )
 
 // JokeResponseFromContent 将字符串内容转换为 protobuf 响应

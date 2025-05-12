@@ -2,7 +2,7 @@ package bootstrap
 
 import (
 	"log"
-	"neko-acm/internal/infrastructure/open_ai"
+	"nekoacm-server/internal/infrastructure/open_ai"
 )
 
 // 初始化大模型服务

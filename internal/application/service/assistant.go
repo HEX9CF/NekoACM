@@ -2,9 +2,9 @@ package service
 
 import (
 	"log"
-	"neko-acm/internal/application/dto"
-	"neko-acm/internal/infrastructure/open_ai"
-	"neko-acm/prompt"
+	"nekoacm-server/internal/application/dto"
+	"nekoacm-server/internal/infrastructure/open_ai"
+	"nekoacm-server/prompt"
 	"strings"
 )
 

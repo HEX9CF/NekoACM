@@ -3,8 +3,8 @@ package middlewares
 import (
 	"github.com/gin-gonic/gin"
 	"log"
-	"neko-acm/internal/interfaces/http/vo"
-	"neko-acm/pkg/config"
+	"nekoacm-server/internal/interfaces/http/vo"
+	"nekoacm-server/pkg/config"
 	"net/http"
 )
 

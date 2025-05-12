@@ -7,7 +7,7 @@ import (
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
 	"log"
-	"neko-acm/pkg/config"
+	"nekoacm-server/pkg/config"
 )
 
 func TokenAuthInterceptor() grpc.UnaryServerInterceptor {

@@ -4,9 +4,9 @@ import (
 	"context"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"neko-acm/internal/application/service"
-	"neko-acm/internal/interfaces/converter"
-	"neko-acm/pkg/pb"
+	"nekoacm-server/internal/application/service"
+	"nekoacm-server/internal/interfaces/converter"
+	"nekoacm-server/pkg/pb"
 )
 
 // TestcaseServer 实现 TestcaseService 接口

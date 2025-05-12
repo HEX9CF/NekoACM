@@ -2,10 +2,10 @@ package http
 
 import (
 	"github.com/gin-gonic/gin"
-	"neko-acm/internal/interfaces/http/handler"
-	"neko-acm/internal/interfaces/http/middlewares"
-	"neko-acm/internal/interfaces/http/vo"
-	"neko-acm/pkg/config"
+	"nekoacm-server/internal/interfaces/http/handler"
+	"nekoacm-server/internal/interfaces/http/middlewares"
+	"nekoacm-server/internal/interfaces/http/vo"
+	"nekoacm-server/pkg/config"
 	"net/http"
 )
 

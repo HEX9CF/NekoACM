@@ -1,8 +1,8 @@
 package converter
 
 import (
-	"neko-acm/internal/application/dto"
-	"neko-acm/pkg/pb"
+	"nekoacm-server/internal/application/dto"
+	"nekoacm-server/pkg/pb"
 )
 
 // ChatRequestToDTO 将 protobuf 请求转换为 DTO

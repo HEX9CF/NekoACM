@@ -4,10 +4,10 @@ import (
 	"encoding/json"
 	"errors"
 	"log"
-	"neko-acm/internal/application/dto"
-	"neko-acm/internal/infrastructure/open_ai"
-	"neko-acm/pkg/utils"
-	"neko-acm/prompt"
+	"nekoacm-server/internal/application/dto"
+	"nekoacm-server/internal/infrastructure/open_ai"
+	"nekoacm-server/pkg/utils"
+	"nekoacm-server/prompt"
 )
 
 // 提交评测

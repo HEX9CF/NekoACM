@@ -3,9 +3,9 @@ package handler
 import (
 	"github.com/gin-gonic/gin"
 	"log"
-	"neko-acm/internal/application/dto"
-	"neko-acm/internal/application/service"
-	"neko-acm/internal/interfaces/http/vo"
+	"nekoacm-server/internal/application/dto"
+	"nekoacm-server/internal/application/service"
+	"nekoacm-server/internal/interfaces/http/vo"
 	"net/http"
 )
 

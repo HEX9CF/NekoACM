@@ -3,7 +3,7 @@ package open_ai
 import (
 	"github.com/sashabaranov/go-openai"
 	"log"
-	"neko-acm/pkg/config"
+	"nekoacm-server/pkg/config"
 )
 
 var (

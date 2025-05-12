@@ -2,10 +2,10 @@ package rpc
 
 import (
 	"google.golang.org/grpc"
-	"neko-acm/internal/interfaces/rpc/handler"
-	"neko-acm/internal/interfaces/rpc/interceptors"
-	"neko-acm/pkg/config"
-	"neko-acm/pkg/pb"
+	"nekoacm-server/internal/interfaces/rpc/handler"
+	"nekoacm-server/internal/interfaces/rpc/interceptors"
+	"nekoacm-server/pkg/config"
+	"nekoacm-server/pkg/pb"
 	"net"
 )
 

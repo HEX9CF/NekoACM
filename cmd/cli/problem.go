@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"github.com/spf13/cobra"
 	"log"
-	"neko-acm/internal/application/dto"
-	service "neko-acm/internal/application/service"
+	"nekoacm-server/internal/application/dto"
+	service "nekoacm-server/internal/application/service"
 	"os"
 	"strings"
 )

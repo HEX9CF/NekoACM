@@ -1,8 +1,8 @@
 package main
 
 import (
-	"neko-acm/cmd/bootstrap"
-	"neko-acm/cmd/cli"
+	"nekoacm-server/cmd/bootstrap"
+	"nekoacm-server/cmd/cli"
 )
 
 func main() {

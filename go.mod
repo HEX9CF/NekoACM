@@ -1,4 +1,4 @@
-module neko-acm
+module nekoacm-server
 
 go 1.24
 

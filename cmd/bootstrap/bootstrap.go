@@ -2,7 +2,7 @@ package bootstrap
 
 import (
 	"log"
-	"neko-acm/prompt"
+	"nekoacm-server/prompt"
 	"os"
 )
 

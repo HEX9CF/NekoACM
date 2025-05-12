@@ -1,7 +1,7 @@
 package config
 
 import (
-	"neko-acm/pkg/utils"
+	"nekoacm-server/pkg/utils"
 )
 
 type Config struct {

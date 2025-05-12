@@ -2,8 +2,8 @@ package bootstrap
 
 import (
 	"log"
-	"neko-acm/internal/interfaces/http"
-	"neko-acm/internal/interfaces/rpc"
+	"nekoacm-server/internal/interfaces/http"
+	"nekoacm-server/internal/interfaces/rpc"
 	"os"
 	"os/signal"
 	"syscall"

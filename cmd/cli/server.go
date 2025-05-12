@@ -2,7 +2,7 @@ package cli
 
 import (
 	"github.com/spf13/cobra"
-	"neko-acm/cmd/bootstrap"
+	"nekoacm-server/cmd/bootstrap"
 )
 
 // 服务器命令
