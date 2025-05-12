@@ -44,5 +44,5 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-artifact@v4.5.0
       with:
-        name: neko-acm
-        path: neko-acm.exe
+        name: nekoacm
+        path: nekoacm-server.exe
