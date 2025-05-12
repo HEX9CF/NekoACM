@@ -6,11 +6,11 @@ option go_package = ".;pb";
 // 问题服务
 service ProblemService {
   // 生成题目
-  rpc GenerateProblem(ProblemInstructionRequest) returns (ProblemResponse);
+  rpc Generate(ProblemInstructionRequest) returns (ProblemResponse);
   // 翻译题目
-  rpc TranslateProblem(TranslateInstructionRequest) returns (ProblemResponse);
+  rpc Translate(TranslateInstructionRequest) returns (ProblemResponse);
   // 解析题目
-  rpc ParseProblem(ProblemDataRequest) returns (ProblemResponse);
+  rpc Parse(ProblemDataRequest) returns (ProblemResponse);
 }
 
 // 题目

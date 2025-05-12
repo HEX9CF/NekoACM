@@ -6,7 +6,7 @@ option go_package = ".;pb";
 // 评测服务
 service JudgeService {
   // 提交代码评测
-  rpc SubmitCode(SubmissionRequest) returns (JudgementResponse);
+  rpc Submit(SubmissionRequest) returns (JudgementResponse);
 }
 
 // 提交请求

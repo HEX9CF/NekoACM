@@ -6,7 +6,7 @@ option go_package = ".;pb";
 // 题解服务
 service SolutionService {
   // 生成题解
-  rpc GenerateSolution(SolutionInstructionRequest) returns (SolutionResponse);
+  rpc Generate(SolutionInstructionRequest) returns (SolutionResponse);
 }
 
 // 题解响应

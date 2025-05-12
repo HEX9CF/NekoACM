@@ -6,7 +6,7 @@ option go_package = ".;pb";
 // 测试用例服务
 service TestcaseService {
   // 生成测试用例
-  rpc GenerateTestcase(TestcaseInstructionRequest) returns (TestcaseResponse);
+  rpc Generate(TestcaseInstructionRequest) returns (TestcaseResponse);
 }
 
 // 测试用例响应
