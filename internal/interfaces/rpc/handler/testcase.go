@@ -4,8 +4,8 @@ import (
 	"context"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"nekoacm-server/internal/application/converter"
 	"nekoacm-server/internal/application/service"
-	"nekoacm-server/internal/interfaces/converter"
 	"nekoacm-server/pkg/pb"
 )
 
@@ -14,8 +14,8 @@ type TestcaseServer struct {
 	pb.UnimplementedTestcaseServiceServer
 }
 
-// GenerateTestcase 生成测试用例的 gRPC 处理方法
-func (s *TestcaseServer) GenerateTestcase(ctx context.Context, req *pb.TestcaseInstructionRequest) (*pb.TestcaseResponse, error) {
+// Generate 生成测试用例的 gRPC 处理方法
+func (s *TestcaseServer) Generate(ctx context.Context, req *pb.TestcaseInstructionRequest) (*pb.TestcaseResponse, error) {
 	// 将 protobuf 请求转换为 DTO
 	instruction := converter.TestcaseInstructionToDTO(req)
 

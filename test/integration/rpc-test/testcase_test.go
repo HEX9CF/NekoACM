@@ -18,8 +18,8 @@ func TestTestcaseService(t *testing.T) {
 	ctx, cancel := context.WithTimeout(context.Background(), 60*time.Second)
 	defer cancel()
 
-	// 测试 GenerateTestcase
-	t.Run("GenerateTestcase", func(t *testing.T) {
+	// 测试 Generate
+	t.Run("Generate", func(t *testing.T) {
 		req := &pb.TestcaseInstructionRequest{
 			Title:        "两数之和",
 			Description:  "给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那两个整数，并返回他们的数组下标。",
@@ -29,9 +29,9 @@ func TestTestcaseService(t *testing.T) {
 			SampleOutput: "[0, 1]",
 		}
 
-		resp, err := client.GenerateTestcase(ctx, req)
+		resp, err := client.Generate(ctx, req)
 		if err != nil {
-			t.Fatalf("GenerateTestcase 调用失败: %v", err)
+			t.Fatalf("Generate 调用失败: %v", err)
 		}
 
 		if resp == nil {
