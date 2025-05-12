@@ -18,16 +18,16 @@ func TestProblemService(t *testing.T) {
 	ctx, cancel := context.WithTimeout(context.Background(), 60*time.Second)
 	defer cancel()
 
-	// 测试 GenerateProblem
-	t.Run("GenerateProblem", func(t *testing.T) {
+	// 测试 Generate
+	t.Run("Generate", func(t *testing.T) {
 		req := &pb.ProblemInstructionRequest{
 			Title: "一个简单的数组求和问题",
 			Tags:  []string{"数组", "数学"},
 		}
 
-		resp, err := client.GenerateProblem(ctx, req)
+		resp, err := client.Generate(ctx, req)
 		if err != nil {
-			t.Fatalf("GenerateProblem 调用失败: %v", err)
+			t.Fatalf("Generate 调用失败: %v", err)
 		}
 
 		if resp == nil {
@@ -41,8 +41,8 @@ func TestProblemService(t *testing.T) {
 		t.Logf("成功生成题目: %s", resp.Title)
 	})
 
-	// 测试 TranslateProblem
-	t.Run("TranslateProblem", func(t *testing.T) {
+	// 测试 Translate
+	t.Run("Translate", func(t *testing.T) {
 		req := &pb.TranslateInstructionRequest{
 			Title:       "Two Sum",
 			Description: "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.",
@@ -51,9 +51,9 @@ func TestProblemService(t *testing.T) {
 			TargetLang:  "zh-CN",
 		}
 
-		resp, err := client.TranslateProblem(ctx, req)
+		resp, err := client.Translate(ctx, req)
 		if err != nil {
-			t.Fatalf("TranslateProblem 调用失败: %v", err)
+			t.Fatalf("Translate 调用失败: %v", err)
 		}
 
 		if resp == nil {
@@ -68,8 +68,8 @@ func TestProblemService(t *testing.T) {
 		t.Logf("成功翻译题目: %s", resp.Title)
 	})
 
-	// 测试 ParseProblem
-	t.Run("ParseProblem", func(t *testing.T) {
+	// 测试 Parse
+	t.Run("Parse", func(t *testing.T) {
 		req := &pb.ProblemDataRequest{
 			Data: `# 两数之和
 给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那两个整数，并返回他们的数组下标。
@@ -90,9 +90,9 @@ nums = [2, 7, 11, 15], target = 9
 你可以假设每种输入只会对应一个答案。`,
 		}
 
-		resp, err := client.ParseProblem(ctx, req)
+		resp, err := client.Parse(ctx, req)
 		if err != nil {
-			t.Fatalf("ParseProblem 调用失败: %v", err)
+			t.Fatalf("Parse 调用失败: %v", err)
 		}
 
 		if resp == nil {

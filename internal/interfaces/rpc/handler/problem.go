@@ -4,8 +4,8 @@ import (
 	"context"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"nekoacm-server/internal/application/converter"
 	"nekoacm-server/internal/application/service"
-	"nekoacm-server/internal/interfaces/converter"
 	"nekoacm-server/pkg/pb"
 )
 
@@ -14,7 +14,7 @@ type ProblemServer struct {
 	pb.UnimplementedProblemServiceServer
 }
 
-func (s *ProblemServer) GenerateProblem(ctx context.Context, req *pb.ProblemInstructionRequest) (*pb.ProblemResponse, error) {
+func (s *ProblemServer) Generate(ctx context.Context, req *pb.ProblemInstructionRequest) (*pb.ProblemResponse, error) {
 	// 将proto请求转换为内部模型
 	instruction := converter.ProblemInstructionToDTO(req)
 
@@ -28,7 +28,7 @@ func (s *ProblemServer) GenerateProblem(ctx context.Context, req *pb.ProblemInst
 	return converter.ProblemResponseFromDTO(&p), nil
 }
 
-func (s *ProblemServer) TranslateProblem(ctx context.Context, req *pb.TranslateInstructionRequest) (*pb.ProblemResponse, error) {
+func (s *ProblemServer) Translate(ctx context.Context, req *pb.TranslateInstructionRequest) (*pb.ProblemResponse, error) {
 	// 将proto请求转换为内部模型
 	instruction := converter.TranslateInstructionToDTO(req)
 
@@ -42,7 +42,7 @@ func (s *ProblemServer) TranslateProblem(ctx context.Context, req *pb.TranslateI
 	return converter.ProblemResponseFromDTO(&p), nil
 }
 
-func (s *ProblemServer) ParseProblem(ctx context.Context, req *pb.ProblemDataRequest) (*pb.ProblemResponse, error) {
+func (s *ProblemServer) Parse(ctx context.Context, req *pb.ProblemDataRequest) (*pb.ProblemResponse, error) {
 	// 将proto请求转换为内部模型
 	data := converter.ProblemDataToDTO(req)
 

@@ -4,8 +4,8 @@ import (
 	"context"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"nekoacm-server/internal/application/converter"
 	"nekoacm-server/internal/application/service"
-	"nekoacm-server/internal/interfaces/converter"
 	"nekoacm-server/pkg/pb"
 )
 

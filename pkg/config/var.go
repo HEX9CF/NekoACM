@@ -1,5 +1,5 @@
 package config
 
 var (
-	Conf *Config = &Config{}
+	Conf = &Config{}
 )

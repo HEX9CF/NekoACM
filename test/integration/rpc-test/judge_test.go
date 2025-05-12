@@ -18,8 +18,8 @@ func TestJudgeService(t *testing.T) {
 	ctx, cancel := context.WithTimeout(context.Background(), 60*time.Second)
 	defer cancel()
 
-	// 测试 SubmitCode
-	t.Run("SubmitCode", func(t *testing.T) {
+	// 测试 Submit
+	t.Run("Submit", func(t *testing.T) {
 		req := &pb.SubmissionRequest{
 			SourceCode: `
 package main
@@ -34,9 +34,9 @@ func main() {
 			ExpectedOutput: "3",
 		}
 
-		resp, err := client.SubmitCode(ctx, req)
+		resp, err := client.Submit(ctx, req)
 		if err != nil {
-			t.Fatalf("SubmitCode 调用失败: %v", err)
+			t.Fatalf("Submit 调用失败: %v", err)
 		}
 
 		if resp == nil {

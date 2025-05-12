@@ -1,6 +1,3 @@
-server:
-    port: 14515
-    token:
 grpc:
     port: 14516
     token:

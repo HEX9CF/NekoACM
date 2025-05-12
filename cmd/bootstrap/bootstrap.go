@@ -9,12 +9,20 @@ import (
 // 初始化
 func Init() error {
 	log.SetOutput(os.Stdout)
+
 	if err := initConfig(); err != nil {
 		return err
 	}
+
+	prompt.InitPrompt()
+
 	if err := initLlm(); err != nil {
 		return err
 	}
-	prompt.InitPrompt()
+
+	if err := InitServer(); err != nil {
+		return err
+	}
+
 	return nil
 }
