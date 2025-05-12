@@ -32,5 +32,6 @@ func InitConfig() error {
 
 func (c *Config) Default() {
 	c.Server.Default()
+	c.Grpc.Default()
 	c.Openai.Default()
 }
