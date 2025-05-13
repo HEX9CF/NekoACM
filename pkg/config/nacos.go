@@ -38,6 +38,8 @@ type NacosRegisterConf struct {
 
 // Default 为NacosConf设置默认值
 func (n *NacosConf) Default() {
+	n.Enable = false
+
 	n.Client.Default()
 	n.Server[0].Default()
 	n.Register.Default()
