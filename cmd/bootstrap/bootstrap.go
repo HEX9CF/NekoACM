@@ -24,5 +24,9 @@ func Init() error {
 		return err
 	}
 
+	if err := initNacos(); err != nil {
+		return nil
+	}
+
 	return nil
 }
