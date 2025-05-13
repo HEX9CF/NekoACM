@@ -2,6 +2,19 @@ grpc:
     port: 14516
     token:
 openai:
-    base_url:
-    api_key:
+    base-url:
+    api-key:
     model:
+nacos:
+    client:
+        namespace: "e525eafa-f7d7-4029-83d9-008937f9d468"
+        timeout-ms: 5000
+        not-load-cache-at-start: true
+        log-dir: "/tmp/nacos/log"
+        cache-dir: "/tmp/nacos/cache"
+        log-level: "debug"
+    server:
+        - ip: "localhost"
+          port: 80
+          scheme: "http"
+          context-path: "/nacos"
