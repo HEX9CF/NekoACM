@@ -6,8 +6,9 @@ openai:
     api-key:
     model:
 nacos:
+    enable: true
     client:
-        namespace-id: "e525eafa-f7d7-4029-83d9-008937f9d468"
+        namespace-id: ""
         timeout-ms: 5000
         not-load-cache-at-start: true
         log-dir: "/tmp/nacos/log"
@@ -15,6 +16,6 @@ nacos:
         log-level: "debug"
     server:
         - ip-addr: "localhost"
-          port: 80
+          port: 8848
           scheme: "http"
           context-path: "/nacos"

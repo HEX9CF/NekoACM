@@ -2,6 +2,7 @@ package config
 
 // NacosConf Nacos的整体配置
 type NacosConf struct {
+	Enable bool              `yaml:"enable" json:"enable"`
 	Client NacosClientConf   `yaml:"client" json:"client"`
 	Server []NacosServerConf `yaml:"server" json:"server"`
 }
@@ -32,7 +33,7 @@ func (n *NacosConf) Default() {
 
 // Default 为NacosClientConf设置默认值
 func (c *NacosClientConf) Default() {
-	c.NamespaceId = "e525eafa-f7d7-4029-83d9-008937f9d468"
+	c.NamespaceId = ""
 	c.TimeoutMs = 5000
 	c.NotLoadCacheAtStart = true
 	c.LogDir = "/tmp/nacos/log"
@@ -43,7 +44,7 @@ func (c *NacosClientConf) Default() {
 // Default 为NacosServerConf设置默认值
 func (s *NacosServerConf) Default() {
 	s.IpAddr = "localhost"
-	s.Port = 80
+	s.Port = 8848
 	s.Scheme = "http"
 	s.ContextPath = "/nacos"
 }
