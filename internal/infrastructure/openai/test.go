@@ -1,4 +1,4 @@
-package open_ai
+package openai
 
 import (
 	"context"

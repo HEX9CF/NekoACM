@@ -5,7 +5,7 @@ import (
 	"errors"
 	"log"
 	"nekoacm-server/internal/application/dto"
-	"nekoacm-server/internal/infrastructure/open_ai"
+	"nekoacm-server/internal/infrastructure/openai"
 	"nekoacm-server/pkg/utils"
 	"nekoacm-server/prompt"
 )
@@ -22,7 +22,7 @@ func Submit(s dto.Submission) (dto.Judgement, error) {
 	log.Println("请求评测：" + submission)
 
 	// 请求模型
-	resp, err := open_ai.Chat(prompt.JudgeSubmit, submission)
+	resp, err := openai.Chat(prompt.JudgeSubmit, submission)
 	if err != nil {
 		log.Println(err)
 		return dto.Judgement{}, errors.New("请求模型失败！")

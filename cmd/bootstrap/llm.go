@@ -2,12 +2,12 @@ package bootstrap
 
 import (
 	"log"
-	"nekoacm-server/internal/infrastructure/open_ai"
+	"nekoacm-server/internal/infrastructure/openai"
 )
 
 // 初始化大模型服务
 func initLlm() error {
-	err := open_ai.InitLlm()
+	err := openai.InitLlm()
 	if err != nil {
 		log.Println("初始化大模型服务失败！")
 		return err

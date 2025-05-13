@@ -2,7 +2,7 @@ package service
 
 import (
 	"log"
-	"nekoacm-server/internal/infrastructure/open_ai"
+	"nekoacm-server/internal/infrastructure/openai"
 	"nekoacm-server/prompt"
 )
 
@@ -11,7 +11,7 @@ func TellJoke() (string, error) {
 	log.Println("请求生成笑话...")
 
 	// 请求模型
-	resp, err := open_ai.Chat(prompt.TellJoke, prompt.TellJokeUser)
+	resp, err := openai.Chat(prompt.TellJoke, prompt.TellJokeUser)
 	if err != nil {
 		return "", err
 	}

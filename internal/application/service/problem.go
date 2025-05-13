@@ -5,7 +5,7 @@ import (
 	"errors"
 	"log"
 	"nekoacm-server/internal/application/dto"
-	"nekoacm-server/internal/infrastructure/open_ai"
+	"nekoacm-server/internal/infrastructure/openai"
 	"nekoacm-server/pkg/utils"
 	"nekoacm-server/prompt"
 	"strconv"
@@ -24,7 +24,7 @@ func ProblemGenerate(pi dto.ProblemInstruction) (dto.Problem, error) {
 	log.Println("请求生成题目：" + instruction)
 
 	// 请求模型
-	resp, err := open_ai.Chat(prompt.ProblemGenerate, instruction)
+	resp, err := openai.Chat(prompt.ProblemGenerate, instruction)
 	if err != nil {
 		log.Println(err)
 		return dto.Problem{}, errors.New("请求模型失败！")
@@ -53,7 +53,7 @@ func ProblemParse(pd dto.ProblemData) (dto.Problem, error) {
 	log.Println("请求解析题目：" + pd.Data)
 
 	// 请求模型
-	resp, err := open_ai.Chat(prompt.ProblemParse, pd.Data)
+	resp, err := openai.Chat(prompt.ProblemParse, pd.Data)
 	if err != nil {
 		return dto.Problem{}, errors.New("请求模型失败！")
 	}
@@ -81,7 +81,7 @@ func ProblemTranslate(pi dto.TranslateInstruction) (dto.Problem, error) {
 	log.Println("请求翻译题目：" + instruction)
 
 	// 请求模型
-	resp, err := open_ai.Chat(prompt.ProblemTranslate, instruction)
+	resp, err := openai.Chat(prompt.ProblemTranslate, instruction)
 	if err != nil {
 		return dto.Problem{}, errors.New("请求模型失败！")
 	}
