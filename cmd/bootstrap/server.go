@@ -6,13 +6,13 @@ import (
 )
 
 // 初始化服务器
-func InitServer() error {
+func initServer() error {
 	// 启动gRPC服务器
-	log.Println("启动gRPC服务器")
+	log.Println("启动 gRPC 服务器")
 
 	err := rpc.InitServer()
 	if err != nil {
-		log.Println("初始化gRPC服务器失败！")
+		log.Println("初始化 gRPC 服务器失败！")
 		return err
 	}
 

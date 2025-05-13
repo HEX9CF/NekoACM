@@ -4,7 +4,7 @@ import (
 	"context"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
-	"nekoacm-server/internal/infrastructure/open_ai"
+	"nekoacm-server/internal/infrastructure/openai"
 	"nekoacm-server/internal/interfaces/rpc"
 	"nekoacm-server/pkg/config"
 	"nekoacm-server/prompt"
@@ -26,7 +26,7 @@ func TestMain(m *testing.M) {
 		panic("配置文件加载失败：" + err.Error())
 	}
 
-	err = open_ai.InitLlm()
+	err = openai.InitLlm()
 	if err != nil {
 		panic("Llm初始化失败：" + err.Error())
 	}

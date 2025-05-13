@@ -5,7 +5,7 @@ import (
 	"errors"
 	"log"
 	"nekoacm-server/internal/application/dto"
-	"nekoacm-server/internal/infrastructure/open_ai"
+	"nekoacm-server/internal/infrastructure/openai"
 	"nekoacm-server/pkg/utils"
 	"nekoacm-server/prompt"
 	"strconv"
@@ -24,7 +24,7 @@ func SolutionGenerate(si dto.SolutionInstruction) (dto.Solution, error) {
 	log.Println("请求生成题解：" + instruction)
 
 	// 请求模型
-	resp, err := open_ai.Chat(prompt.SolutionGenerate, instruction)
+	resp, err := openai.Chat(prompt.SolutionGenerate, instruction)
 	if err != nil {
 		log.Println(err)
 		return dto.Solution{}, errors.New("请求模型失败！")

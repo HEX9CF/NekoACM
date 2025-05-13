@@ -1,4 +1,4 @@
-package open_ai
+package openai
 
 import (
 	"github.com/sashabaranov/go-openai"
@@ -18,7 +18,7 @@ func InitLlm() error {
 	// 配置大模型服务
 	openaiConfig := openai.DefaultConfig(conf.ApiKey)
 	openaiConfig.BaseURL = conf.BaseUrl
-	log.Println("正在连接大模型服务：" + conf.BaseUrl)
+	log.Println("正在连接 LLM 服务：" + conf.BaseUrl)
 
 	// 创建客户端
 	client = openai.NewClientWithConfig(openaiConfig)
@@ -26,10 +26,10 @@ func InitLlm() error {
 	// 测试连接
 	err := Test()
 	if err != nil {
-		log.Println("大模型服务连接失败！")
+		log.Println("LLM 服务连接失败！")
 		return err
 	}
 
-	log.Println("大模型服务连接成功")
+	log.Println("LLM 服务连接成功")
 	return nil
 }

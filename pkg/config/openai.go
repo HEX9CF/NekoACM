@@ -2,8 +2,8 @@ package config
 
 type OpenaiConf struct {
 	Model   string `yaml:"model" json:"model"`
-	BaseUrl string `yaml:"base_url" json:"base_url"`
-	ApiKey  string `yaml:"api_key" json:"api_key"`
+	BaseUrl string `yaml:"base-url" json:"base_url"`
+	ApiKey  string `yaml:"api-key" json:"api_key"`
 }
 
 func (a *OpenaiConf) Default() {

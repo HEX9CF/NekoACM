@@ -5,7 +5,7 @@ import (
 	"errors"
 	"log"
 	"nekoacm-server/internal/application/dto"
-	"nekoacm-server/internal/infrastructure/open_ai"
+	"nekoacm-server/internal/infrastructure/openai"
 	"nekoacm-server/pkg/utils"
 	"nekoacm-server/prompt"
 	"strconv"
@@ -24,7 +24,7 @@ func TestcaseGenerate(ti dto.TestcaseInstruction) (dto.Testcase, error) {
 	log.Println("请求生成测试用例：" + instruction)
 
 	// 请求模型
-	resp, err := open_ai.Chat(prompt.TestcaseGenerate, instruction)
+	resp, err := openai.Chat(prompt.TestcaseGenerate, instruction)
 	if err != nil {
 		log.Println(err)
 		return dto.Testcase{}, errors.New("请求模型失败！")
