@@ -8,20 +8,20 @@ type NacosConf struct {
 
 // NacosClientConf Nacos客户端配置
 type NacosClientConf struct {
-	Namespace           string `yaml:"namespace" json:"namespace"`
-	TimeoutMs           int    `yaml:"timeout-ms" json:"timeout-ms"`
-	NotLoadCacheAtStart bool   `yaml:"not-load-cache-at-start" json:"not-load-cache-at-start"`
-	LogDir              string `yaml:"log-dir" json:"log-dir"`
-	CacheDir            string `yaml:"cache-dir" json:"cache-dir"`
-	LogLevel            string `yaml:"log-level" json:"log-level"`
+	NamespaceId         string `yaml:"namespace-id" json:"namespace_id"`
+	TimeoutMs           uint64 `yaml:"timeout-ms" json:"timeout_ms"`
+	NotLoadCacheAtStart bool   `yaml:"not-load-cache-at-start" json:"not_load_cache_at_start"`
+	LogDir              string `yaml:"log-dir" json:"log_dir"`
+	CacheDir            string `yaml:"cache-dir" json:"cache_dir"`
+	LogLevel            string `yaml:"log-level" json:"log_level"`
 }
 
 // NacosServerConf Nacos服务器配置
 type NacosServerConf struct {
-	IP          string `yaml:"ip" json:"ip"`
-	Port        int    `yaml:"port" json:"port"`
+	IpAddr      string `yaml:"ip-addr" json:"ip_addr"`
+	Port        uint64 `yaml:"port" json:"port"`
 	Scheme      string `yaml:"scheme" json:"scheme"`
-	ContextPath string `yaml:"context-path" json:"context-path"`
+	ContextPath string `yaml:"context-path" json:"context_path"`
 }
 
 // Default 为NacosConf设置默认值
@@ -32,7 +32,7 @@ func (n *NacosConf) Default() {
 
 // Default 为NacosClientConf设置默认值
 func (c *NacosClientConf) Default() {
-	c.Namespace = "e525eafa-f7d7-4029-83d9-008937f9d468"
+	c.NamespaceId = "e525eafa-f7d7-4029-83d9-008937f9d468"
 	c.TimeoutMs = 5000
 	c.NotLoadCacheAtStart = true
 	c.LogDir = "/tmp/nacos/log"
@@ -42,7 +42,7 @@ func (c *NacosClientConf) Default() {
 
 // Default 为NacosServerConf设置默认值
 func (s *NacosServerConf) Default() {
-	s.IP = "localhost"
+	s.IpAddr = "localhost"
 	s.Port = 80
 	s.Scheme = "http"
 	s.ContextPath = "/nacos"
