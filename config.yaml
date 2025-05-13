@@ -19,3 +19,10 @@ nacos:
           port: 8848
           scheme: "http"
           context-path: "/nacos"
+    register:
+        ip: "127.0.0.1"
+        port: 14516
+        service-name: "nekoacm-server"
+        weight: 10
+        enable: true
+        healthy: true

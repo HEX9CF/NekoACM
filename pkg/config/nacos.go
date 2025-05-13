@@ -2,9 +2,10 @@ package config
 
 // NacosConf Nacos的整体配置
 type NacosConf struct {
-	Enable bool              `yaml:"enable" json:"enable"`
-	Client NacosClientConf   `yaml:"client" json:"client"`
-	Server []NacosServerConf `yaml:"server" json:"server"`
+	Enable   bool              `yaml:"enable" json:"enable"`
+	Client   NacosClientConf   `yaml:"client" json:"client"`
+	Server   []NacosServerConf `yaml:"server" json:"server"`
+	Register NacosRegisterConf `yaml:"register" json:"register"`
 }
 
 // NacosClientConf Nacos客户端配置
@@ -25,10 +26,21 @@ type NacosServerConf struct {
 	ContextPath string `yaml:"context-path" json:"context_path"`
 }
 
+// NacosRegisterConf Nacos服务注册配置
+type NacosRegisterConf struct {
+	Ip          string  `yaml:"ip" json:"ip"`
+	Port        uint64  `yaml:"port" json:"port"`
+	ServiceName string  `yaml:"service-name" json:"service_name"`
+	Weight      float64 `yaml:"weight" json:"weight"`
+	Enable      bool    `yaml:"enable" json:"enable"`
+	Healthy     bool    `yaml:"healthy" json:"healthy"`
+}
+
 // Default 为NacosConf设置默认值
 func (n *NacosConf) Default() {
 	n.Client.Default()
 	n.Server[0].Default()
+	n.Register.Default()
 }
 
 // Default 为NacosClientConf设置默认值
@@ -47,4 +59,14 @@ func (s *NacosServerConf) Default() {
 	s.Port = 8848
 	s.Scheme = "http"
 	s.ContextPath = "/nacos"
+}
+
+// Default 为NacosRegisterConf设置默认值
+func (r *NacosRegisterConf) Default() {
+	r.Ip = "127.0.0.1"
+	r.Port = 14516
+	r.ServiceName = "nekoacm-server"
+	r.Weight = 10
+	r.Enable = true
+	r.Healthy = true
 }
