@@ -2,7 +2,6 @@ package bootstrap
 
 import (
 	"log"
-	"nekoacm-server/prompt"
 	"os"
 )
 
@@ -14,18 +13,16 @@ func Init() error {
 		return err
 	}
 
-	prompt.InitPrompt()
-
 	if err := initLlm(); err != nil {
-		return err
-	}
-
-	if err := InitServer(); err != nil {
 		return err
 	}
 
 	if err := initNacos(); err != nil {
 		return nil
+	}
+
+	if err := initServer(); err != nil {
+		return err
 	}
 
 	return nil
