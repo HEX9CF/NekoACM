@@ -4,6 +4,10 @@ import (
 	"nekoacm-server/pkg/utils"
 )
 
+var (
+	Conf = &Config{}
+)
+
 type Config struct {
 	Grpc   GrpcConf   `yaml:"grpc" json:"grpc"`
 	Openai OpenaiConf `yaml:"openai" json:"openai"`

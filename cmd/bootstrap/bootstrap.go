@@ -13,12 +13,12 @@ func Init() error {
 		return err
 	}
 
-	if err := initLlm(); err != nil {
-		return err
-	}
-
 	if err := initNacos(); err != nil {
 		return nil
+	}
+
+	if err := initLlm(); err != nil {
+		return err
 	}
 
 	if err := initServer(); err != nil {

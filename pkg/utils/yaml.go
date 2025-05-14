@@ -41,3 +41,15 @@ func WriteYaml(v interface{}, path string) error {
 
 	return nil
 }
+
+// 解码yaml字符串
+func UnmarshalYaml(v interface{}, content string) error {
+	var err error
+
+	err = yaml.Unmarshal([]byte(content), v)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}

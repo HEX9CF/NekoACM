@@ -6,7 +6,7 @@ import (
 	"nekoacm-server/pkg/config"
 )
 
-func register() error {
+func Register() error {
 	conf := config.Conf.Nacos.Register
 
 	success, err := namingClient.RegisterInstance(vo.RegisterInstanceParam{

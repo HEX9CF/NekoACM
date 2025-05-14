@@ -16,7 +16,7 @@ var (
 	configClient  config_client.IConfigClient
 )
 
-func initConfig() {
+func initNacosConfig() {
 	cConf := config.Conf.Nacos.Client
 	sConfs := config.Conf.Nacos.Server
 
