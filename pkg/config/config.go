@@ -1,7 +1,6 @@
 package config
 
 import (
-	"gopkg.in/yaml.v3"
 	"nekoacm-server/pkg/utils"
 )
 
@@ -32,21 +31,6 @@ func InitConfig() error {
 	if err != nil {
 		return err
 	}
-	return nil
-}
-
-// LoadConfig 加载配置
-func LoadConfig(content string) error {
-	tempConf := Config{}
-
-	err := yaml.Unmarshal([]byte(content), &tempConf)
-	if err != nil {
-		return err
-	}
-
-	Conf.Grpc = tempConf.Grpc
-	Conf.Openai = tempConf.Openai
-
 	return nil
 }
 
