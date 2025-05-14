@@ -6,6 +6,7 @@ type NacosConf struct {
 	Client   NacosClientConf   `yaml:"client" json:"client"`
 	Server   []NacosServerConf `yaml:"server" json:"server"`
 	Register NacosRegisterConf `yaml:"register" json:"register"`
+	Config   NacosConfigConf   `yaml:"config" json:"config"`
 }
 
 // NacosClientConf Nacos客户端配置
@@ -36,6 +37,13 @@ type NacosRegisterConf struct {
 	Healthy     bool    `yaml:"healthy" json:"healthy"`
 }
 
+// NacosConfigConf Nacos配置中心配置
+type NacosConfigConf struct {
+	Group        string `yaml:"group" json:"group"`
+	GrpcDataId   string `yaml:"grpc-data-id" json:"grpc_data_id"`
+	OpenaiDataId string `yaml:"openai-data-id" json:"openai_data_id"`
+}
+
 // Default 为NacosConf设置默认值
 func (n *NacosConf) Default() {
 	n.Enable = false
@@ -43,6 +51,7 @@ func (n *NacosConf) Default() {
 	n.Client.Default()
 	n.Server[0].Default()
 	n.Register.Default()
+	n.Config.Default()
 }
 
 // Default 为NacosClientConf设置默认值
@@ -71,4 +80,10 @@ func (r *NacosRegisterConf) Default() {
 	r.Weight = 10
 	r.Enable = true
 	r.Healthy = true
+}
+
+func (c *NacosConfigConf) Default() {
+	c.Group = "DEFAULT_GROUP"
+	c.GrpcDataId = "nekoacm-server-grpc.yaml"
+	c.OpenaiDataId = "nekoacm-server-openai.yaml"
 }
