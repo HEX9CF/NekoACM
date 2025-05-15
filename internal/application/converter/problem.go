@@ -1,8 +1,8 @@
 package converter
 
 import (
+	"nekoacm-common/api/proto/pb"
 	"nekoacm-server/internal/application/dto"
-	"nekoacm-server/pkg/pb"
 )
 
 // ProblemResponseFromDTO 将内部模型转换为 protobuf 响应
