@@ -2,7 +2,7 @@ package rpc_test
 
 import (
 	"context"
-	"nekoacm-server/pkg/pb"
+	"nekoacm-common/api/proto/pb"
 	"testing"
 	"time"
 )
