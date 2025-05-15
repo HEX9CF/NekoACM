@@ -10,9 +10,9 @@ var (
 )
 
 type Config struct {
-	config.CommonConfig
-	Grpc   GrpcConf   `yaml:"grpc" json:"grpc"`
-	Openai OpenaiConf `yaml:"openai" json:"openai"`
+	Grpc   GrpcConf         `yaml:"grpc" json:"grpc"`
+	Openai OpenaiConf       `yaml:"openai" json:"openai"`
+	Nacos  config.NacosConf `yaml:"nacos" json:"nacos"`
 }
 
 // InitConfig 初始化
@@ -36,7 +36,7 @@ func InitConfig() error {
 }
 
 func (c *Config) Default() {
-	c.CommonConfig.Default()
 	c.Grpc.Default()
 	c.Openai.Default()
+	c.Nacos.Default()
 }
