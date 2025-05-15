@@ -1,7 +1,6 @@
 package config
 
 import (
-	"nekoacm-common/infrastructure/nacos"
 	"nekoacm-common/pkg/config"
 	"nekoacm-common/pkg/utils"
 )
@@ -40,21 +39,4 @@ func (c *Config) Default() {
 	c.CommonConfig.Default()
 	c.Grpc.Default()
 	c.Openai.Default()
-}
-
-func LoadConfig() error {
-	var err error
-	conf := Conf.Nacos.Config
-
-	err = nacos.GetConfig(&Conf.Grpc, conf.GrpcDataId)
-	if err != nil {
-		return err
-	}
-
-	err = nacos.GetConfig(&Conf.Openai, conf.OpenaiDataId)
-	if err != nil {
-		return err
-	}
-
-	return nil
 }
