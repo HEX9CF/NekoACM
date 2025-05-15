@@ -21,12 +21,5 @@ func InitNacos() error {
 		return err
 	}
 
-	// 注册服务
-	if conf.Register.Enable {
-		if err := NacosClient.Register(); err != nil {
-			return err
-		}
-	}
-
 	return nil
 }
