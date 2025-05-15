@@ -28,5 +28,3 @@ nacos:
         healthy: true
     config:
         group: DEFAULT_GROUP
-        grpc-data-id: nekoacm-server-grpc.yaml
-        openai-data-id: nekoacm-server-openai.yaml
