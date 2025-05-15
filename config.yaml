@@ -26,5 +26,6 @@ nacos:
         weight: 10
         enable: true
         healthy: true
+        ephemeral: true
     config:
         group: DEFAULT_GROUP
