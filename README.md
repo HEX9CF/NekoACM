@@ -6,6 +6,12 @@ NekoACM: Neural-network Engine Kit of ACM-ICPC
 
 基于人工智能大模型的 ACM-ICPC 神经网络引擎工具包，提供自动出题、生成测试数据和题解代码、题目格式解析、题目国际化翻译、虚拟评测机、AI 编程助手等功能。可以作为一个单独的服务运行，也可以作为模块集成到 Online Judge 系统中。
 
+## 项目仓库
+
+- 服务端： [nekoacm-server](https://github.com/HEX9CF/NekoACM)
+- 客户端： [nekoacm-client](https://github.com/HEX9CF/nekoacm-client)
+- 公共模块： [nekoacm-common](https://github.com/HEX9CF/nekoacm-common)
+
 ## 功能介绍
 
 - **AI 编程助手**：一个为 ACM-ICPC 算法竞赛和 OI 信息学竞赛选手提供帮助的 AI 编程助手，提供数据结构与算法相关的指导。
