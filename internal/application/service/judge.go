@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"errors"
 	"log"
+	"nekoacm-common/pkg/utils"
 	"nekoacm-server/internal/application/dto"
 	"nekoacm-server/internal/infrastructure/openai"
-	"nekoacm-server/pkg/utils"
 	"nekoacm-server/prompt"
 )
 
