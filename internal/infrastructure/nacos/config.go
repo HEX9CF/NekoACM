@@ -4,13 +4,12 @@ import "nekoacm-server/pkg/config"
 
 func LoadConfig() error {
 	var err error
-	conf := config.Conf.Nacos.Config
 
-	if err = NacosClient.GetConfig(&config.Conf.Grpc, conf.GrpcDataId); err != nil {
+	if err = NacosClient.GetConfig(&config.Conf.Grpc, "nekoacm-server-grpc.yaml"); err != nil {
 		return err
 	}
 
-	if err = NacosClient.GetConfig(&config.Conf.Openai, conf.OpenaiDataId); err != nil {
+	if err = NacosClient.GetConfig(&config.Conf.Openai, "nekoacm-server-openai.yaml"); err != nil {
 		return err
 	}
 
