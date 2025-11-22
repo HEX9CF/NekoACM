@@ -2,8 +2,8 @@ package rpc
 
 import (
 	"nekoacm/api/proto/pb"
-	"nekoacm/internal/interfaces/rpc/handler"
-	"nekoacm/internal/interfaces/rpc/interceptors"
+	"nekoacm/internal/interface/rpc/handler"
+	"nekoacm/internal/interface/rpc/interceptors"
 	"nekoacm/pkg/config"
 	"net"
 

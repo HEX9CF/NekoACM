@@ -2,6 +2,7 @@ package main
 
 import (
 	"nekoacm/internal/bootstrap"
+	"nekoacm/internal/interface/stdio"
 )
 
 func main() {
@@ -9,5 +10,5 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	bootstrap.InitServer()
+	stdio.Execute()
 }

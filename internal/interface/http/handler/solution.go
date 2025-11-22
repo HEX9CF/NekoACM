@@ -1,18 +1,17 @@
 package handler
 
 import (
+	"github.com/gin-gonic/gin"
 	"log"
 	"nekoacm/internal/application/dto"
 	"nekoacm/internal/application/service"
-	"nekoacm/internal/interfaces/http/vo"
+	"nekoacm/internal/interface/http/vo"
 	"net/http"
-
-	"github.com/gin-gonic/gin"
 )
 
-// 对话
-func ChatAssistant(c *gin.Context) {
-	var req dto.ChatMsg
+// 生成题解
+func GenerateSolution(c *gin.Context) {
+	var req dto.SolutionInstruction
 
 	// 参数绑定
 	err := c.ShouldBindBodyWithJSON(&req)
@@ -22,7 +21,8 @@ func ChatAssistant(c *gin.Context) {
 		return
 	}
 
-	p, err := service.AssistantChat(req)
+	// 生成题解
+	p, err := service.SolutionGenerate(req)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, vo.RespError(err.Error(), nil))
 		return

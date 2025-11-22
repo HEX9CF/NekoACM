@@ -5,7 +5,7 @@ import (
 	"log"
 	"nekoacm/internal/application/dto"
 	"nekoacm/internal/application/service"
-	"nekoacm/internal/interfaces/http/vo"
+	"nekoacm/internal/interface/http/vo"
 	"net/http"
 )
 

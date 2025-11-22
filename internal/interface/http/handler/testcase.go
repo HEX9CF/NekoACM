@@ -1,17 +1,18 @@
 package handler
 
 import (
-	"github.com/gin-gonic/gin"
 	"log"
 	"nekoacm/internal/application/dto"
 	"nekoacm/internal/application/service"
-	"nekoacm/internal/interfaces/http/vo"
+	"nekoacm/internal/interface/http/vo"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
-// 生成题解
-func GenerateSolution(c *gin.Context) {
-	var req dto.SolutionInstruction
+// 生成测试用例
+func GenerateTestcase(c *gin.Context) {
+	var req dto.TestcaseInstruction
 
 	// 参数绑定
 	err := c.ShouldBindBodyWithJSON(&req)
@@ -21,8 +22,8 @@ func GenerateSolution(c *gin.Context) {
 		return
 	}
 
-	// 生成题解
-	p, err := service.SolutionGenerate(req)
+	// 生成测试用例
+	p, err := service.TestcaseGenerate(req)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, vo.RespError(err.Error(), nil))
 		return

@@ -2,7 +2,7 @@ package middlewares
 
 import (
 	"log"
-	"nekoacm/internal/interfaces/http/vo"
+	"nekoacm/internal/interface/http/vo"
 	"nekoacm/pkg/config"
 	"net/http"
 

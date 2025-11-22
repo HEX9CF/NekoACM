@@ -1,4 +1,4 @@
-package cli
+package stdio
 
 import (
 	"bufio"
@@ -13,23 +13,23 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// 生成题解
-var SolutionCmd = &cobra.Command{
-	Use:   "solution",
-	Short: "Generate a solution.",
-	Long:  "Generate a solution.",
+// 生成题目
+var ProblemCmd = &cobra.Command{
+	Use:   "service",
+	Short: "Generate a service.",
+	Long:  "Generate an ACM-ICPC algorithm service.",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		fmt.Println(" -------- 生成题解 -------- ")
+		fmt.Println(" -------- 生成题目 -------- ")
 		reader := bufio.NewReader(os.Stdin)
-		si, err := readSolutionInstruction(reader)
+		pi, err := readProblemInstruction(reader)
 		if err != nil {
 			return err
 		}
 
 		for {
-			// 生成题解
-			fmt.Println("正在生成题解...")
-			s, err := service.SolutionGenerate(si)
+			// 生成题目
+			fmt.Println("正在生成题目...")
+			p, err := service.ProblemGenerate(pi)
 			if err != nil {
 				log.Println(err)
 
@@ -48,7 +48,7 @@ var SolutionCmd = &cobra.Command{
 				continue
 			}
 
-			str, err := utils.PrettyStruct(s)
+			str, err := utils.PrettyStruct(p)
 			if err != nil {
 				log.Println(err)
 				return err
@@ -56,7 +56,7 @@ var SolutionCmd = &cobra.Command{
 			fmt.Println(str)
 
 			// 保存到文件
-			err = saveSolutionJson(reader, s)
+			err = saveProblemJson(reader, p)
 			if err != nil {
 				log.Println(err)
 			}
@@ -66,7 +66,7 @@ var SolutionCmd = &cobra.Command{
 			if err != nil {
 				return err
 			}
-			fmt.Print("是否继续生成题解(Y/N)?")
+			fmt.Print("是否继续生成题目(Y/N)?")
 			again, _ := reader.ReadString('\n')
 			again = strings.TrimSpace(again)
 			again = strings.ToLower(again)
@@ -79,51 +79,48 @@ var SolutionCmd = &cobra.Command{
 	},
 }
 
-// 读取题解信息
-func readSolutionInstruction(reader *bufio.Reader) (dto.SolutionInstruction, error) {
-	si := dto.SolutionInstruction{}
+// 读取题目信息
+func readProblemInstruction(reader *bufio.Reader) (dto.ProblemInstruction, error) {
+	pi := dto.ProblemInstruction{}
 	err := clearBuffer(reader)
 	if err != nil {
-		return dto.SolutionInstruction{}, err
+		return dto.ProblemInstruction{}, err
 	}
 
 	fmt.Println("请输入题目信息：")
 	fmt.Print("标题：")
-	si.Title, _ = reader.ReadString('\n')
-	si.Title = strings.TrimSpace(si.Title)
+	pi.Title, _ = reader.ReadString('\n')
+	pi.Title = strings.TrimSpace(pi.Title)
 	fmt.Print("描述：")
-	si.Description, _ = reader.ReadString('\n')
-	si.Description = strings.TrimSpace(si.Description)
+	pi.Description, _ = reader.ReadString('\n')
+	pi.Description = strings.TrimSpace(pi.Description)
 	fmt.Print("输入说明：")
-	si.Input, _ = reader.ReadString('\n')
-	si.Input = strings.TrimSpace(si.Input)
+	pi.Input, _ = reader.ReadString('\n')
+	pi.Input = strings.TrimSpace(pi.Input)
 	fmt.Print("输出说明：")
-	si.Output, _ = reader.ReadString('\n')
-	si.Output = strings.TrimSpace(si.Output)
+	pi.Output, _ = reader.ReadString('\n')
+	pi.Output = strings.TrimSpace(pi.Output)
 	fmt.Print("样例输入：")
-	si.SampleInput, _ = reader.ReadString('\n')
-	si.SampleInput = strings.TrimSpace(si.SampleInput)
+	pi.SampleInput, _ = reader.ReadString('\n')
+	pi.SampleInput = strings.TrimSpace(pi.SampleInput)
 	fmt.Print("样例输出：")
-	si.SampleOutput, _ = reader.ReadString('\n')
-	si.SampleOutput = strings.TrimSpace(si.SampleOutput)
+	pi.SampleOutput, _ = reader.ReadString('\n')
+	pi.SampleOutput = strings.TrimSpace(pi.SampleOutput)
 	fmt.Print("提示：")
-	si.Hint, _ = reader.ReadString('\n')
-	si.Hint = strings.TrimSpace(si.Hint)
+	pi.Hint, _ = reader.ReadString('\n')
+	pi.Hint = strings.TrimSpace(pi.Hint)
 	fmt.Print("标签（以空格分隔）：")
 	tagsInput, _ := reader.ReadString('\n')
-	si.Tags = strings.Fields(tagsInput)
-	fmt.Print("已有题解代码：")
-	si.Solution, _ = reader.ReadString('\n')
-	si.Solution = strings.TrimSpace(si.Solution)
-	fmt.Print("目标编程语言：")
-	si.Language, _ = reader.ReadString('\n')
-	si.Language = strings.TrimSpace(si.Language)
+	pi.Tags = strings.Fields(tagsInput)
+	fmt.Print("题解代码：")
+	pi.Solution, _ = reader.ReadString('\n')
+	pi.Solution = strings.TrimSpace(pi.Solution)
 
-	return si, nil
+	return pi, nil
 }
 
-// 保存题解到文件
-func saveSolutionJson(reader *bufio.Reader, s dto.Solution) error {
+// 保存题目到文件
+func saveProblemJson(reader *bufio.Reader, p dto.Problem) error {
 	err := clearBuffer(reader)
 	if err != nil {
 		return err
@@ -134,7 +131,7 @@ func saveSolutionJson(reader *bufio.Reader, s dto.Solution) error {
 	save = strings.ToLower(save)
 
 	if save == "y" {
-		path, err := service.SolutionSaveJson(s)
+		path, err := service.ProblemSaveJson(p)
 		if err != nil {
 			fmt.Println("保存失败！")
 			return err

@@ -1,11 +1,12 @@
-package cli
+package stdio
 
 import (
 	"bufio"
 	"fmt"
-	"github.com/spf13/cobra"
 	"os"
 	"strings"
+
+	"github.com/spf13/cobra"
 )
 
 // 根命令

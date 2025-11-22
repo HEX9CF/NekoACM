@@ -1,4 +1,4 @@
-package cli
+package stdio
 
 import (
 	"bufio"
@@ -13,23 +13,23 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// 生成题目
-var ProblemCmd = &cobra.Command{
-	Use:   "service",
-	Short: "Generate a service.",
-	Long:  "Generate an ACM-ICPC algorithm service.",
+// 生成测试用例
+var TestcaseCmd = &cobra.Command{
+	Use:   "testcase",
+	Short: "Generate a testcase.",
+	Long:  "Generate a testcase.",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		fmt.Println(" -------- 生成题目 -------- ")
+		fmt.Println(" -------- 生成测试用例 -------- ")
 		reader := bufio.NewReader(os.Stdin)
-		pi, err := readProblemInstruction(reader)
+		ti, err := readTestcaseInstruction(reader)
 		if err != nil {
 			return err
 		}
 
 		for {
-			// 生成题目
-			fmt.Println("正在生成题目...")
-			p, err := service.ProblemGenerate(pi)
+			// 生成测试用例
+			fmt.Println("正在生成测试用例...")
+			t, err := service.TestcaseGenerate(ti)
 			if err != nil {
 				log.Println(err)
 
@@ -48,7 +48,7 @@ var ProblemCmd = &cobra.Command{
 				continue
 			}
 
-			str, err := utils.PrettyStruct(p)
+			str, err := utils.PrettyStruct(t)
 			if err != nil {
 				log.Println(err)
 				return err
@@ -56,7 +56,7 @@ var ProblemCmd = &cobra.Command{
 			fmt.Println(str)
 
 			// 保存到文件
-			err = saveProblemJson(reader, p)
+			err = saveTestcaseJson(reader, t)
 			if err != nil {
 				log.Println(err)
 			}
@@ -66,7 +66,7 @@ var ProblemCmd = &cobra.Command{
 			if err != nil {
 				return err
 			}
-			fmt.Print("是否继续生成题目(Y/N)?")
+			fmt.Print("是否继续生成测试用例(Y/N)?")
 			again, _ := reader.ReadString('\n')
 			again = strings.TrimSpace(again)
 			again = strings.ToLower(again)
@@ -79,48 +79,49 @@ var ProblemCmd = &cobra.Command{
 	},
 }
 
-// 读取题目信息
-func readProblemInstruction(reader *bufio.Reader) (dto.ProblemInstruction, error) {
-	pi := dto.ProblemInstruction{}
+// 读取测试用例信息
+func readTestcaseInstruction(reader *bufio.Reader) (dto.TestcaseInstruction, error) {
+	ti := dto.TestcaseInstruction{}
 	err := clearBuffer(reader)
 	if err != nil {
-		return dto.ProblemInstruction{}, err
+		return dto.TestcaseInstruction{}, err
 	}
 
+	// 读取题目信息
 	fmt.Println("请输入题目信息：")
 	fmt.Print("标题：")
-	pi.Title, _ = reader.ReadString('\n')
-	pi.Title = strings.TrimSpace(pi.Title)
+	ti.Title, _ = reader.ReadString('\n')
+	ti.Title = strings.TrimSpace(ti.Title)
 	fmt.Print("描述：")
-	pi.Description, _ = reader.ReadString('\n')
-	pi.Description = strings.TrimSpace(pi.Description)
+	ti.Description, _ = reader.ReadString('\n')
+	ti.Description = strings.TrimSpace(ti.Description)
 	fmt.Print("输入说明：")
-	pi.Input, _ = reader.ReadString('\n')
-	pi.Input = strings.TrimSpace(pi.Input)
+	ti.Input, _ = reader.ReadString('\n')
+	ti.Input = strings.TrimSpace(ti.Input)
 	fmt.Print("输出说明：")
-	pi.Output, _ = reader.ReadString('\n')
-	pi.Output = strings.TrimSpace(pi.Output)
+	ti.Output, _ = reader.ReadString('\n')
+	ti.Output = strings.TrimSpace(ti.Output)
 	fmt.Print("样例输入：")
-	pi.SampleInput, _ = reader.ReadString('\n')
-	pi.SampleInput = strings.TrimSpace(pi.SampleInput)
+	ti.SampleInput, _ = reader.ReadString('\n')
+	ti.SampleInput = strings.TrimSpace(ti.SampleInput)
 	fmt.Print("样例输出：")
-	pi.SampleOutput, _ = reader.ReadString('\n')
-	pi.SampleOutput = strings.TrimSpace(pi.SampleOutput)
+	ti.SampleOutput, _ = reader.ReadString('\n')
+	ti.SampleOutput = strings.TrimSpace(ti.SampleOutput)
 	fmt.Print("提示：")
-	pi.Hint, _ = reader.ReadString('\n')
-	pi.Hint = strings.TrimSpace(pi.Hint)
+	ti.Hint, _ = reader.ReadString('\n')
+	ti.Hint = strings.TrimSpace(ti.Hint)
 	fmt.Print("标签（以空格分隔）：")
 	tagsInput, _ := reader.ReadString('\n')
-	pi.Tags = strings.Fields(tagsInput)
+	ti.Tags = strings.Fields(tagsInput)
 	fmt.Print("题解代码：")
-	pi.Solution, _ = reader.ReadString('\n')
-	pi.Solution = strings.TrimSpace(pi.Solution)
+	ti.Solution, _ = reader.ReadString('\n')
+	ti.Solution = strings.TrimSpace(ti.Solution)
 
-	return pi, nil
+	return ti, nil
 }
 
-// 保存题目到文件
-func saveProblemJson(reader *bufio.Reader, p dto.Problem) error {
+// 保存测试用例到文件
+func saveTestcaseJson(reader *bufio.Reader, t dto.Testcase) error {
 	err := clearBuffer(reader)
 	if err != nil {
 		return err
@@ -131,7 +132,7 @@ func saveProblemJson(reader *bufio.Reader, p dto.Problem) error {
 	save = strings.ToLower(save)
 
 	if save == "y" {
-		path, err := service.ProblemSaveJson(p)
+		path, err := service.TestcaseSaveJson(t)
 		if err != nil {
 			fmt.Println("保存失败！")
 			return err

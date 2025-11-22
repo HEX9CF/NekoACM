@@ -3,7 +3,7 @@ package rpc_test
 import (
 	"context"
 	"nekoacm/internal/infrastructure/openai"
-	"nekoacm/internal/interfaces/rpc"
+	"nekoacm/internal/interface/rpc"
 	"nekoacm/pkg/config"
 	"nekoacm/prompt"
 	"os"

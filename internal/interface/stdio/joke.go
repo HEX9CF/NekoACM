@@ -1,13 +1,14 @@
-package cli
+package stdio
 
 import (
 	"bufio"
 	"fmt"
-	"github.com/spf13/cobra"
 	"log"
 	"nekoacm/internal/application/service"
 	"os"
 	"strings"
+
+	"github.com/spf13/cobra"
 )
 
 // 生成笑话
