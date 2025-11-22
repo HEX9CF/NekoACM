@@ -1,7 +1,10 @@
+server:
+  port: "14515"
+  token:
 grpc:
-    port: "14515"
-    token:
+  port: "14516"
+  token:
 openai:
-    model:
-    base-url:
-    api-key:
+  model: "gpt-3.5-turbo"
+  base-url:
+  api-key:

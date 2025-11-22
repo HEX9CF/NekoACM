@@ -24,6 +24,6 @@ ENV TZ=Asia/Shanghai
 WORKDIR /app
 COPY --from=builder /app/nekoacm /app/nekoacm
 
-CMD ["./nekoacm"]
+CMD ["./nekoacm", "server"]
 
 EXPOSE 14515/tcp

@@ -1,11 +1,11 @@
 package config
 
-type GrpcConf struct {
+type ServerConf struct {
 	Port  string `yaml:"port" json:"port"`
 	Token string `yaml:"token" json:"token"`
 }
 
-func (g *GrpcConf) Default() {
-	g.Port = "14516"
-	g.Token = "token"
+func (s *ServerConf) Default() {
+	s.Port = "14515"
+	s.Token = "token"
 }

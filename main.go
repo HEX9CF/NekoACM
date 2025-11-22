@@ -1,9 +1,14 @@
 package main
 
 import (
-	"nekoacm/cmd/server"
+	"nekoacm/cmd/cli"
+	"nekoacm/internal/bootstrap"
 )
 
 func main() {
-	server.Main()
+	err := bootstrap.Init()
+	if err != nil {
+		panic(err)
+	}
+	cli.Execute()
 }

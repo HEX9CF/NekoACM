@@ -17,9 +17,5 @@ func Init() error {
 		return err
 	}
 
-	if err := initServer(); err != nil {
-		return err
-	}
-
 	return nil
 }

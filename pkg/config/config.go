@@ -9,6 +9,7 @@ var (
 )
 
 type Config struct {
+	Server ServerConf `yaml:"server" json:"server"`
 	Grpc   GrpcConf   `yaml:"grpc" json:"grpc"`
 	Openai OpenaiConf `yaml:"openai" json:"openai"`
 }
@@ -34,6 +35,7 @@ func InitConfig() error {
 }
 
 func (c *Config) Default() {
+	c.Server.Default()
 	c.Grpc.Default()
 	c.Openai.Default()
 }
