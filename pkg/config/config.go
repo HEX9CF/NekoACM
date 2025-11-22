@@ -1,7 +1,6 @@
 package config
 
 import (
-	"nekoacm-common/pkg/config"
 	"nekoacm/pkg/utils"
 )
 
@@ -10,9 +9,8 @@ var (
 )
 
 type Config struct {
-	Grpc   GrpcConf         `yaml:"grpc" json:"grpc"`
-	Openai OpenaiConf       `yaml:"openai" json:"openai"`
-	Nacos  config.NacosConf `yaml:"nacos" json:"nacos"`
+	Grpc   GrpcConf   `yaml:"grpc" json:"grpc"`
+	Openai OpenaiConf `yaml:"openai" json:"openai"`
 }
 
 // InitConfig 初始化
@@ -38,5 +36,4 @@ func InitConfig() error {
 func (c *Config) Default() {
 	c.Grpc.Default()
 	c.Openai.Default()
-	c.Nacos.Default()
 }

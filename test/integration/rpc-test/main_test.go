@@ -2,15 +2,16 @@ package rpc_test
 
 import (
 	"context"
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/insecure"
-	"nekoacm-common/pkg/config"
 	"nekoacm/internal/infrastructure/openai"
 	"nekoacm/internal/interfaces/rpc"
+	"nekoacm/pkg/config"
 	"nekoacm/prompt"
 	"os"
 	"testing"
 	"time"
+
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 )
 
 func TestMain(m *testing.M) {
