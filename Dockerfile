@@ -13,7 +13,7 @@ ADD go.mod .
 ADD go.sum .
 RUN go mod download
 COPY . .
-RUN go build -ldflags="-s -w" -o /app/nekoacm-server main.go
+RUN go build -ldflags="-s -w" -o /app/nekoacm main.go
 
 FROM alpine
 
@@ -22,8 +22,8 @@ COPY --from=builder /usr/share/zoneinfo/Asia/Shanghai /usr/share/zoneinfo/Asia/S
 ENV TZ=Asia/Shanghai
 
 WORKDIR /app
-COPY --from=builder /app/nekoacm-server /app/nekoacm-server
+COPY --from=builder /app/nekoacm /app/nekoacm
 
-CMD ["./nekoacm-server"]
+CMD ["./nekoacm"]
 
-EXPOSE 14516/tcp
+EXPOSE 14515/tcp
