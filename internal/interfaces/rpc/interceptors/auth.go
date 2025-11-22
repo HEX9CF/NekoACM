@@ -2,12 +2,13 @@ package interceptors
 
 import (
 	"context"
+	"log"
+	"nekoacm/pkg/config"
+
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
-	"log"
-	"nekoacm/pkg/config"
 )
 
 func TokenAuthInterceptor() grpc.UnaryServerInterceptor {

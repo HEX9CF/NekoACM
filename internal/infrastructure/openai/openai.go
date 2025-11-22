@@ -1,9 +1,10 @@
 package openai
 
 import (
-	"github.com/sashabaranov/go-openai"
 	"log"
 	"nekoacm/pkg/config"
+
+	"github.com/sashabaranov/go-openai"
 )
 
 var (
@@ -24,7 +25,7 @@ func InitLlm() error {
 	client = openai.NewClientWithConfig(openaiConfig)
 
 	// 测试连接
-	err := Test()
+	err := ping()
 	if err != nil {
 		log.Println("LLM 服务连接失败！")
 		return err

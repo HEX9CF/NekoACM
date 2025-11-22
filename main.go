@@ -1,9 +1,9 @@
 package main
 
 import (
-	"nekoacm/cmd/app"
+	"nekoacm/cmd/server"
 )
 
 func main() {
-	app.Main()
+	server.Main()
 }

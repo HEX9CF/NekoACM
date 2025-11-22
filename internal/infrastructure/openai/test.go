@@ -3,11 +3,12 @@ package openai
 import (
 	"context"
 	"fmt"
+
 	"github.com/sashabaranov/go-openai"
 )
 
 // 测试连接
-func Test() error {
+func ping() error {
 	resp, err := client.CreateChatCompletion(
 		context.Background(),
 		openai.ChatCompletionRequest{
