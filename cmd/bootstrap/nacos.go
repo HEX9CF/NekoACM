@@ -2,8 +2,8 @@ package bootstrap
 
 import (
 	"log"
-	"nekoacm-server/internal/infrastructure/nacos"
-	"nekoacm-server/pkg/config"
+	"nekoacm/internal/infrastructure/nacos"
+	"nekoacm/pkg/config"
 )
 
 func initNacos() error {

@@ -2,9 +2,9 @@ package bootstrap
 
 import (
 	"log"
-	"nekoacm-server/internal/infrastructure/nacos"
-	"nekoacm-server/internal/interfaces/rpc"
-	"nekoacm-server/pkg/config"
+	"nekoacm/internal/infrastructure/nacos"
+	"nekoacm/internal/interfaces/rpc"
+	"nekoacm/pkg/config"
 )
 
 // 初始化服务器

@@ -1,6 +1,6 @@
 package app
 
-import "nekoacm-server/cmd/bootstrap"
+import "nekoacm/cmd/bootstrap"
 
 func Main() {
 	err := bootstrap.Init()

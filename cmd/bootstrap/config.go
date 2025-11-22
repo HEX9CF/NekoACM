@@ -2,7 +2,7 @@ package bootstrap
 
 import (
 	"log"
-	"nekoacm-server/pkg/config"
+	"nekoacm/pkg/config"
 )
 
 // 初始化配置

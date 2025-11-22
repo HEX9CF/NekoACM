@@ -2,8 +2,8 @@ package service
 
 import (
 	"log"
-	"nekoacm-server/internal/infrastructure/openai"
-	"nekoacm-server/prompt"
+	"nekoacm/internal/infrastructure/openai"
+	"nekoacm/prompt"
 )
 
 // 生成笑话

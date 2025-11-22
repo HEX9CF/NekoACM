@@ -3,9 +3,9 @@ package rpc
 import (
 	"google.golang.org/grpc"
 	"nekoacm-common/api/proto/pb"
-	"nekoacm-server/internal/interfaces/rpc/handler"
-	"nekoacm-server/internal/interfaces/rpc/interceptors"
-	"nekoacm-server/pkg/config"
+	"nekoacm/internal/interfaces/rpc/handler"
+	"nekoacm/internal/interfaces/rpc/interceptors"
+	"nekoacm/pkg/config"
 	"net"
 )
 

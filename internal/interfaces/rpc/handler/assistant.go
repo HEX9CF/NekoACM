@@ -1,13 +1,13 @@
 package handler
 
 import (
-	"context"
+	"golang.org/x/net/context"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"nekoacm-common/api/proto/pb"
-	"nekoacm-server/internal/application/converter"
-	"nekoacm-server/internal/application/dto"
-	"nekoacm-server/internal/application/service"
+	"nekoacm/internal/application/converter"
+	"nekoacm/internal/application/dto"
+	"nekoacm/internal/application/service"
 )
 
 // AssistantServer 实现 AssistantService 接口

@@ -5,8 +5,8 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"nekoacm-common/api/proto/pb"
-	"nekoacm-server/internal/application/converter"
-	"nekoacm-server/internal/application/service"
+	"nekoacm/internal/application/converter"
+	"nekoacm/internal/application/service"
 )
 
 // SolutionServer 实现 SolutionService 接口

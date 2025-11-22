@@ -5,9 +5,9 @@ import (
 	"errors"
 	"log"
 	"nekoacm-common/pkg/utils"
-	"nekoacm-server/internal/application/dto"
-	"nekoacm-server/internal/infrastructure/openai"
-	"nekoacm-server/prompt"
+	"nekoacm/internal/application/dto"
+	"nekoacm/internal/infrastructure/openai"
+	"nekoacm/prompt"
 	"strconv"
 	"time"
 )

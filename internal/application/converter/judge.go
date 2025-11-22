@@ -2,7 +2,7 @@ package converter
 
 import (
 	"nekoacm-common/api/proto/pb"
-	"nekoacm-server/internal/application/dto"
+	"nekoacm/internal/application/dto"
 )
 
 // SubmissionRequestToDTO 将 protobuf 请求转换为 DTO

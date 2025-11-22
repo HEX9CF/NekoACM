@@ -2,7 +2,7 @@ package nacos
 
 import (
 	"nekoacm-common/infrastructure/nacos"
-	"nekoacm-server/pkg/config"
+	"nekoacm/pkg/config"
 )
 
 var (

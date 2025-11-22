@@ -2,8 +2,8 @@ package bootstrap
 
 import (
 	"log"
-	"nekoacm-server/internal/infrastructure/openai"
-	"nekoacm-server/prompt"
+	"nekoacm/internal/infrastructure/openai"
+	"nekoacm/prompt"
 )
 
 // 初始化大模型服务

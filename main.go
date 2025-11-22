@@ -1,7 +1,7 @@
 package main
 
 import (
-	"nekoacm-server/cmd/app"
+	"nekoacm/cmd/app"
 )
 
 func main() {

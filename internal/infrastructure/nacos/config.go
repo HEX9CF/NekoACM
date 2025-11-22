@@ -1,6 +1,6 @@
 package nacos
 
-import "nekoacm-server/pkg/config"
+import "nekoacm/pkg/config"
 
 func LoadConfig() error {
 	var err error
