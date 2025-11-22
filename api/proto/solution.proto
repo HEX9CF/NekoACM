@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package solution;
+option go_package = ".;pb";
+
+// 题解服务
+service SolutionService {
+  // 生成题解
+  rpc Generate(SolutionInstructionRequest) returns (SolutionResponse);
+}
+
+// 题解响应
+message SolutionResponse {
+  string language = 1;
+  string source_code = 2;
+  string explanation = 3;
+}
+
+// 题解指令请求
+message SolutionInstructionRequest {
+  string title = 1;
+  string description = 2;
+  string input = 3;
+  string output = 4;
+  string sample_input = 5;
+  string sample_output = 6;
+  string hint = 7;
+  repeated string tags = 8;
+  string solution = 9;
+  string language = 10;
+}

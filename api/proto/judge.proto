@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package judge;
+option go_package = ".;pb";
+
+// 评测服务
+service JudgeService {
+  // 提交代码评测
+  rpc Submit(SubmissionRequest) returns (JudgementResponse);
+}
+
+// 提交请求
+message SubmissionRequest {
+  string source_code = 1;
+  string language = 2;
+  string stdin = 3;
+  string expected_output = 4;
+}
+
+// 评测响应
+message JudgementResponse {
+  string stdout = 1;
+  string stderr = 2;
+  string compile_output = 3;
+  string message = 4;
+  string status = 5;
+}

@@ -1,7 +1,7 @@
 package converter
 
 import (
-	"nekoacm-common/api/proto/pb"
+	"nekoacm/api/proto/pb"
 	"nekoacm/internal/application/dto"
 )
 

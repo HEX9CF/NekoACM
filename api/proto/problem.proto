@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package problem;
+option go_package = ".;pb";
+
+// 问题服务
+service ProblemService {
+  // 生成题目
+  rpc Generate(ProblemInstructionRequest) returns (ProblemResponse);
+  // 翻译题目
+  rpc Translate(TranslateInstructionRequest) returns (ProblemResponse);
+  // 解析题目
+  rpc Parse(ProblemDataRequest) returns (ProblemResponse);
+}
+
+// 题目
+message ProblemResponse {
+  string title = 1;
+  string description = 2;
+  string input = 3;
+  string output = 4;
+  string sample_input = 5;
+  string sample_output = 6;
+  string hint = 7;
+  repeated string tags = 8;
+}
+
+// 题目指令请求
+message ProblemInstructionRequest {
+  string title = 1;
+  string description = 2;
+  string input = 3;
+  string output = 4;
+  string sample_input = 5;
+  string sample_output = 6;
+  string hint = 7;
+  repeated string tags = 8;
+  string solution = 9;
+}
+
+// 翻译指令请求
+message TranslateInstructionRequest {
+  string title = 1;
+  string description = 2;
+  string input = 3;
+  string output = 4;
+  string hint = 5;
+  repeated string tags = 6;
+  string target_lang = 7;
+}
+
+// 题目数据请求
+message ProblemDataRequest {
+  string data = 1;
+}
+

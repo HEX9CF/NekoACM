@@ -2,7 +2,7 @@ package config
 
 import (
 	"nekoacm-common/pkg/config"
-	"nekoacm-common/pkg/utils"
+	"nekoacm/pkg/utils"
 )
 
 var (

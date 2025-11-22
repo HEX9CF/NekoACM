@@ -1,12 +1,13 @@
 package rpc
 
 import (
-	"google.golang.org/grpc"
-	"nekoacm-common/api/proto/pb"
+	"nekoacm/api/proto/pb"
 	"nekoacm/internal/interfaces/rpc/handler"
 	"nekoacm/internal/interfaces/rpc/interceptors"
 	"nekoacm/pkg/config"
 	"net"
+
+	"google.golang.org/grpc"
 )
 
 func InitServer() error {
